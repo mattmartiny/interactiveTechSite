@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using System.Net.Mail;
 
 namespace InteractiveTechnologies.Models
 {
@@ -21,6 +22,8 @@ namespace InteractiveTechnologies.Models
             : base(store)
         {
         }
+
+
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
             IOwinContext context)
@@ -84,10 +87,25 @@ namespace InteractiveTechnologies.Models
 
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+
+            MailMessage email = new MailMessage(new MailAddress("noreply@ideasthatfloat.com", "(do not reply)"),
+                new MailAddress(message.Destination));
+
+            email.Subject = message.Subject;
+            email.Body = message.Body;
+
+            email.IsBodyHtml = true;
+
+            using (var mailClient = new InteractiveTechnologies.Models.GmailEmailService())
+            {
+                //In order to use the original from email address, uncomment this line:
+                email.From = new MailAddress(mailClient.UserName, "(do not reply)");
+
+                await mailClient.SendMailAsync(email);
+            }
+
         }
     }
 

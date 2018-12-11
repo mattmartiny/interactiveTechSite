@@ -17,6 +17,7 @@
 [x] Add the login links and a few admin links (with admin slider effect)
 [x] Add greeting and Log off
 [x] Styled the top login/logoff bar
+[x] Upon registration, user recieves confirmation email
 
 
 TO DO:
@@ -26,3 +27,4 @@ TO DO:
 [ ] Create Simple 'update images
 [ ] Get content
 [ ] Build a 'media' database
+s

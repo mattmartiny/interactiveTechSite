@@ -153,11 +153,16 @@ namespace InteractiveTechnologies.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //Comment the following line to prevent log in until the user is confirmed:
+                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
+
+                    // Uncomment to debug locally 
+                     TempData["ViewBagLink"] = callbackUrl;
+
+                    ViewBag.errorMessage = "Please confirm the email was sent to you.";
+                    return View("ShowMsg");
                 }
                 AddErrors(result);
             }
@@ -166,9 +171,9 @@ namespace InteractiveTechnologies.Controllers
             return View(model);
         }
 
+
         //
         // GET: /Account/ConfirmEmail
-        [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
@@ -178,6 +183,20 @@ namespace InteractiveTechnologies.Controllers
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+
+        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+        {
+            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            // Send an email with this link:
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+
+            await UserManager.SendEmailAsync(userID, subject, "Please confirm your account by <a href=\"" + callbackUrl + "\">clicking here</a>");
+
+
+            return callbackUrl;
         }
 
         //
