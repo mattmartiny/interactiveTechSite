@@ -1,0 +1,28 @@
+[x] setup Site format
+[x] found and added logo
+[x] found correct logo background hexcolor
+[x] made logo in position I wanted it and started navigation bar
+[x] found navigation bar gradient color and added border
+[x] added hover effects to text and navigation background
+[x] added mobile accessability to site (hamburger menu)
+[x] made hamburger background color same as the navbar menu
+[x] Added some content for the About page and the Contact page
+[x] downloaded and installed SSMS 
+[x] Configured SSMS and installed a developer server to use
+[x] built a simple database for user information
+[x] **Start** Ideas for databases on paper (i.e. Product databases etc.)
+
+[x] Retrieve Notes and cheatsheets from flashdrive at home
+[x] Implement some identity with login features
+[x] Add the login links and a few admin links (with admin slider effect)
+[x] Add greeting and Log off
+[x] Styled the top login/logoff bar
+
+
+TO DO:
+[ ] Style Admin rollout for mobile
+[ ] create a "template" with interchangeable media parts
+[ ] Encrypt password information 
+[ ] Create Simple 'update images
+[ ] Get content
+[ ] Build a 'media' database

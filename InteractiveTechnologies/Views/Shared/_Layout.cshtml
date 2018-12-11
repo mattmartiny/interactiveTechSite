@@ -8,17 +8,31 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar">
+        <div class="container head-contain">
+
+
+
+            <a href='@Url.Action("Index", "Home")'>
+                <img src="~/Content/Images/iti_logo.jpg" alt="Interactive Technologies Inc." height="110" class="head-img" />
+            </a>
+            <div class="admin">
+                @Html.Partial("_LoginPartial")
+            </div>
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Interactive Technologies Inc.", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+
+
             </div>
-            <div class="navbar-collapse collapse">
+
+            <div class=" navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -31,12 +45,65 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Interactive Technologies</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="~/Scripts/responsiveslides.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".rslides").responsiveSlides({
+                auto: true,
+                timeout: 3000,
+                speed: 500,
+                pause: true,
+                maxwidth: "600",
+            });
+
+        });
+    </script>
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div id="adminLink" onclick="openNav()" class="button">
+            <span class="vertical-text">
+                ADMIN
+            </span>
+        </div>
+
+    }
+    <div id="adminSideNav" class="sideNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
+            @Html.ActionLink("Users Admin", "Index", "UsersAdmin")
+        }
+
+    </div>
+
+    <script type="text/javascript">
+            function openNav() {
+                //Expand navigation menu
+                document.getElementById('adminSideNav').style.width = "250px";
+                //hide admin button
+                document.getElementById('adminLink').style.display = "none";
+            }
+
+            function closeNav() {
+                document.getElementById('adminSideNav').style.width = "0";
+                document.getElementById('adminLink').style.display = "block";
+            }
+    </script>
+
     @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
 </body>
 </html>
