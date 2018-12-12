@@ -78,6 +78,17 @@
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleHeaderText" Type="nvarchar" MaxLength="300" />
+          <Property Name="ArticleDate" Type="date" Nullable="false" />
+          <Property Name="DisplayDate" Type="bit" Nullable="false" />
+          <Property Name="ArticleText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArticleOrder" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ProductCategories">
           <Key>
             <PropertyRef Name="ProductCategoryID" />
@@ -238,6 +249,7 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductCategories" EntityType="Self.ProductCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -341,6 +353,7 @@
           <EntitySet Name="AspNetUserLogins" EntityType="InteractiveTechModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="InteractiveTechModel.AspNetUser" />
           <EntitySet Name="Categories" EntityType="InteractiveTechModel.Category" />
+          <EntitySet Name="News" EntityType="InteractiveTechModel.News" />
           <EntitySet Name="ProductCategories" EntityType="InteractiveTechModel.ProductCategory" />
           <EntitySet Name="Products" EntityType="InteractiveTechModel.Product" />
           <EntitySet Name="sysdiagrams" EntityType="InteractiveTechModel.sysdiagram" />
@@ -463,6 +476,17 @@
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProductCategories" Relationship="InteractiveTechModel.FK_ProductCategories_Category" FromRole="Category" ToRole="ProductCategory" />
           <NavigationProperty Name="Products" Relationship="InteractiveTechModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleHeaderText" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DisplayDate" Type="Boolean" Nullable="false" />
+          <Property Name="ArticleText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleOrder" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -663,6 +687,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="InteractiveTechModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ArticleOrder" ColumnName="ArticleOrder" />
+                <ScalarProperty Name="ArticleText" ColumnName="ArticleText" />
+                <ScalarProperty Name="DisplayDate" ColumnName="DisplayDate" />
+                <ScalarProperty Name="ArticleDate" ColumnName="ArticleDate" />
+                <ScalarProperty Name="ArticleHeaderText" ColumnName="ArticleHeaderText" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProductCategories">
             <EntityTypeMapping TypeName="InteractiveTechModel.ProductCategory">
               <MappingFragment StoreEntitySet="ProductCategories">
@@ -703,7 +739,7 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -35,8 +35,14 @@
 [x] Created "Member" Role and made it the default
 [x] Metadata for my products
 [x] Metadata for categories
+[x] Added Contact form on page ----- NEED LOGIN INFORMATION 
+[x]Added cool little news thing where admins can customize for the latest update
+
+
 
 TO DO:
+[ ] Setup a FreeForm in the registration area
+[ ] Fix within all regristration entities of project (Model, controller, view, etc.)
 [ ] create product categories
 [ ] upload images
 [ ] Contact Form

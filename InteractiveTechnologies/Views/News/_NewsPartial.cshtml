@@ -1,0 +1,41 @@
+﻿@using InteractiveTechnologies.Models
+
+@model InteractiveTechnologies.Models.News
+
+@{
+  InteractiveTechEntities db = new InteractiveTechEntities();
+    var order = from n in db.News
+                orderby n.ArticleOrder
+                select n;
+
+    var ArticleToDisplay = order.First();
+}
+
+
+
+
+    <h3 class="h3">@ArticleToDisplay.ArticleHeaderText</h3>
+
+
+    @if (ArticleToDisplay.DisplayDate == true)
+    {
+        <p style="color:orange">@ArticleToDisplay.ArticleDate.ToShortDateString()</p> }
+    else
+    {
+        <br />
+
+    }
+
+    <hr />
+    <p>
+        @ArticleToDisplay.ArticleText
+    </p>
+
+
+
+<p>
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+       @Html.ActionLink("Edit", "Edit", "News", new {id= ArticleToDisplay.ArticleID}, null);
+    }
+</p>

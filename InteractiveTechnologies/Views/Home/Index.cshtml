@@ -1,4 +1,6 @@
-﻿@{
+﻿@model InteractiveTechnologies.Models.News
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -19,8 +21,6 @@
     <div class="col-md-3">
         <p class="h3">Latest Updates</p>
         <hr />
-        <p class="body-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum volutpat lacus, sit amet consectetur mi aliquet sit amet. Praesent laoreet nunc non massa ullamcorper rutrum. Duis nibh orci, scelerisque imperdiet quam sed, convallis scelerisque mauris. Maecenas id ipsum a urna aliquet convallis. Pellentesque sodales libero a metus iaculis efficitur. Ut tellus eros, tincidunt eget scelerisque quis, tempus non ligula. Maecenas sed vulputate diam. Sed vel hendrerit quam, a suscipit nisi. Sed efficitur a mauris ut vulputate. Vestibulum sed massa dolor. Praesent ultricies ultrices massa in tempus.
-        </p>
+      @Html.Partial("~/Views/News/_NewsPartial.cshtml", Model)
     </div>
 </div>

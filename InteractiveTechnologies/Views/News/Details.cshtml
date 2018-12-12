@@ -1,0 +1,59 @@
+﻿@model InteractiveTechnologies.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleHeaderText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleHeaderText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleOrder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

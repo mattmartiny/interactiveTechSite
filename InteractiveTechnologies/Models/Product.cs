@@ -18,7 +18,8 @@ namespace InteractiveTechnologies.Models
         public Product()
         {
             this.ProductCategories = new HashSet<ProductCategory>();
-        }    
+        }
+    
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public string ProductName { get; set; }
