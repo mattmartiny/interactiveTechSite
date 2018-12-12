@@ -56,7 +56,8 @@ body {
 
 .body-content {
     margin:0 auto;
-    padding: 0 15px;
+    padding: 0 15px 10px;
+
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -67,11 +68,7 @@ body {
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+
 .navbar-toggle {
     background-image: linear-gradient(#EAA049,#D75C23);
 }
@@ -201,3 +198,7 @@ ul.nav.navbar-nav li:hover, .nav > li > a:hover {
     writing-mode: vertical-lr;
 }
 /*------------------End SideNav-------------------------*/
+textarea.form-control{
+
+    width:100%;
+}

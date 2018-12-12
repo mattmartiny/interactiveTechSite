@@ -218,6 +218,7 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -377,6 +378,7 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Home\ContactConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

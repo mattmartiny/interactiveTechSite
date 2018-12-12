@@ -12,14 +12,17 @@
 [x] built a simple database for user information
 [x] **Start** Ideas for databases on paper (i.e. Product databases etc.)
 
+
+
 [x] Encrypt password information
 [x] Retrieve Notes and cheatsheets from flashdrive at home
 [x] Implement some identity with login features
-[x] Add the login links and a few admin links (with admin slider effect)
+[x] Add the login links and a few admin links (with admin slid out effect)
 [x] Add greeting and Log off
 [x] Styled the top login/logoff bar
 [x] Upon registration, user recieves confirmation email
 [x] User cannot login unless he offically confirms his email. 
+
 
 [x] send to specific email address to verify
 [x] Set up other fields in register
@@ -33,9 +36,6 @@
 [x] Metadata for my products
 [x] Metadata for categories
 
-
-
-
 TO DO:
 [ ] create product categories
 [ ] upload images
@@ -47,4 +47,6 @@ TO DO:
 [ ] Create Simple update images
 [ ] Get content
 [ ] Build a 'media' database
+
+
 
