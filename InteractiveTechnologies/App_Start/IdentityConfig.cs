@@ -11,6 +11,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
 using System.Net.Mail;
+using System.Net;
 
 namespace InteractiveTechnologies.Models
 {
@@ -90,20 +91,30 @@ namespace InteractiveTechnologies.Models
         public async Task SendAsync(IdentityMessage message)
         {
 
-            MailMessage email = new MailMessage(new MailAddress("noreply@ideasthatfloat.com", "(do not reply)"),
-                new MailAddress(message.Destination));
+            MailMessage msg = new MailMessage("confirmation@ideasthatfloat.com", "mattmartiny@yahoo.com");
 
-            email.Subject = message.Subject;
-            email.Body = message.Body;
+          //  MailMessage email = new MailMessage(new MailAddress("noreply@ideasthatfloat.com")
+                new MailAddress(message.Destination = "mattmartiny@yahoo.com");
+            
 
-            email.IsBodyHtml = true;
+            msg.Subject = message.Subject;
+            msg.Body = message.Body;
+            msg.Priority = MailPriority.Normal;
+            msg.IsBodyHtml = true;
+    
+            SmtpClient client = new SmtpClient("mail.mattmartiny.com");
+            client.Credentials = new NetworkCredential("no-reply@mattmartiny.com", "10316CodySt.");
 
-            using (var mailClient = new InteractiveTechnologies.Models.GmailEmailService())
+
+
+           
+
+            using (client)
             {
                 //In order to use the original from email address, uncomment this line:
-                email.From = new MailAddress(mailClient.UserName, "(do not reply)");
+              
 
-                await mailClient.SendMailAsync(email);
+                await client.SendMailAsync(msg);
             }
 
         }

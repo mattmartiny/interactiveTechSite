@@ -12,19 +12,39 @@
 [x] built a simple database for user information
 [x] **Start** Ideas for databases on paper (i.e. Product databases etc.)
 
+[x] Encrypt password information
 [x] Retrieve Notes and cheatsheets from flashdrive at home
 [x] Implement some identity with login features
 [x] Add the login links and a few admin links (with admin slider effect)
 [x] Add greeting and Log off
 [x] Styled the top login/logoff bar
 [x] Upon registration, user recieves confirmation email
+[x] User cannot login unless he offically confirms his email. 
+
+[x] send to specific email address to verify
+[x] Set up other fields in register
+[x] email is no longer sent via gmail (currently sent via mattmartiny.com --- need other email info)
+[x] Add all information on email
+[x] Make email link to confirm within the body of the email sent ---- still need to get it to work with a specific mail client
+[x] Created a basic members only page and made it only accessable by logged in AND verified users
+[x] Created base database structure for products
+[x] Scaffolded and created CRUD functionality for products
+[x] Created "Member" Role and made it the default
+[x] Metadata for my products
+[x] Metadata for categories
+
+
 
 
 TO DO:
+[ ] create product categories
+[ ] upload images
+[ ] Contact Form
+[ ] Set up email information on interactive technologies
 [ ] Style Admin rollout for mobile
 [ ] create a "template" with interchangeable media parts
-[ ] Encrypt password information 
-[ ] Create Simple 'update images
+[ ] Send Email to user confirming that they have been verified
+[ ] Create Simple update images
 [ ] Get content
 [ ] Build a 'media' database
-s
+

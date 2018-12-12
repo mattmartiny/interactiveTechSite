@@ -65,6 +65,28 @@ namespace InteractiveTechnologies.Models
   
         public class RegisterViewModel
         {
+
+         [Required]
+        [Display(Name = "First Name")]
+        [StringLength(25, ErrorMessage = "First Namehas a maximum of 25 characters")]
+        public string FirstName { get; set; }
+    
+        [Required]
+        [Display(Name = "Last Name")]
+        [StringLength(25, ErrorMessage = "Last Name has a maximum of 25 characters")]
+        public string LastName { get; set; }
+
+        [StringLength(75, ErrorMessage = "Company a maximum of 75 characters")]
+        public string Company { get; set; }
+        [StringLength(50, ErrorMessage = "City has a maximum of 50 characters")]
+        public string City { get; set; }
+        [StringLength(25, ErrorMessage = "State has a maximum of 25 characters")]
+        public string State { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set;}
+
+
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]

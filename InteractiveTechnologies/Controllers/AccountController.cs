@@ -12,6 +12,8 @@ namespace InteractiveTechnologies.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+
+      
         public AccountController()
         {
         }
@@ -70,11 +72,24 @@ namespace InteractiveTechnologies.Controllers
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
+
+
+
+
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var userid = UserManager.FindByEmail(model.Email).Id;
+                    if (!UserManager.IsEmailConfirmed(userid))
+                    {
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+                        return View("EmailNotVerified");
+                    }
+                    else
+                        return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -85,7 +100,6 @@ namespace InteractiveTechnologies.Controllers
                     return View(model);
             }
         }
-
         //
         // GET: /Account/VerifyCode
         [HttpGet]
@@ -149,19 +163,21 @@ namespace InteractiveTechnologies.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, FirstName = model.FirstName, LastName = model.LastName, Company = model.Company, City= model.City, State=model.State};
                 var result = await UserManager.CreateAsync(user, model.Password);
+                UserManager.AddToRole(user.Id, "Member");
                 if (result.Succeeded)
                 {
                     //Comment the following line to prevent log in until the user is confirmed:
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account Confirmation for " + model.Email, model);
 
                     // Uncomment to debug locally 
                      TempData["ViewBagLink"] = callbackUrl;
 
-                    ViewBag.errorMessage = "Please confirm the email was sent to you.";
+                    ViewBag.errorMessage = "You are not verified yet.  Please wait to get a confirmation email from us. ";
                     return View("ShowMsg");
                 }
                 AddErrors(result);
@@ -186,14 +202,18 @@ namespace InteractiveTechnologies.Controllers
         }
 
 
-        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject, RegisterViewModel model)
         {
+
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link:
+
+
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code = code }, protocol: Request.Url.Scheme);
 
-            await UserManager.SendEmailAsync(userID, subject, "Please confirm your account by <a href=\"" + callbackUrl + "\">clicking here</a>");
+            await UserManager.SendEmailAsync(userID, subject, $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}");
+
 
 
             return callbackUrl;
