@@ -63,5 +63,6 @@ TO DO:
 [ ] Get content
 [ ] Build a 'media' database
 [ ] Style Mobile
-[ ] Forgot Password stuff
+[ ] add a scroll bar area to other pages
+[ ] Forget Password stuff
 

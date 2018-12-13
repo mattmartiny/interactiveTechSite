@@ -9,54 +9,51 @@
 <div>
     @Model.ProductName Details
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            $@Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
-
-        <dd>
-            <img src="@Url.Content("~/Content/Images/Products/" + Model.ProductImage)"
-                 alt="@Model.ProductName" />
-        </dd>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
+    <div class="h1 col-md-8">@Html.DisplayFor(model => model.ProductName)</div>
 
-    </dl>
-</div>
-<p style="padding:.5em 0;">
-    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) }
-@Html.ActionLink("Back to List", "Index")
-</p>
+
+    <div class="h2 col-md-4"> $@Html.DisplayFor(model => model.Price) <hr /></div>
+    <div class="col-md-offset-8">
+        @Html.DisplayNameFor(model => model.ProductDescription)
+        <p class="h3">@Html.DisplayFor(model => model.ProductDescription)</p>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-md-12">
+        <img src="@Url.Content("~/Content/Images/Products/" + Model.ProductImage)"
+             alt="@Model.ProductName" style="margin:0 auto;" />
+    </div>
+
+
+
+
+    <div class="col-md-offset-8">
+        <p>@Html.DisplayNameFor(model => model.Category.CategoryName):</p>
+
+
+
+        <p class="h3">@Html.DisplayFor(model => model.Category.CategoryName)</p>
+        <a href="http://www.paypal.com" target="_blank"><input type="button" value="Purchase" style="height:50px; width:125px; background-color:#D75C23; color:white; border-radius:10px;"  /></a>
+    </div>
+
+
+    </div>
+
+
+
+    <p style="padding:.5em 0;">
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) @:|
+        }
+        @Html.ActionLink("Back to List", "Index")
+    </p>
