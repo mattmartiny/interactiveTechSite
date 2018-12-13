@@ -28,6 +28,7 @@ namespace InteractiveTechnologies.Models
         public string Company { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string ReasonForContact { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }

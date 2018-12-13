@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
+    @Model.ProductName Details
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            $@Html.DisplayFor(model => model.Price)
         </dd>
 
         <dt>
@@ -40,8 +39,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductImage)
+            <img src="@Url.Content("~/Content/Images/Products/" + Model.ProductImage)"
+                 alt="@Model.ProductName" />
         </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Category.CategoryName)
@@ -53,7 +54,9 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="padding:.5em 0;">
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) }
+@Html.ActionLink("Back to List", "Index")
 </p>

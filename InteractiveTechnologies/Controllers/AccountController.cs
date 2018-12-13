@@ -164,9 +164,9 @@ namespace InteractiveTechnologies.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, FirstName = model.FirstName, LastName = model.LastName, Company = model.Company, City= model.City, State=model.State};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, FirstName = model.FirstName, LastName = model.LastName, Company = model.Company, City= model.City, State=model.State, ReasonForContact = model.ReasonForContact};
                 var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, "Member");
+              //  UserManager.AddToRole(user.Id, "Member");
                 if (result.Succeeded)
                 {
                     //Comment the following line to prevent log in until the user is confirmed:
@@ -212,7 +212,7 @@ namespace InteractiveTechnologies.Controllers
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code = code }, protocol: Request.Url.Scheme);
 
-            await UserManager.SendEmailAsync(userID, subject, $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}");
+            await UserManager.SendEmailAsync(userID, subject, $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}<br />Reason For Contact: {model.ReasonForContact}");
 
 
 

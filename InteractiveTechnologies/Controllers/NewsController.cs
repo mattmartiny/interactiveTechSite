@@ -13,19 +13,19 @@ namespace InteractiveTechnologies.Controllers
     public class NewsController : Controller
     {
         private InteractiveTechEntities db = new InteractiveTechEntities();
-
+        [Authorize(Roles = "Admin")]
         // GET: News
         public ActionResult Index()
         {
             return View(db.News.ToList());
         }
-     
-           
-
-      
-   
 
 
+
+
+
+
+        [Authorize(Roles = "Admin")]
         // GET: News/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,7 +40,7 @@ namespace InteractiveTechnologies.Controllers
             }
             return View(news);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: News/Create
         public ActionResult Create()
         {
@@ -64,7 +64,7 @@ namespace InteractiveTechnologies.Controllers
 
             return View(news);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: News/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -79,7 +79,7 @@ namespace InteractiveTechnologies.Controllers
             }
             return View(news);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: News/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -95,7 +95,7 @@ namespace InteractiveTechnologies.Controllers
             }
             return View(news);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: News/Delete/5
         public ActionResult Delete(int? id)
         {

@@ -12,8 +12,6 @@
 [x] built a simple database for user information
 [x] **Start** Ideas for databases on paper (i.e. Product databases etc.)
 
-
-
 [x] Encrypt password information
 [x] Retrieve Notes and cheatsheets from flashdrive at home
 [x] Implement some identity with login features
@@ -22,7 +20,6 @@
 [x] Styled the top login/logoff bar
 [x] Upon registration, user recieves confirmation email
 [x] User cannot login unless he offically confirms his email. 
-
 
 [x] send to specific email address to verify
 [x] Set up other fields in register
@@ -38,21 +35,33 @@
 [x] Added Contact form on page ----- NEED LOGIN INFORMATION 
 [x]Added cool little news thing where admins can customize for the latest update
 
+[x] Reason for Contact added to database
+[x] Setup a Reason For Contact in the registration area
+[x] Fix Registration entities
+[x] Send Emails with Reason for contact info
+[x] Fix Database error where it wiped my entire database
+[x] Added database columns for "ProductOrder" and "DisplayProduct"
+[x] Implemented "Product Order"
+[x] created dummy products to test
+[x] implemented the "display products" as well as made it possible for admins to see all products
+[x] created image uploader for products 
+[x] styled products index page
+[x] Made the title to the products page a link to the details
 
 
 TO DO:
-[ ] Setup a FreeForm in the registration area
-[ ] Fix within all regristration entities of project (Model, controller, view, etc.)
+[ ] Slider for home page?
+[ ] Possibly do a Partial View 
+[ ] Paypal set up
+[ ] Credit Card setup
 [ ] create product categories
-[ ] upload images
-[ ] Contact Form
 [ ] Set up email information on interactive technologies
 [ ] Style Admin rollout for mobile
 [ ] create a "template" with interchangeable media parts
-[ ] Send Email to user confirming that they have been verified
+[ ] Better way to send Email to user confirming that they have been verified
 [ ] Create Simple update images
 [ ] Get content
 [ ] Build a 'media' database
-
-
+[ ] Style Mobile
+[ ] Forgot Password stuff
 

@@ -18,9 +18,11 @@ namespace InteractiveTechnologies.Models//.Metadata
             public decimal? Price { get; set; }
             [Display(Name = "Product Image")]
             public string ProductImage { get; set; }
+            public bool DisplayProduct { get; set; }
+            public int ProductOrder { get; set; }
 
-        }
-        [MetadataType(typeof(ProductMetadata))]
+    }
+    [MetadataType(typeof(ProductMetadata))]
         public partial class Product { }
    
 }

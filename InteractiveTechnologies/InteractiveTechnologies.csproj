@@ -220,6 +220,9 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\C_MigrationHistory.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -282,7 +285,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\building.jpg" />
     <Content Include="Content\Images\iti_logo.jpg" />
+    <Content Include="Content\Images\Products\noimage.png" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -292,6 +297,8 @@
       <DependentUpon>InteractiveTech.edmx</DependentUpon>
       <LastGenOutput>InteractiveTech.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\InteractiveTech.edmx.sql" />
+    <Content Include="Models\InteractiveTech.sql" />
     <Content Include="Models\InteractiveTech.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>InteractiveTech.edmx</DependentUpon>
