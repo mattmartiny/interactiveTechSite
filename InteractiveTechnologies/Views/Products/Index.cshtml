@@ -22,7 +22,7 @@
                 <div class="product-item">
                     <div class="product-img-contain"> <img src="@Url.Content("~/Content/Images/Products/" + item.ProductImage)" alt="@item.ProductName" class="thumbnail product-img" /></div>
                     <h3 class="h3 title"> <a href="~/Products/Details/@item.ProductID">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-                    <h3 class="h3">  $@Html.DisplayFor(modelItem => item.Price) </h3>
+                    <h3 class="h3">  @Html.DisplayFor(modelItem => item.Price) </h3>
 
 
 

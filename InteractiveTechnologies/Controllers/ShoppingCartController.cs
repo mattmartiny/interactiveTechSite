@@ -27,6 +27,9 @@ namespace InteractiveTechnologies.Controllers
             // Return the view
             return View(viewModel);
         }
+
+        
+
         //
         // GET: /Store/AddToCart/5
         public ActionResult AddToCart(int id)

@@ -16,6 +16,7 @@ namespace InteractiveTechnologies.Models//.Metadata
         public string ProductName { get; set; }
         [Display(Name = "Product Description")]
         public string ProductDescription { get; set; }
+        [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
         [Display(Name = "Product Image")]
         public string ProductImage { get; set; }
@@ -24,7 +25,7 @@ namespace InteractiveTechnologies.Models//.Metadata
 
     }
     [MetadataType(typeof(ProductMetadata))]
-    public partial class Products { }
+    public partial class Product { }
 
 
 

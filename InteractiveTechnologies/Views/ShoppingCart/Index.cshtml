@@ -5,6 +5,63 @@
 }
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<h3>
+    <em>Review</em> your cart:
+</h3>
+
+<div id="update-message">
+</div>
+<table class="col-sm-12">
+    <tr>
+        <th class="col-md-4" style="text-align:left;">
+      Product
+        </th>
+        <th class="col-md-3" style="text-align:center;">
+            Price (each)
+        </th>
+        <th class="col-sm-1" style="text-align:center;">
+            Quantity
+        </th>
+        <th class="col-md-4" style="text-align:center;"></th>
+    </tr>
+    @foreach (var item in
+Model.CartItems)
+    {
+        <tr id="row-@item.ItemID" >
+            <td style="text-align:left;padding:0.5em 0;">
+                @Html.ActionLink(item.Product.ProductName,"Details", "Store", new { id = item.ProductID}, null)
+            </td>
+            <td style="text-align:center;">
+               @Html.DisplayFor(m => item.Product.Price)
+            </td>
+            <td id="item-count-@item.ItemID" style="text-align:center;">
+                @item.Quantity
+            </td>
+            <td style="text-align:center;">
+                <a href="#" class="RemoveLink"
+                   data-id="@item.ItemID">
+                    Remove from cart </a>
+            </td>
+        </tr>
+    }
+   <tr><td colspan="4" style="padding:1.5em 0;"> <p style="text-align:center"></p></td></tr>
+   <tr>
+    <td>
+            Total
+        </td>
+        <td></td>
+        <td></td>
+        <td id="cart-total">
+            @Html.DisplayFor(m => m.CartTotal)
+                   
+        </td>
+    </tr>
+</table>
+
+    @Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+
+
 <script type="text/javascript">
     $(function () {
         // Document.ready -> link up remove event handler
@@ -30,56 +87,3 @@
         });
     });
 </script>
-<h3>
-    <em>Review</em> your cart:
-</h3>
-<p class="button">
-    @Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
-</p>
-<div id="update-message">
-</div>
-<table>
-    <tr>
-        <th>
-      Product
-        </th>
-        <th>
-            Price (each)
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in
-Model.CartItems)
-    {
-        <tr id="row-@item.ItemID">
-            <td>
-                @Html.ActionLink(item.Product.ProductName,
-"Details", "Store", new { id = item.ProductID}, null)
-            </td>
-            <td>
-                @item.Product.Price
-            </td>
-            <td id="item-count-@item.ItemID">
-                @item.Quantity
-            </td>
-            <td>
-                <a href="#" class="RemoveLink"
-                   data-id="@item.ItemID">
-                    Remove from cart </a>
-            </td>
-        </tr>
-    }
-    <tr>
-        <td>
-            Total
-        </td>
-        <td></td>
-        <td></td>
-        <td id="cart-total">
-            @Model.CartTotal
-        </td>
-    </tr>
-</table>

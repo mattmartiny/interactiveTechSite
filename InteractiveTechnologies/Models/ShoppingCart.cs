@@ -32,12 +32,12 @@ namespace InteractiveTechnologies.Models
                 c => c.CartID == ShoppingCartId
                 && c.ProductID ==  product.ProductID);
 
-            if (cartItem == null)
+            if (cartItem == null )
             {
                 // Create a new cart item if no cart item exists
 
                 cartItem = new Cart
-                {
+                {   
                     ProductID = product.ProductID,
                     CartID = ShoppingCartId,
                     Quantity = 1,
@@ -45,7 +45,7 @@ namespace InteractiveTechnologies.Models
                 };
                 storeDB.Carts.Add(cartItem);
             }
-            else
+            else 
             {
                 // If the item does exist in the cart, 
                 // then add one to the quantity

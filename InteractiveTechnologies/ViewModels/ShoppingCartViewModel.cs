@@ -11,7 +11,10 @@ namespace InteractiveTechnologies.ViewModels
     {
  
         public List<Cart> CartItems { get; set; }
+        [DataType(DataType.Currency)]
         public decimal CartTotal { get; set; }
+
+        
         
     }
 }
