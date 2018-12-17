@@ -12,22 +12,58 @@
         <div class="container head-contain">
 
 
+            <div class="shop-menu pull-right">
+                <ul class="navbar-nav">
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li id="cart-button">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i> Cart
+                            </a>
+                            <span id="cart-notification" class="notification-counter"></span>
+                        </li>
 
-            <a href='@Url.Action("Index", "Home")'>
-                <img src="~/Content/Images/iti_logo.jpg" alt="Interactive Technologies Inc." height="110" class="head-img" />
+                        <!-- Unauthenticated -->
+                        if (!Request.IsAuthenticated)
+                        {
+                            <li><a href="/Account/Register"><i class="fa fa-user"></i> Register</a></li>
+                            <li><a href="/Account/Login"><i class="fa fa-lock"></i> Login</a></li>
+                        }
+
+                        <!-- Authenticated -->
+                        if (Request.IsAuthenticated)
+                        {
+                            <li><a href="#"><i class="fa fa-user"></i> @User.Identity.Name</a></li>
+
+
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Logout</a></li>
+                        }
+
+
+
+                    }
+                </ul>
+            </div>
+
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Images/iti_logo.jpg" alt="Interactive Technologies Inc." height="110" class="head-img " />
             </a>
-            <div class="admin">
-                @Html.Partial("_LoginPartial")
+
+            <div class="col-sm-8">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
             </div>
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               
-            </div>
+
+
+
 
             <div class=" navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -37,9 +73,9 @@
                     <li>@Html.ActionLink("Products", "Index", "Products")</li>
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                     
+
                         <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-                        
+
                     }
                     @if (Request.IsAuthenticated)
                     {
@@ -53,7 +89,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="col-md-12">
+        <footer class="col-xs-12">
             <p>&copy; @DateTime.Now.Year - Interactive Technologies</p>
         </footer>
     </div>

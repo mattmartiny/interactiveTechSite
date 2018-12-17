@@ -15,10 +15,10 @@
     <div class="h1 col-md-8">@Html.DisplayFor(model => model.ProductName)</div>
 
 
-    <div class="h2 col-md-4"> $@Html.DisplayFor(model => model.Price) <hr /></div>
+    <div class="h2 col-md-4"> $@String.Format("{0:F}", Model.Price) /></div>
     <div class="col-md-offset-8">
         @Html.DisplayNameFor(model => model.ProductDescription)
-        <p class="h3">@Html.DisplayFor(model => model.ProductDescription)</p>
+        <p class="h3">@Model.ProductDescription</p>
     </div>
 
 
@@ -41,12 +41,13 @@
 
 
 
-        <p class="h3">@Html.DisplayFor(model => model.Category.CategoryName)</p>
-        <a href="http://www.paypal.com" target="_blank"><input type="button" value="Purchase" style="height:50px; width:125px; background-color:#D75C23; color:white; border-radius:10px;"  /></a>
-    </div>
-
+        <p class="h3">@Model.Category.CategoryName</p>
 
     </div>
+   @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, "")
+    </p>
+
+</div>
 
 
 

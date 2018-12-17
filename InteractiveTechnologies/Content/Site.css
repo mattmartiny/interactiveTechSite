@@ -51,6 +51,7 @@ table {
 body {
     
     background-color: #FCFEFF;
+    overflow:scroll;
 }
 
 
@@ -103,6 +104,7 @@ body {
 
 ul.nav.navbar-nav li a {
     color: #fff;
+    text-align:center;
 }
     ul.nav.navbar-nav li a:hover {
       
@@ -112,6 +114,15 @@ ul.nav.navbar-nav li a {
 ul.nav.navbar-nav li:hover, .nav > li > a:hover {
 
     background-color: rgba(255,255,255,.05);
+}
+.shop-menu{
+    padding:1.25em 1em;
+
+}
+.shop-menu ul li{
+    display:inline-block;
+    padding:0 15px;
+
 }
 
     .admin-bar li {
@@ -125,8 +136,7 @@ ul.nav.navbar-nav li:hover, .nav > li > a:hover {
             padding:1em .5em;
         }
         .admin{
-    width:75%;
-    float:left;
+     float:left;
 
 }
 
@@ -226,11 +236,21 @@ textarea.form-control{
 
 
 .title {
-
     float: left;
     width: 100%;
     text-align: center;
 }
-footer{
 
+.purchase-btn {
+ height:50px; 
+ width:125px;
+ background-color:#D75C23;
+ color:white;
+ border-radius:10px;
 }
+.purchase-btn:hover {
+        background-color: #EAA049;
+        color: black;
+        border:1.5px solid black;
+}
+

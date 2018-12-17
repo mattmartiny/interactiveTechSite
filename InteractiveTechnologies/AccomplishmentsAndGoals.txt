@@ -21,6 +21,8 @@
 [x] Upon registration, user recieves confirmation email
 [x] User cannot login unless he offically confirms his email. 
 
+
+____________________________________________
 [x] send to specific email address to verify
 [x] Set up other fields in register
 [x] email is no longer sent via gmail (currently sent via mattmartiny.com --- need other email info)
@@ -35,6 +37,8 @@
 [x] Added Contact form on page ----- NEED LOGIN INFORMATION 
 [x]Added cool little news thing where admins can customize for the latest update
 
+----------------
+
 [x] Reason for Contact added to database
 [x] Setup a Reason For Contact in the registration area
 [x] Fix Registration entities
@@ -47,9 +51,25 @@
 [x] created image uploader for products 
 [x] styled products index page
 [x] Made the title to the products page a link to the details
+[x] Updated Product Details page to look better
+
+
+
+
+
+[x] fixed overflow issue where pages that scroll look different
+[x] Added a hover effect to the "Purchase" button on products page
+[x] fixed issue where mobile footer overlaps everything on the products page
+[x] fixed some mobile styling issues with the layout
+[ ] looked into premaid code for shopping cart stuff
+
+
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 
 
 TO DO:
+[ ]Create a cart button w/ functionality
+
 [ ] Slider for home page?
 [ ] Possibly do a Partial View 
 [ ] Paypal set up

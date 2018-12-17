@@ -17,6 +17,8 @@ namespace InteractiveTechnologies.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.Carts = new HashSet<Cart>();
+            this.OrderDetails = new HashSet<OrderDetail>();
             this.ProductCategories = new HashSet<ProductCategory>();
         }
     
@@ -24,12 +26,16 @@ namespace InteractiveTechnologies.Models
         public int CategoryID { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public decimal Price { get; set; }
         public string ProductImage { get; set; }
         public bool DisplayProduct { get; set; }
         public int ProductOrder { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCategory> ProductCategories { get; set; }
     }
