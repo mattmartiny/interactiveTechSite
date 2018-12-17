@@ -166,7 +166,7 @@ namespace InteractiveTechnologies.Controllers
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, FirstName = model.FirstName, LastName = model.LastName, Company = model.Company, City= model.City, State=model.State, ReasonForContact = model.ReasonForContact};
                 var result = await UserManager.CreateAsync(user, model.Password);
-              //  UserManager.AddToRole(user.Id, "Member");
+                UserManager.AddToRole(user.Id, "Member");
                 if (result.Succeeded)
                 {
                     //Comment the following line to prevent log in until the user is confirmed:
@@ -443,8 +443,22 @@ namespace InteractiveTechnologies.Controllers
             return View();
         }
 
+
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
+        }
+
+    
+
+
+
         #region Helpers
-        // Used for XSRF protection when adding external logins
+            // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
@@ -502,4 +516,6 @@ namespace InteractiveTechnologies.Controllers
         }
         #endregion
     }
+    
+
 }

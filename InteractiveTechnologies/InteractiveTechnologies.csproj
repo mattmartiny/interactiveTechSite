@@ -194,6 +194,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -232,6 +233,7 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gmail.cs" />
+    <Compile Include="Models\GuestCheckoutOrderModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InteractiveTech.Context.cs">
       <AutoGen>True</AutoGen>
@@ -335,6 +337,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Models\Guest.class" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -432,6 +435,9 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\_NewsPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Guest\GuestCheckout.cshtml" />
+    <Content Include="Views\Account\GuestCheckout.cshtml" />
+    <Content Include="Views\Guest\Pay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

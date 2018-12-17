@@ -1,23 +1,4 @@
-﻿//Array to store user's cart info
-var cart = [];
-
-//Function to add items to the cart - will be wired up
-//to <a> in the HTML
-function addToCart(id) {
-    //Check to see if a book has been added to the cart yet.
-    //If not, create a .qty property and assign it a value of 1.
-    var bookObj = books[id - 1];
-    if (typeof bookObj.qty === "undefined") {
-        bookObj.qty = 1;
-        cart.push(bookObj);
-        //The first time they click a button to add it to the cart,
-        //push() the bookObj to the array
-    }
-    //otherwise, add 1 to the qty
-    else {
-        bookObj.qty += 1;
-    }
-
+﻿
     //For testing purposes only
     console.clear();
     for (var i = 0; i < cart.length; i++) {
@@ -30,7 +11,7 @@ function addToCart(id) {
         "block";
 
     //Total number of books in the cart
-    var cartQty = 0;
+    var cartQty = db.
     for (var p = 0; p < cart.length; p++) {
         cartQty += cart[p].qty;
     }

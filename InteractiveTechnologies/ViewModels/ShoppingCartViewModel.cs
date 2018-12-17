@@ -11,6 +11,7 @@ namespace InteractiveTechnologies.ViewModels
     {
  
         public List<Cart> CartItems { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         [DataType(DataType.Currency)]
         public decimal CartTotal { get; set; }
 

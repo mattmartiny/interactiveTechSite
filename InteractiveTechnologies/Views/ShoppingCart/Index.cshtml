@@ -1,6 +1,7 @@
 ﻿@model InteractiveTechnologies.ViewModels.ShoppingCartViewModel
-
+@using InteractiveTechnologies.Models
 @{
+
     ViewBag.Title = "Shopping Cart";
 }
 
@@ -15,7 +16,7 @@
 <table class="col-sm-12">
     <tr>
         <th class="col-md-4" style="text-align:left;">
-      Product
+            Product
         </th>
         <th class="col-md-3" style="text-align:center;">
             Price (each)
@@ -28,12 +29,12 @@
     @foreach (var item in
 Model.CartItems)
     {
-        <tr id="row-@item.ItemID" >
+        <tr id="row-@item.ItemID">
             <td style="text-align:left;padding:0.5em 0;">
-                @Html.ActionLink(item.Product.ProductName,"Details", "Store", new { id = item.ProductID}, null)
+                @Html.ActionLink(item.Product.ProductName, "Details", "Products", new { id = item.ProductID }, null)
             </td>
             <td style="text-align:center;">
-               @Html.DisplayFor(m => item.Product.Price)
+                @Html.DisplayFor(m => item.Product.Price)
             </td>
             <td id="item-count-@item.ItemID" style="text-align:center;">
                 @item.Quantity
@@ -41,25 +42,34 @@ Model.CartItems)
             <td style="text-align:center;">
                 <a href="#" class="RemoveLink"
                    data-id="@item.ItemID">
-                    Remove from cart </a>
+                    Remove from cart
+                </a>
             </td>
         </tr>
     }
-   <tr><td colspan="4" style="padding:1.5em 0;"> <p style="text-align:center"></p></td></tr>
-   <tr>
-    <td>
+    <tr><td colspan="4" style="padding:1.5em 0;"> <p style="text-align:center"></p></td></tr>
+    <tr>
+        <td>
             Total
         </td>
         <td></td>
         <td></td>
         <td id="cart-total">
             @Html.DisplayFor(m => m.CartTotal)
-                   
+
         </td>
     </tr>
 </table>
+@{
 
-    @Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+    InteractiveTechEntities Db = new InteractiveTechEntities();
+
+
+
+}
+@Html.ActionLink("Continue Shopping", "Index", "Products") |
+@Html.ActionLink("Checkout >>", "GuestCheckout", "Guest")
+
 
 
 <script type="text/javascript">

@@ -33,6 +33,31 @@ namespace InteractiveTechnologies.Models
         }
     }
 
+
+    public class Guest : IdentityUser
+
+    {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Company { get; set; }
+
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        public string PostalCode { get; set; }
+
+        public string Country { get; set; }
+
+        public decimal Total { get; set; }
+
+        public System.DateTime OrderDate { get; set; }
+
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

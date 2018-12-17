@@ -62,9 +62,14 @@ ____________________________________________
 [x] fixed issue where mobile footer overlaps everything on the products page
 [x] fixed some mobile styling issues with the layout
 [ ] looked into premaid code for shopping cart stuff
+[x]Started implementing shopping cart code
 
 
-https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
+[x] finished implementing shopping cart code and database
+[x] Fixed database
+[x] styled up the cart page
+
+
 
 
 TO DO:

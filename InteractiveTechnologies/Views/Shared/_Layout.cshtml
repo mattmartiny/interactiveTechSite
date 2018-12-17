@@ -18,7 +18,8 @@
                     {
                         @Html.AntiForgeryToken()
                         <li id="cart-button">
-                            <a href="#">
+
+                                <a href="~/ShoppingCart">
                                 <i class="fa fa-shopping-cart"></i> Cart
                             </a>
                             <span id="cart-notification" class="notification-counter"></span>
@@ -131,24 +132,37 @@
 
     </div>
 
-    <script type="text/javascript">
-            function openNav() {
-                //Expand navigation menu
-                document.getElementById('adminSideNav').style.width = "250px";
-                //hide admin button
-                document.getElementById('adminLink').style.display = "none";
-            }
 
-            function closeNav() {
-                document.getElementById('adminSideNav').style.width = "0";
-                document.getElementById('adminLink').style.display = "block";
-            }
+    <script type="text/javascript">
+        function openNav() {
+            //Expand navigation menu
+            document.getElementById('adminSideNav').style.width = "250px";
+            //hide admin button
+            document.getElementById('adminLink').style.display = "none";
+        }
+
+        function closeNav() {
+            document.getElementById('adminSideNav').style.width = "0";
+            document.getElementById('adminLink').style.display = "block";
+        }
     </script>
 
-    @RenderSection("scripts", required: false)
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript Shopping Cart -->
+    <script src="~/Content/Scripts/Cart.js"></script>
+    <!-- jQueryUI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--Bootstrap JS (includes use of jQuery)-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <!--jQuery BASE library-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 
 </body>
 </html>
