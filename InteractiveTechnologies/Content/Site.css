@@ -253,6 +253,12 @@ textarea.form-control{
         color: black;
         border:1.5px solid black;
 }
+.partial-text{
+    font-weight:bold;
+  font-size:80%;
+
+
+}
 
 .notification-counter {
     position: absolute;

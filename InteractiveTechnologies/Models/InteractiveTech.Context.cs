@@ -35,6 +35,8 @@ namespace InteractiveTechnologies.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<MembersPage> MembersPages { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }

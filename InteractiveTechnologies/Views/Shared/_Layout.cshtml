@@ -19,7 +19,7 @@
                         @Html.AntiForgeryToken()
                         <li id="cart-button">
 
-                                <a href="~/ShoppingCart">
+                            <a href="~/ShoppingCart">
                                 <i class="fa fa-shopping-cart"></i> Cart
                             </a>
                             <span id="cart-notification" class="notification-counter"></span>
@@ -97,21 +97,21 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="~/Scripts/responsiveslides.min.js"></script>
 
-    <script type="text/javascript">
-        $(function () {
-            $(".rslides").responsiveSlides({
-                auto: true,
-                timeout: 3000,
-                speed: 500,
-                pause: true,
-                maxwidth: "600",
+    @*<script src="~/Scripts/responsiveslides.min.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $(".rslides").responsiveSlides({
+                    auto: true,
+                    timeout: 3000,
+                    speed: 500,
+                    pause: true,
+                    maxwidth: "600",
+                });
+
             });
-
-        });
-    </script>
+        </script>*@
     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
     {
         <div id="adminLink" onclick="openNav()" class="button">
@@ -153,15 +153,18 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <!-- JavaScript Shopping Cart -->
-    <script src="~/Content/Scripts/Cart.js"></script>
-    <!-- jQueryUI -->
+
+    @*<link href="~/Content/Scripts/jquery-ui.structure.min.css" rel="stylesheet" />*@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!--Bootstrap JS (includes use of jQuery)-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
+
+    @*<script src="~/Content/Scripts/jquery-ui.min.js"></script>*@
+
+
+
     @RenderSection("scripts", required: false)
     <!--jQuery BASE library-->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 
 
 </body>

@@ -99,6 +99,28 @@
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="125" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageSrc" Type="nvarchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="MembersPage">
+          <Key>
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="PageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DisplayDate" Type="bit" Nullable="false" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="BodyText" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="ArticleID" />
@@ -238,6 +260,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MembersPage_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="MembersPage" Type="Self.MembersPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembersPage">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembersPage_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="MembersPage" Type="Self.MembersPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="MembersPage">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -351,6 +397,8 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembersPage" EntityType="Self.MembersPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
@@ -376,6 +424,14 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembersPage_AspNetRoles" Association="Self.FK_MembersPage_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="MembersPage" EntitySet="MembersPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembersPage_Images" Association="Self.FK_MembersPage_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="MembersPage" EntitySet="MembersPage" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_AspNetUsers" Association="Self.FK_Order_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -505,12 +561,18 @@
           <EntitySet Name="AspNetUsers" EntityType="InteractiveTechModel.AspNetUser" />
           <EntitySet Name="Carts" EntityType="InteractiveTechModel.Cart" />
           <EntitySet Name="Categories" EntityType="InteractiveTechModel.Category" />
+          <EntitySet Name="Images" EntityType="InteractiveTechModel.Image" />
+          <EntitySet Name="MembersPages" EntityType="InteractiveTechModel.MembersPage" />
           <EntitySet Name="News" EntityType="InteractiveTechModel.News" />
           <EntitySet Name="Orders" EntityType="InteractiveTechModel.Order" />
           <EntitySet Name="OrderDetails" EntityType="InteractiveTechModel.OrderDetail" />
           <EntitySet Name="ProductCategories" EntityType="InteractiveTechModel.ProductCategory" />
           <EntitySet Name="Products" EntityType="InteractiveTechModel.Product" />
           <EntitySet Name="sysdiagrams" EntityType="InteractiveTechModel.sysdiagram" />
+          <AssociationSet Name="FK_MembersPage_AspNetRoles" Association="InteractiveTechModel.FK_MembersPage_AspNetRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="MembersPage" EntitySet="MembersPages" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="InteractiveTechModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -534,6 +596,10 @@
           <AssociationSet Name="FK_Products_Category" Association="InteractiveTechModel.FK_Products_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembersPage_Images" Association="InteractiveTechModel.FK_MembersPage_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="MembersPage" EntitySet="MembersPages" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="InteractiveTechModel.FK_OrderDetail_Order">
             <End Role="Order" EntitySet="Orders" />
@@ -611,6 +677,7 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MembersPages" Relationship="InteractiveTechModel.FK_MembersPage_AspNetRoles" FromRole="AspNetRole" ToRole="MembersPage" />
           <NavigationProperty Name="AspNetUsers" Relationship="InteractiveTechModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
@@ -680,6 +747,31 @@
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProductCategories" Relationship="InteractiveTechModel.FK_ProductCategories_Category" FromRole="Category" ToRole="ProductCategory" />
           <NavigationProperty Name="Products" Relationship="InteractiveTechModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageSrc" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MembersPages" Relationship="InteractiveTechModel.FK_MembersPage_Images" FromRole="Image" ToRole="MembersPage" />
+        </EntityType>
+        <EntityType Name="MembersPage">
+          <Key>
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="PageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PageTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayDate" Type="Boolean" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRole" Relationship="InteractiveTechModel.FK_MembersPage_AspNetRoles" FromRole="MembersPage" ToRole="AspNetRole" />
+          <NavigationProperty Name="Image" Relationship="InteractiveTechModel.FK_MembersPage_Images" FromRole="MembersPage" ToRole="Image" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -762,6 +854,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_MembersPage_AspNetRoles">
+          <End Type="InteractiveTechModel.AspNetRole" Role="AspNetRole" Multiplicity="1" />
+          <End Type="InteractiveTechModel.MembersPage" Role="MembersPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembersPage">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="InteractiveTechModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -835,6 +939,18 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembersPage_Images">
+          <End Type="InteractiveTechModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="InteractiveTechModel.MembersPage" Role="MembersPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="MembersPage">
+              <PropertyRef Name="ImageID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -995,6 +1111,30 @@
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="InteractiveTechModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+                <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembersPages">
+            <EntityTypeMapping TypeName="InteractiveTechModel.MembersPage">
+              <MappingFragment StoreEntitySet="MembersPage">
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="DisplayDate" ColumnName="DisplayDate" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

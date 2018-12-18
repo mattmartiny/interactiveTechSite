@@ -68,11 +68,18 @@ ____________________________________________
 [x] finished implementing shopping cart code and database
 [x] Fixed database
 [x] styled up the cart page
+[x] created a checkout page and styled
+
+[x] Database for Images and Member Pages
+[x] Partial View to bring up Member image
 
 
 
 
 TO DO:
+
+[ ] format metadata
+[ ] Make Roles Laytout
 [ ]Create a cart button w/ functionality
 
 [ ] Slider for home page?

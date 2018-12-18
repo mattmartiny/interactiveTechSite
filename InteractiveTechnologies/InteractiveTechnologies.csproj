@@ -196,7 +196,9 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembersPagesController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -235,6 +237,9 @@
     <Compile Include="Models\Gmail.cs" />
     <Compile Include="Models\GuestCheckoutOrderModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\InteractiveTech.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -251,6 +256,9 @@
       <DependentUpon>InteractiveTech.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembersPage.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Metadata\CategoryMetadata.cs" />
     <Compile Include="Models\Metadata\NewsMetadata.cs" />
     <Compile Include="Models\Metadata\ProductMetadata.cs" />
@@ -308,9 +316,21 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\building.jpg" />
+    <Content Include="Content\Images\DB_Images\noimage.png" />
     <Content Include="Content\Images\iti_logo.jpg" />
     <Content Include="Content\Images\Products\noimage.png" />
+    <Content Include="Content\Images\Products\_15_32in_fiberoptictree_outofpck.jpg" />
     <Content Include="Content\Scripts\Cart.js" />
+    <Content Include="Content\Scripts\AUTHORS.txt" />
+    <Content Include="Content\Scripts\external\jquery\jquery.js" />
+    <Content Include="Content\Scripts\index.html" />
+    <Content Include="Content\Scripts\jquery-ui.css" />
+    <Content Include="Content\Scripts\jquery-ui.js" />
+    <Content Include="Content\Scripts\jquery-ui.min.css" />
+    <Content Include="Content\Scripts\jquery-ui.min.js" />
+    <Content Include="Content\Scripts\jquery-ui.structure.css" />
+    <Content Include="Content\Scripts\jquery-ui.structure.min.css" />
+    <Content Include="Content\Scripts\LICENSE.txt" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -337,7 +357,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Models\Guest.class" />
+    <Content Include="Content\Scripts\package.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -438,11 +458,21 @@
     <Content Include="Views\Guest\GuestCheckout.cshtml" />
     <Content Include="Views\Account\GuestCheckout.cshtml" />
     <Content Include="Views\Guest\Pay.cshtml" />
+    <Content Include="Views\MembersPages\Create.cshtml" />
+    <Content Include="Views\MembersPages\Delete.cshtml" />
+    <Content Include="Views\MembersPages\Details.cshtml" />
+    <Content Include="Views\MembersPages\Edit.cshtml" />
+    <Content Include="Views\MembersPages\Index.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Images\_NewImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\CSS\" />
-    <Folder Include="Views\NewFolder1\" />
     <Folder Include="Views\PasswordEncrypt\" />
   </ItemGroup>
   <ItemGroup>

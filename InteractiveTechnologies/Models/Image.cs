@@ -12,21 +12,21 @@ namespace InteractiveTechnologies.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRole
+    public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetRole()
+        public Image()
         {
             this.MembersPages = new HashSet<MembersPage>();
-            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public int ImageID { get; set; }
+        public string ImageName { get; set; }
+        public string Description { get; set; }
+        public string ImageAlt { get; set; }
+        public string ImageSrc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MembersPage> MembersPages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }
