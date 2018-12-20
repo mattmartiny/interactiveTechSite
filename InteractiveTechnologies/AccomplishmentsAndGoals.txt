@@ -73,15 +73,21 @@ ____________________________________________
 [x] Database for Images and Member Pages
 [x] Partial View to bring up Member image
 
+[x] finished partial view logic for member stuff
+
 
 
 
 TO DO:
+[ ] Admin Dashboard for members pages(side admin dashboard)
+[ ] format metadata for views
+[ ] Make Roles Layout
+[ ] Add product categories to side dashboard
+[ ] Lockdown mems page details(possibly same logic as in partial view controller?!?!)
+[ ] Create page formating for details page of members
 
-[ ] format metadata
-[ ] Make Roles Laytout
-[ ]Create a cart button w/ functionality
 
+[ ] Create a cart button w/ functionality
 [ ] Slider for home page?
 [ ] Possibly do a Partial View 
 [ ] Paypal set up

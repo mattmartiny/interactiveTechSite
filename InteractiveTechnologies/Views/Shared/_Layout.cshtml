@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using InteractiveTechnologies.Models;
+
+@{
+    InteractiveTechEntities db = new InteractiveTechEntities();
+}
+
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -72,15 +80,28 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Products", "Index", "Products")</li>
+
+
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
 
                         <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
 
                     }
+
+
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Members Only", "MembersOnly", "Home")</li>
+
+
+
+
+
+                       Html.RenderAction("GetMenuForUser", "Navigation");
+
+
+
+
                     }
 
                 </ul>

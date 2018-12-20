@@ -166,7 +166,7 @@ namespace InteractiveTechnologies.Controllers
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, FirstName = model.FirstName, LastName = model.LastName, Company = model.Company, City= model.City, State=model.State, ReasonForContact = model.ReasonForContact};
                 var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, "Member");
+               // UserManager.AddToRole(user.Id, "Member");
                 if (result.Succeeded)
                 {
                     //Comment the following line to prevent log in until the user is confirmed:

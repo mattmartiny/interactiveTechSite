@@ -199,6 +199,7 @@
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembersPagesController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUserMap.cs" />
     <Compile Include="Models\Cart.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -284,6 +286,9 @@
     <Compile Include="Models\sp_helpdiagramdefinition2_Result.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition3_Result.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -291,6 +296,9 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams2_Result.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams3_Result.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
@@ -469,6 +477,7 @@
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Images\_NewImage.cshtml" />
+    <Content Include="Views\Navigation\_userMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
