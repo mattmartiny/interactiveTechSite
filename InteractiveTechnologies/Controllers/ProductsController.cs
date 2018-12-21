@@ -123,8 +123,6 @@ namespace InteractiveTechnologies.Controllers
             {
 
 
-                if (ModelState.IsValid)
-                {
 
                     if (ProductImage != null)
                     {
@@ -143,7 +141,7 @@ namespace InteractiveTechnologies.Controllers
                         }
                     }
 
-                }
+          
                         db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

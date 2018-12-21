@@ -74,18 +74,21 @@ ____________________________________________
 [x] Partial View to bring up Member image
 
 [x] finished partial view logic for member stuff
+[x] Admin Dashboard for members pages(side admin dashboard)
+[x] Add product categories to side dashboard
 
 
-
+[x] fixed the partial view so it only shows one page per membership
 
 TO DO:
-[ ] Admin Dashboard for members pages(side admin dashboard)
+[ ] Add Datatables
+[ ] fix the partial view on the create so when an image is added it redirects back to the create page
 [ ] format metadata for views
 [ ] Make Roles Layout
-[ ] Add product categories to side dashboard
+[ ] Image click partial view on edit
 [ ] Lockdown mems page details(possibly same logic as in partial view controller?!?!)
-[ ] Create page formating for details page of members
-
+[ ] Create page style for details page of members
+[ ] image responsiveness and lightbox compatability for members images(all images?)
 
 [ ] Create a cart button w/ functionality
 [ ] Slider for home page?

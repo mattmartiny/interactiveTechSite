@@ -1,13 +1,11 @@
 ﻿@model InteractiveTechnologies.Models.Image
-@{ 
+@{
 
     Layout = null;
 
 }
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Images", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4>Image</h4>
         <hr />

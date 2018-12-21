@@ -54,9 +54,12 @@ namespace InteractiveTechnologies.Controllers
         {
             if (ModelState.IsValid)
             {
+
+           
                 membersPage.DateCreated = DateTime.Now;
 
-
+             
+          
 
                 db.MembersPages.Add(membersPage);
                 db.SaveChanges();
@@ -93,14 +96,42 @@ namespace InteractiveTechnologies.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText")] MembersPage membersPage)
+        public ActionResult Edit([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText")] MembersPage membersPage, Image image)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(membersPage).State = EntityState.Modified;
+
+
+
+
+
+                membersPage.ImageID = image.ImageID;
+                membersPage.DateCreated = DateTime.Now;
+
+
+
+                if (membersPage.ImageID == null)
+                {
+                    var _mem = new MembersPage()
+                    {
+                        AspNetRole = membersPage.AspNetRole,
+                        BodyText = membersPage.BodyText,
+                        RoleId = membersPage.RoleId,
+                        ImageID = image.ImageID,
+                        PageTitle = membersPage.PageTitle,
+                        DisplayDate = membersPage.DisplayDate                                               
+                    };
+
+                    db.Entry(_mem).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.Entry(membersPage).State = EntityState.Modified;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+         
             ViewBag.RoleId = new SelectList(db.AspNetRoles, "Id", "Name", membersPage.RoleId);
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", membersPage.ImageID);
             return View(membersPage);

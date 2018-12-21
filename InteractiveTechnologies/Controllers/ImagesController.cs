@@ -26,48 +26,7 @@ namespace InteractiveTechnologies.Controllers
             return View();
         }
 
-        // POST: Images/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult _NewImage([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase Image)
-        {
-            if (ModelState.IsValid)
-            {
-
-                string imageName = "noimage.png";
-
-                if (Image != null)
-                {
-
-                    imageName = Image.FileName;
-
-                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
-
-                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
-
-                    if (goodExts.Contains(ext.ToLower()))
-                    {
-                        Image.SaveAs(Server.MapPath("~/Content/Images/Products/" + imageName));
-
-                    }
-                    else
-                    {
-
-                        imageName = "noimage.png";
-                    }
-                    image.ImageSrc = imageName;
-                }
-
-                db.Images.Add(image);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(image);
-        }
-
+        
 
 
         // GET: Images/Details/5
@@ -96,17 +55,17 @@ namespace InteractiveTechnologies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase Image)
+        public ActionResult Create([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase PImage)
         {
             if (ModelState.IsValid)
             {
 
                 string imageName = "noimage.png";
 
-                if (Image != null)
+                if (PImage != null)
                 {
 
-                    imageName = Image.FileName;
+                    imageName = PImage.FileName;
 
                     string ext = imageName.Substring(imageName.LastIndexOf('.'));
 
@@ -114,9 +73,10 @@ namespace InteractiveTechnologies.Controllers
 
                     if (goodExts.Contains(ext.ToLower()))
                     {
-                        Image.SaveAs(Server.MapPath("~/Content/Images/Products/" + imageName));
+                        PImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images/" + imageName));
 
                     }
+                
                     else
                     {
 
@@ -127,7 +87,7 @@ namespace InteractiveTechnologies.Controllers
 
                 db.Images.Add(image);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "MembersPages");
             }
 
             return View(image);
