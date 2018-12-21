@@ -9,6 +9,8 @@
 
 <h2>Create</h2>
 
+<h3 class="h3">NOTE: Clicking new image and adding a new image will refresh the page.  Add your image first!</h3>
+
 @using (Html.BeginForm("Create", "MembersPages", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

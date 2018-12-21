@@ -8,60 +8,38 @@
 <h2>Details</h2>
 
 <div>
-    <h4>MembersPage</h4>
+        <h1 class="h1">@Model.PageTitle</h1>
+       
+    
+    @if (Model.DisplayDate == true)
+    {
+        <h4 class="h4">@Model.DateCreated.ToShortDateString()</h4>
+    }
+    else { <br />}
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
+    @if (Model.ImageID != null && Model.Image.ImageSrc != null)
+    {
 
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
+               <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="thumbnail product-img" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PageTitle)
-        </dt>
+    }
+    else
+    {
 
-        <dd>
-            @Html.DisplayFor(model => model.PageTitle)
-        </dd>
+        <br />
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayDate)
-        </dt>
+      <p>@Model.BodyText</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.DisplayDate)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BodyText)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BodyText)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetRole.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AspNetRole.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image.ImageName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image.ImageName)
-        </dd>
-
-    </dl>
+   
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }) |
+    @if (User.IsInRole("Admin"))
+    {
     @Html.ActionLink("Back to List", "Index")
+    }
 </p>
