@@ -1,45 +1,123 @@
 ﻿@model InteractiveTechnologies.Models.MembersPage
-
+@using InteractiveTechnologies.Models;
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h2>Details</h2>
+    InteractiveTechEntities db = new InteractiveTechEntities();
 
-<div>
-        <h1 class="h1">@Model.PageTitle</h1>
-       
+
+    bool CanAccess()
+    {
+
+        var userRolesOnPages = (from x in db.MembersPages
+                                join y in db.AspNetRoles on x.RoleId equals y.Id
+                                select x);
+
+
+        var Roles = db.AspNetUsers.SelectMany(c => c.AspNetRoles); //select all roles
+
+        var RoleName = (from x in db.AspNetRoles
+                        select x.Name).FirstOrDefault();
+
+        var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+
+        var currentUsersRoles = Roles.Where(c => c.AspNetUsers.Any(x => x.Id == userId)); //current Users Roles
+
+
+        var usermem = (from x in userRolesOnPages
+                       from y in currentUsersRoles
+                       where x.AspNetRole.Id == y.Id
+                       select x);
+
+
+
+        var userrolesforpage = currentUsersRoles.Any(x => x.Id.Contains(Model.RoleId));
+
+
+
+
+        var usersRolePermiss = (from x in usermem
+                                select x);
+
+        //If the user's role matches the page role
+
+
+
+
+
+      
+            if (userrolesforpage == true)
+            {
+                return true;
+            }
+            else { return false; }
+
+
+
     
-    @if (Model.DisplayDate == true)
-    {
-        <h4 class="h4">@Model.DateCreated.ToShortDateString()</h4>
-    }
-    else { <br />}
-
-    <hr />
-    @if (Model.ImageID != null && Model.Image.ImageSrc != null)
-    {
-
-               <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="thumbnail product-img" />
 
     }
-    else
-    {
 
-        <br />
+
+
     }
 
-      <p>@Model.BodyText</p>
 
 
 
 
-   
-</div>
-<p>
-    @if (User.IsInRole("Admin"))
+
+
+
+    @if (CanAccess() == true)
+
     {
-    @Html.ActionLink("Back to List", "Index")
-    }
-</p>
+    <h2>Details</h2>
+
+    <div>
+        <h1 class="h1">@Model.PageTitle</h1>
+
+
+        @if (Model.DisplayDate == true)
+        {
+            <h4 class="h4">@Model.DateCreated.ToShortDateString()</h4>
+        }
+        else
+        { <br />}
+
+        <hr />
+        @if (Model.ImageID != null && Model.Image.ImageSrc != null)
+        {
+
+            <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="thumbnail product-img" />
+
+        }
+        else
+        {
+
+            <br />
+        }
+
+        <p>@Model.BodyText</p>
+
+
+
+
+
+    </div>
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Back to List", "Index")
+        }
+    </p>
+}
+else
+{
+
+    <p>You don't have permission to access this page.</p>
+
+
+}

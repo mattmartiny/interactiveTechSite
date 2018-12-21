@@ -7,14 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InteractiveTechnologies.Models;
+using Microsoft.AspNet.Identity;
 
 namespace InteractiveTechnologies.Controllers
 {
+       
+
+        
+
+
+      
+
     public class MembersPagesController : Controller
     {
         private InteractiveTechEntities db = new InteractiveTechEntities();
 
         // GET: MembersPages
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var membersPages = db.MembersPages.Include(m => m.AspNetRole).Include(m => m.Image);
@@ -22,7 +31,13 @@ namespace InteractiveTechnologies.Controllers
         }
 
         // GET: MembersPages/Details/5
-        public ActionResult Details(int? id)
+
+
+    
+
+        
+        
+              public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -35,6 +50,8 @@ namespace InteractiveTechnologies.Controllers
             }
             return View(membersPage);
         }
+
+
         [Authorize(Roles = "Admin")]
         // GET: MembersPages/Create
         public ActionResult Create()

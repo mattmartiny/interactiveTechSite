@@ -15,26 +15,8 @@
 
             var user = (from v in db.AspNetUsers
                         select v.Id).ToString();
-            //user IDs
-
-            //var userRole = db.AspNetRoles.Where(s => s.AspNetUsers.Any(c => c.Id == user));
-
-            //var userRole = (from s in db.AspNetRoles
-            //                from c in s.AspNetUsers
-            //                where c.Id == user
-            //                select s.AspNetUsers);
-
-            //gets roles for a user
-
-
-
-
-
-            //GOAL: select the role(s) that the current user has and display them as a nav bar item
-
-
-
-            //get the user role
+           
+    
 
             var roleName = (from x in db.AspNetRoles
                             select x.Name).FirstOrDefault(); //any roleName
@@ -65,18 +47,13 @@
 
             var Roles = db.AspNetUsers.SelectMany(c => c.AspNetRoles); //select all roles
 
-            var Role2 = db.AspNetRoles.SelectMany(c => c.AspNetUsers);
-
 
             var currentUsersRoles = Roles.Where(c => c.AspNetUsers.Any(x => x.Id == userId)); //current Users Roles
 
 
 
-            var cur = (from x in currentUsersRoles
-                       select x.Name).FirstOrDefault(); //current users role Name
 
-            var t = (from x in Role2
-                     select x.AspNetRoles).FirstOrDefault();
+   
 
 
 
