@@ -79,7 +79,8 @@
 
 
 [x] added lightbox functionality for members pages images
-
+[x] edited responsiveness slightly
+[x] added datatables and added some more information for users on the admin end
 
 ------------
 TO DO:

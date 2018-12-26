@@ -94,8 +94,8 @@
 
         @if (Model.ImageID != null && Model.Image.ImageSrc != null)
         {
-            <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" style="opacity:1;">
-                <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="" />
+            <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)">
+                <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" style="max-width:100%; height: auto;" />
             </a>
 
         }

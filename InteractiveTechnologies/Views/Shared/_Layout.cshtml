@@ -12,6 +12,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Interactive Technologies</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+    <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -149,7 +152,7 @@
 
             @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
             @Html.ActionLink("Users Admin", "Index", "UsersAdmin")
-            @Html.ActionLink("Categories", "Index", "Categories")
+            @Html.ActionLink("Product Categories", "Index", "Categories")
             @Html.ActionLink("Members Dashboard", "Index", "MembersPages")
         }
 
@@ -172,17 +175,22 @@
 
 
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').DataTable({
+                "order": [[2, "desc"]]
+            });
+        });
+        </script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-    @*<link href="~/Content/Scripts/jquery-ui.structure.min.css" rel="stylesheet" />*@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
-    <script src="~/Content/Scripts/jquery.magnific-popup.js"></script>
-    @*<script src="~/Content/Scripts/jquery-ui.min.js"></script>*@
 
+
+>
+    <script src="~/Content/Scripts/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
 
     @RenderSection("scripts", required: false)
