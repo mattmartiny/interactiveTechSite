@@ -272,8 +272,16 @@ textarea.form-control{
     font: 8px verdana;
 }
 
+.MemberPage img {
+    max-width: 100%;
+}
 
 
+.MemberPage a  img{
+
+    margin:0 auto;
+    display:block;
+}
 
 /* padding-bottom and top for image */
 .mfp-no-margins img.mfp-img {
@@ -287,4 +295,9 @@ textarea.form-control{
 /* padding for main container */
 .mfp-no-margins .mfp-container {
     padding: 0;
+}
+a.image-popup-no-margins{
+display:contents;
+   
+
 }

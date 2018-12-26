@@ -79,7 +79,7 @@
 {
     <h2>@Model.AspNetRole.Name</h2>
 
-    <div>
+    <div class="MemberPage">
         <h1 class="h1">@Model.PageTitle</h1>
 
 
@@ -94,10 +94,11 @@
 
         @if (Model.ImageID != null && Model.Image.ImageSrc != null)
         {
+            @*<div class="image-box">*@
             <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)">
-                <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" style="max-width:100%; height: auto;" />
+                <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" />
             </a>
-
+            @*</div>*@
         }
         else
         {
