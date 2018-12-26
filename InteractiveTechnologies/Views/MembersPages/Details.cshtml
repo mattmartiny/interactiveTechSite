@@ -8,6 +8,9 @@
     InteractiveTechEntities db = new InteractiveTechEntities();
 
 
+
+    <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
+
     bool CanAccess()
     {
 
@@ -47,22 +50,22 @@
 
 
 
-      
-            if (userrolesforpage == true)
-            {
-                return true;
-            }
-            else { return false; }
+
+        if (userrolesforpage == true)
+        {
+            return true;
+        }
+        else { return false; }
 
 
 
-    
+
 
     }
 
 
 
-    }
+}
 
 
 
@@ -71,10 +74,10 @@
 
 
 
-    @if (CanAccess() == true)
+@if (CanAccess() == true || User.IsInRole("Admin"))
 
-    {
-    <h2>Details</h2>
+{
+    <h2>@Model.AspNetRole.Name</h2>
 
     <div>
         <h1 class="h1">@Model.PageTitle</h1>
@@ -88,10 +91,12 @@
         { <br />}
 
         <hr />
+
         @if (Model.ImageID != null && Model.Image.ImageSrc != null)
         {
-
-            <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="thumbnail product-img" />
+            <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" style="opacity:1;">
+                <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="" />
+            </a>
 
         }
         else
@@ -121,3 +126,52 @@ else
 
 
 }
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Content/Scripts/jquery.magnific-popup.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.image-popup-vertical-fit').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            mainClass: 'mfp-img-mobile',
+            image: {
+                verticalFit: true
+            }
+
+        });
+
+        $('.image-popup-fit-width').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            image: {
+                verticalFit: false
+            }
+        });
+
+        $('.image-popup-no-margins').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+            image: {
+                verticalFit: true
+            },
+            zoom: {
+                enabled: true,
+                duration: 300 // don't foget to change the duration also in CSS
+            }
+        });
+
+    });
+</script>
+
+
+
+

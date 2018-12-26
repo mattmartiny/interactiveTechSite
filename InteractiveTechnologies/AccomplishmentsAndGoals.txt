@@ -77,9 +77,15 @@
 [x] Lockdown mems page details
 [x] Added Role Id to index page;
 
+
+[x] added lightbox functionality for members pages images
+
+
 ------------
 TO DO:
 ------------
+[ ] make sure members images look good on mobile, regardless of the size of the image
+[ ] Make Members image pretty, maybe have a fancy overlay that says click here?
 [ ] Add Datatables
 
 [ ] Make Roles Layout
@@ -88,7 +94,6 @@ TO DO:
 
 [ ] Create a cart button w/ functionality
 [ ] Slider for home page?
-[ ] Possibly do a Partial View 
 [ ] Paypal set up
 [ ] Credit Card setup
 [ ] create product categories
