@@ -86,9 +86,10 @@ namespace InteractiveTechnologies.Models
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set;}
 
-        [Display(Name = "Reason for Contact")]
+        [Display(Name = "Interest")]
         [DataType(DataType.MultilineText)]
         public string ReasonForContact { get; set; }
+    
 
 
             [Required]
@@ -106,6 +107,8 @@ namespace InteractiveTechnologies.Models
             [EmailAddress]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
+        [Display(Name = "E-mail Confirmed?")]
+        public bool EmailConfirmed { get; set; }
 
         }
 

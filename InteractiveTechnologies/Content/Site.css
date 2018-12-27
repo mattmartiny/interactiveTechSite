@@ -272,15 +272,13 @@ textarea.form-control{
     font: 8px verdana;
 }
 
-.MemberPage img {
+
+
+
+.MemberPage a img {
     max-width: 100%;
-}
-
-
-.MemberPage a  img{
-
-    margin:0 auto;
-    display:block;
+    margin: 0 auto;
+    display: block;
 }
 
 /* padding-bottom and top for image */

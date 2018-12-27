@@ -81,13 +81,17 @@
 [x] added lightbox functionality for members pages images
 [x] edited responsiveness slightly
 [x] added datatables and added some more information for users on the admin end
+[x] Added Datatables
+[x] Styled quite a bit of stuff
 
+[x] Made it possible for admin to edit EmailConfirmed via UsersAdmin
+[x] Made it possible for admin to create a user in the admin area
 ------------
 TO DO:
 ------------
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
-[ ] Add Datatables
+
 
 [ ] Make Roles Layout
 

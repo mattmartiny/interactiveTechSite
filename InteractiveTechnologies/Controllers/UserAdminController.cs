@@ -90,7 +90,7 @@ namespace InteractiveTechnologies.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email, FirstName = userViewModel.FirstName, LastName = userViewModel.LastName, PhoneNumber = userViewModel.PhoneNumber, City = userViewModel.City, Company= userViewModel.Company, EmailConfirmed = userViewModel.EmailConfirmed, State = userViewModel.State };
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
                 //Add User to the selected Roles 
@@ -140,6 +140,7 @@ namespace InteractiveTechnologies.Controllers
             return View(new EditUserViewModel()
             {
                 Id = user.Id,
+                EmailConfirmed = user.EmailConfirmed,
                 Email = user.Email,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
@@ -154,7 +155,7 @@ namespace InteractiveTechnologies.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id, EmailConfirmed")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -164,6 +165,7 @@ namespace InteractiveTechnologies.Controllers
                     return HttpNotFound();
                 }
 
+                user.EmailConfirmed = editUser.EmailConfirmed;
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
 

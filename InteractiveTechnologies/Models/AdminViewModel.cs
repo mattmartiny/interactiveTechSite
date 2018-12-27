@@ -8,7 +8,7 @@ namespace InteractiveTechnologies.Models
     {
         public string Id { get; set; }
         [Required(AllowEmptyStrings = false)]
-        [Display(Name = "RoleName")]
+        [Display(Name = "Role Name")]
         public string Name { get; set; }
     }
 
@@ -20,6 +20,9 @@ namespace InteractiveTechnologies.Models
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
+        [Display(Name = "Email Confirmed")]
+        public bool EmailConfirmed { get; set;  }
+   
 
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
