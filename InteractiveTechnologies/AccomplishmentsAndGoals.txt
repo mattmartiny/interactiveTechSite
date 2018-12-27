@@ -53,9 +53,7 @@
 [x] Added a hover effect to the "Purchase" button on products page
 [x] fixed issue where mobile footer overlaps everything on the products page
 [x] fixed some mobile styling issues with the layout
-[ ] looked into premaid code for shopping cart stuff
 [x]Started implementing shopping cart code
-
 
 [x] finished implementing shopping cart code and database
 [x] Fixed database
@@ -77,7 +75,6 @@
 [x] Lockdown mems page details
 [x] Added Role Id to index page;
 
-
 [x] added lightbox functionality for members pages images
 [x] edited responsiveness slightly
 [x] added datatables and added some more information for users on the admin end
@@ -86,17 +83,16 @@
 
 [x] Made it possible for admin to edit EmailConfirmed via UsersAdmin
 [x] Made it possible for admin to create a user in the admin area
+[x] Styled a cart button in the product page and made it mobile responsive
+
+
+
 ------------
 TO DO:
 ------------
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
-
-
 [ ] Make Roles Layout
-
-[ ] image responsiveness and lightbox compatability for members images(all images?)
-
 [ ] Create a cart button w/ functionality
 [ ] Slider for home page?
 [ ] Paypal set up
@@ -108,8 +104,8 @@ TO DO:
 [ ] Better way to send Email to user confirming that they have been verified
 [ ] Create Simple update images
 [ ] Get content
+
 [ ] Build a 'media' database
 [ ] Style Mobile
-[ ] add a scroll bar area to other pages
 [ ] Forget Password stuff
 

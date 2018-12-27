@@ -299,3 +299,23 @@ display:contents;
    
 
 }
+.AddtoCart {
+    height: 100px;
+    width: 200px;
+    padding: .75em 1.5em;
+    border: solid #000 1px;
+    background-color: #D75C23;
+    color:#000;
+    margin:1em 0;
+    
+    border-radius:6px;
+    box-shadow:rgba(0,0,0,.4) 5px 5px 10px;
+
+}
+
+    .AddtoCart:hover {
+        background-color: #EAA049;
+        color:#fff;
+        border:1.75px solid #000;
+        text-decoration:none;
+    }

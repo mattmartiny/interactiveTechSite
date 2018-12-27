@@ -30,7 +30,7 @@
 
     <div class="col-md-12">
         <img src="@Url.Content("~/Content/Images/Products/" + Model.ProductImage)"
-             alt="@Model.ProductName" style="margin:0 auto;" />
+             alt="@Model.ProductName" style="margin:0 auto; max-width:100%;" />
     </div>
 
 
@@ -44,14 +44,16 @@
         <p class="h3">@Model.Category.CategoryName</p>
 
     </div>
-   @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, "")
-    </p>
-
+    <br />
+    <div class="col-md-offset-8">
+   @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID}, new { @class = "AddtoCart" })
+        <br />
+        </div>
 </div>
 
 
 
-    <p style="padding:.5em 0;">
+    <p style="padding:.5em 0; margin:.75em;">
         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
         {
             @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) @:|
