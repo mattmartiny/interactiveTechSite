@@ -29,7 +29,7 @@
                     {
                         @Html.AntiForgeryToken()
                         <li id="cart-button">
-
+                     
                             <a href="~/ShoppingCart">
                                 <i class="fa fa-shopping-cart"></i> Cart
                             </a>
@@ -39,17 +39,17 @@
                         <!-- Unauthenticated -->
                         if (!Request.IsAuthenticated)
                         {
-                            <li><a href="/Account/Register"><i class="fa fa-user"></i> Register</a></li>
+                            <li><a href="/Account/Register"><i class="fa fa-user"></i>Register</a></li>
                             <li><a href="/Account/Login"><i class="fa fa-lock"></i> Login</a></li>
                         }
 
                         <!-- Authenticated -->
                         if (Request.IsAuthenticated)
                         {
-                            <li><a href="/Manage/Index"><i class="fa fa-user"></i> @User.Identity.Name</a></li>
+                            <li style="padding:0 2px"><a href="/Manage/Index"><i class="fa fa-user"></i> @User.Identity.Name</a></li>
 
 
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Logout</a></li>
+                            <li style="padding:0 2px"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i>Logout</a></li>
                         }
 
 
@@ -69,47 +69,31 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    </div>
+
                 </div>
 
+
+
+
+
+                <div class=" navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                        <li>@Html.ActionLink("What's New", "Index", "WhatsNews")</li>
+
+                       
+                        @if (Request.IsAuthenticated)
+                        {
+                            Html.RenderAction("GetMenuForUser", "Navigation");
+                        }
+
+                    </ul>
+                </div>
             </div>
-
-
-
-
-
-            <div class=" navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
-
-
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-
-
-
-                    }
-
-
-                    @if (Request.IsAuthenticated)
-                    {
-
-
-
-
-
-                        Html.RenderAction("GetMenuForUser", "Navigation");
-
-
-
-
-                    }
-
-                </ul>
-            </div>
-        </div>
     </div>
     <div class="container body-content">
         @RenderBody()

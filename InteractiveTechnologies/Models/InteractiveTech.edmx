@@ -196,6 +196,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="WhatsNew">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeaderText" Type="nvarchar" MaxLength="300" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DisplayDate" Type="bit" Nullable="false" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="BodyText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Display" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="FK_CartItems_Products">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
@@ -360,6 +372,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WhatsNew_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="WhatsNew" Type="Self.WhatsNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="WhatsNew">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -408,6 +432,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <EntitySet Name="ProductCategories" EntityType="Self.ProductCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WhatsNew" EntityType="Self.WhatsNew" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_MigrationHistory" EntityType="Self._MigrationHistory" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [_MigrationHistory].[MigrationId] AS [MigrationId], 
@@ -467,6 +492,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WhatsNew_Images" Association="Self.FK_WhatsNew_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="WhatsNew" EntitySet="WhatsNew" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -609,6 +638,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <EntitySet Name="ProductCategories" EntityType="InteractiveTechModel.ProductCategory" />
           <EntitySet Name="Products" EntityType="InteractiveTechModel.Product" />
           <EntitySet Name="sysdiagrams" EntityType="InteractiveTechModel.sysdiagram" />
+          <EntitySet Name="WhatsNews" EntityType="InteractiveTechModel.WhatsNew" />
           <EntitySet Name="C_MigrationHistory" EntityType="InteractiveTechModel.C_MigrationHistory" />
           <AssociationSet Name="FK_MembersPage_AspNetRoles" Association="InteractiveTechModel.FK_MembersPage_AspNetRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
@@ -641,6 +671,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <AssociationSet Name="FK_MembersPage_Images" Association="InteractiveTechModel.FK_MembersPage_Images">
             <End Role="Image" EntitySet="Images" />
             <End Role="MembersPage" EntitySet="MembersPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WhatsNew_Images" Association="InteractiveTechModel.FK_WhatsNew_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="WhatsNew" EntitySet="WhatsNews" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="InteractiveTechModel.FK_OrderDetail_Order">
             <End Role="Order" EntitySet="Orders" />
@@ -800,6 +834,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ImageSrc" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MembersPages" Relationship="InteractiveTechModel.FK_MembersPage_Images" FromRole="Image" ToRole="MembersPage" />
+          <NavigationProperty Name="WhatsNews" Relationship="InteractiveTechModel.FK_WhatsNew_Images" FromRole="Image" ToRole="WhatsNew" />
         </EntityType>
         <EntityType Name="MembersPage">
           <Key>
@@ -895,6 +930,19 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WhatsNew">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeaderText" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DisplayDate" Type="Boolean" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="BodyText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Display" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="InteractiveTechModel.FK_WhatsNew_Images" FromRole="WhatsNew" ToRole="Image" />
         </EntityType>
         <EntityType Name="C_MigrationHistory">
           <Key>
@@ -1004,6 +1052,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
               <PropertyRef Name="ImageID" />
             </Principal>
             <Dependent Role="MembersPage">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WhatsNew_Images">
+          <End Type="InteractiveTechModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="InteractiveTechModel.WhatsNew" Role="WhatsNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="WhatsNew">
               <PropertyRef Name="ImageID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1259,6 +1319,19 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WhatsNews">
+            <EntityTypeMapping TypeName="InteractiveTechModel.WhatsNew">
+              <MappingFragment StoreEntitySet="WhatsNew">
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="DisplayDate" ColumnName="DisplayDate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="C_MigrationHistory">
             <EntityTypeMapping TypeName="InteractiveTechModel.C_MigrationHistory">
               <MappingFragment StoreEntitySet="_MigrationHistory">
@@ -1277,7 +1350,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

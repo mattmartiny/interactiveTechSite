@@ -1,7 +1,6 @@
 ﻿@model InteractiveTechnologies.Models.MembersPage
 @using InteractiveTechnologies.Models;
 @using Microsoft.AspNet.Identity;
-@using InteractiveTechnologies.HTMLHelpers
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,59 +11,9 @@
 
     <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
 
-    bool CanAccess()
-    {
+    
 
-        var userRolesOnPages = (from x in db.MembersPages
-                                join y in db.AspNetRoles on x.RoleId equals y.Id
-                                select x);
-
-
-        var Roles = db.AspNetUsers.SelectMany(c => c.AspNetRoles); //select all roles
-
-        var RoleName = (from x in db.AspNetRoles
-                        select x.Name).FirstOrDefault();
-
-        var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
-
-        var currentUsersRoles = Roles.Where(c => c.AspNetUsers.Any(x => x.Id == userId)); //current Users Roles
-
-
-        var usermem = (from x in userRolesOnPages
-                       from y in currentUsersRoles
-                       where x.AspNetRole.Id == y.Id
-                       select x);
-
-
-
-        var userrolesforpage = currentUsersRoles.Any(x => x.Id.Contains(Model.RoleId));
-
-
-
-
-        var usersRolePermiss = (from x in usermem
-                                select x);
-
-        //If the user's role matches the page role
-
-
-
-
-
-
-        if (userrolesforpage == true)
-        {
-            return true;
-        }
-        else { return false; }
-
-
-
-
-
-    }
-
-
+    
 
 }
 
@@ -75,7 +24,7 @@
 
 
 
-@if (CanAccess() == true || User.IsInRole("Admin"))
+@if (Request.IsAuthenticated)
 
 {
     <h2>@Model.AspNetRole.Name</h2>
@@ -107,7 +56,7 @@
             <br />
         }
 
-        <p>@Html.DisplayFormattedData(Model.BodyText)</p>
+        <p>@Model.BodyText</p>
 
 
 

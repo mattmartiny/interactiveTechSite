@@ -205,9 +205,11 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\WhatsNewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HTMLHelpers\HtmlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\AspNetRole.cs">
@@ -306,6 +308,9 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WhatsNew.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -483,6 +488,13 @@
     <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Images\_NewImage.cshtml" />
     <Content Include="Views\Navigation\_userMenu.cshtml" />
+    <Content Include="Views\MembersPages\New.cshtml" />
+    <Content Include="Views\WhatsNews\Create.cshtml" />
+    <Content Include="Views\WhatsNews\Delete.cshtml" />
+    <Content Include="Views\WhatsNews\Details.cshtml" />
+    <Content Include="Views\WhatsNews\Edit.cshtml" />
+    <Content Include="Views\WhatsNews\Index.cshtml" />
+    <Content Include="Views\Images\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -53,6 +53,8 @@ namespace InteractiveTechnologies.Controllers
         // POST: Images/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase PImage)
@@ -87,11 +89,67 @@ namespace InteractiveTechnologies.Controllers
 
                 db.Images.Add(image);
                 db.SaveChanges();
+
+
                 return RedirectToAction("Create", "MembersPages");
             }
 
             return View(image);
         }
+
+        public ActionResult Create2()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create2([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase PImage)
+        {
+            if (ModelState.IsValid)
+            {
+
+                string imageName = "noimage.png";
+
+                if (PImage != null)
+                {
+
+                    imageName = PImage.FileName;
+
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+
+                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        PImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images/" + imageName));
+
+                    }
+
+                    else
+                    {
+
+                        imageName = "noimage.png";
+                    }
+                    image.ImageSrc = imageName;
+                }
+
+                db.Images.Add(image);
+                db.SaveChanges();
+
+
+                return RedirectToAction("Create", "WhatsNews");
+            }
+
+            return View(image);
+        }
+
+
+
+
+
+
+
+
 
         // GET: Images/Edit/5
         public ActionResult Edit(int? id)

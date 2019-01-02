@@ -1,0 +1,121 @@
+﻿@model IEnumerable<InteractiveTechnologies.Models.WhatsNew>
+@using InteractiveTechnologies.Models;
+
+@{
+
+    InteractiveTechEntities db = new InteractiveTechEntities();
+
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+
+
+<div class="row">
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin")) {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+
+
+    foreach (var item in Model)
+    {
+        if (isAdmin != true)
+        {
+
+            if (item.Display == true)
+            {
+                    <div class="col-sm-6">
+                        <div class="product-item">
+                            <h3 class="h3">@Html.DisplayFor(modelItem => item.HeaderText)</h3>
+
+                            @if (item.DisplayDate == true)
+                            {
+
+                                @item.Date.ToShortDateString();
+                            }
+                            else
+                            { <br />}
+
+
+
+
+                            <div class="col-md-12" style="margin:0 auto;">
+                                <img src="@Url.Content("~/Content/Images/Products/" + item.Image.ImageSrc)" alt="@item.Image.ImageAlt" class="thumbnail" />
+                                </div>
+
+
+
+                                <p>@Html.DisplayFor(modelItem => item.BodyText)</p>
+
+
+
+
+
+
+
+                                @Html.ActionLink("Details", "Details", new { id = item.ID })
+
+                            </div>
+                        </div>
+                            }
+
+                            }
+
+
+
+                            else if (isAdmin == true)
+                            {
+                            <div class="col-sm-6">
+                                <div class="product-item">
+                                    <h3 class="h3 title"><a href="~/WhatsNews/Details/@item.ID">@Html.DisplayFor(modelItem => item.HeaderText)</a></h3>
+
+                                    @if (item.DisplayDate == true)
+                                    {
+
+                                        @item.Date.ToShortDateString();
+                                    }
+                                    else
+                                    { <br />}
+
+
+
+
+
+                                    <div class="col-md-12" style="margin:0 auto;">
+                                        <img src="@Url.Content("~/Content/Images/Products/" + item.Image.ImageSrc)" alt="@item.Image.ImageAlt" class="ObjectFit" style="border:1px solid #F0f0f0; border-radius:5.5px;"  />
+                                    </div>
+                                    <div style="height:55px; float:left; width:90%;">
+                                        @if (item.BodyText.Count() > 100)
+                                        {
+                                            <p>@item.BodyText.Substring(0, 100) @Html.ActionLink("... Read More", "Details", new { id = item.ID })</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@item.BodyText</p>
+
+                                        }
+                                    </div>
+                                    <hr />
+                                    <p>Display?: @Html.DisplayFor(modelItem => item.Display) </p>
+                                    <p>Display Date?: @Html.DisplayFor(modelItem => item.DisplayDate)</p>
+
+
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                </div>
+                            </div>
+                            }
+                            }
+                            }
+
+                            else
+                            {
+                            <p><a href="/Account/Register">Register</a> to see the cool things Interactive Technologies has been working on!</p>
+
+                            }
+                        </div>

@@ -319,3 +319,15 @@ display:contents;
         border:1.75px solid #000;
         text-decoration:none;
     }
+
+.smallerimage {
+    max-height:300px;
+    width: auto;
+    object-fit: cover;
+}
+
+.ObjectFit {
+    height: 250px;
+    width: 250px;
+    object-fit: none;
+}

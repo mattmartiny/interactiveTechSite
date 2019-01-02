@@ -17,7 +17,7 @@ namespace InteractiveTechnologies.Controllers
 
 
       
-
+ 
     public class MembersPagesController : Controller
     {
         private InteractiveTechEntities db = new InteractiveTechEntities();
@@ -32,12 +32,12 @@ namespace InteractiveTechnologies.Controllers
 
         // GET: MembersPages/Details/5
 
+       
 
-    
 
-        
-        
-              public ActionResult Details(int? id)
+
+
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -117,11 +117,7 @@ namespace InteractiveTechnologies.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
-
-
-
+                                                          
                 membersPage.ImageID = image.ImageID;
                 membersPage.DateCreated = DateTime.Now;
 
@@ -181,6 +177,9 @@ namespace InteractiveTechnologies.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

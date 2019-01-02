@@ -10,7 +10,7 @@
 @{
 
 
-            //var pageRole = db.MembersPages.Any(s => s.AspNetRole.Id == page).ToString();
+      
 
 
             var user = (from v in db.AspNetUsers
@@ -73,19 +73,10 @@
 
 
 
-
-            //foreach (var x in usermem)
-            //{
-
-
-            foreach (var y in res) //individual user role
+                     foreach (var y in res) //individual user role
             {
                 if (User.IsInRole(y.AspNetRole.Name))
-                {
-
-
-
-
+                {                    
                     <li>
                         <a class="ajax-link" href="~/MembersPages/Details/@y.PageID">@y.AspNetRole.Name</a>
                     </li>
@@ -96,7 +87,7 @@
 
 
 
-        @*}*@
+
     
 
 

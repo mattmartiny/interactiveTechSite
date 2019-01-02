@@ -86,10 +86,18 @@
 [x] Styled a cart button in the product page and made it mobile responsive
 
 
-
+[x] Added 'What's new' functionality
+[x] Added the option to add images from the "What's new" page via a partial view
+[x] Styled the What's new index page
+[x] Edit Styling Details page of What's new
 ------------
 TO DO:
 ------------
+
+[ ] A shortened version of the What's New items where only the first few lines are viewable
+
+
+
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
 [ ] Make Roles Layout
@@ -104,7 +112,6 @@ TO DO:
 [ ] Better way to send Email to user confirming that they have been verified
 [ ] Create Simple update images
 [ ] Get content
-
 [ ] Build a 'media' database
 [ ] Style Mobile
 [ ] Forget Password stuff

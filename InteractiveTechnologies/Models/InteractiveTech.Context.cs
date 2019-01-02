@@ -24,13 +24,6 @@ namespace InteractiveTechnologies.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetUser>().Property(c => c.Id).HasColumnName("Id");
-            modelBuilder.Entity<AspNetUser>().HasRequired(z => z.Id).WithMany().HasForeignKey(x => x.Id);
-
-
-                modelBuilder.Entity<AspNetRole>().Property(c => c.Id).HasColumnName("Id");
-            modelBuilder.Entity<AspNetRole>().HasRequired(z => z.Id).WithMany().HasForeignKey(x => x.Id);
-    
             throw new UnintentionalCodeFirstException();
         }
     
@@ -49,6 +42,7 @@ namespace InteractiveTechnologies.Models
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<WhatsNew> WhatsNews { get; set; }
         public virtual DbSet<C_MigrationHistory> C_MigrationHistory { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
