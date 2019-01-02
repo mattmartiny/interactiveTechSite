@@ -90,14 +90,12 @@
 [x] Added the option to add images from the "What's new" page via a partial view
 [x] Styled the What's new index page
 [x] Edit Styling Details page of What's new
+[x] Added a "Read More" link (any page w/ body text over 100 characters) and styled the look of the index page
+[x] cropped image for the index page
+[x] edited details page
 ------------
 TO DO:
 ------------
-
-[ ] A shortened version of the What's New items where only the first few lines are viewable
-
-
-
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
 [ ] Make Roles Layout

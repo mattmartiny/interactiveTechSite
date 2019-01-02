@@ -1,7 +1,8 @@
 ﻿@model InteractiveTechnologies.Models.WhatsNew
 @using InteractiveTechnologies.HTMLHelpers
 
-
+@if (Request.IsAuthenticated)
+{
 <div>
     <h4>Whats New</h4>
     <hr />
@@ -21,11 +22,11 @@
 
         @if (Model.ImageID != null && Model.Image.ImageSrc != null)
         {
-          
+
             <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)">
                 <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" class="smallerimage" />
             </a>
-    
+
         }
         else
         {
@@ -37,7 +38,7 @@
 
 
 
-
+        <br />
 
     </div>
     <p>
@@ -45,11 +46,17 @@
         {
             @Html.ActionLink("Back to List", "Index") @:|
             @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) 
-}
+        }
     </p>
 
 </div>
+}
 
+else
+{
+<p>You don't have permission to view this page. <br /><br /><a href="/Account/Register">Register</a> to see the cool things Interactive Technologies has been working on.</p>
+   
+}
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

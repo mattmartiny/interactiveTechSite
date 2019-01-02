@@ -23,7 +23,11 @@ namespace InteractiveTechnologies.Controllers
         }
 
 
-
+        public ActionResult IndexList()
+        {
+            var whatsNews = db.WhatsNews.Include(w => w.Image);
+            return View(whatsNews.ToList());
+        }
 
         // GET: WhatsNews/Details/5
         public ActionResult Details(int? id)
