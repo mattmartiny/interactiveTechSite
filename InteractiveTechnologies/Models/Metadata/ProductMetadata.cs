@@ -11,6 +11,7 @@ namespace InteractiveTechnologies.Models//.Metadata
     {
 
         public int ProductID { get; set; }
+        [Display(Name = "Category")]
         public int CategoryID { get; set; }
         [Display(Name = "Product Name")]
         public string ProductName { get; set; }

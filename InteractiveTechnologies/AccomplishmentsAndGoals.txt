@@ -98,7 +98,8 @@
 [x] Pagination for items on What's new
 [x] Added image index to admin bar
 [x] styled image index page and details
-
+[x] Made the products images attach to the same database as the rest of the images
+[x] styled the products images a bit 
 ------------
 TO DO:
 ------------

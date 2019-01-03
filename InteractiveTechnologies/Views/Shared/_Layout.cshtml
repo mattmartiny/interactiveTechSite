@@ -134,8 +134,8 @@
             @if (Request.IsAuthenticated && User.IsInRole("Admin"))
             {
 
-                @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
-                @Html.ActionLink("Users Admin", "Index", "UsersAdmin")
+                @Html.ActionLink("Roles", "Index", "RolesAdmin")
+                @Html.ActionLink("Users", "Index", "UsersAdmin")
                 @Html.ActionLink("Images", "Index", "Images")
                 @Html.ActionLink("Products", "Index", "Products")
                 @Html.ActionLink("Categories", "Index", "Categories")
