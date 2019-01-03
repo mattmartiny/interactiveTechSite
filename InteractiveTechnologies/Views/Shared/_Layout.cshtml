@@ -28,14 +28,7 @@
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {
                         @Html.AntiForgeryToken()
-                        <li id="cart-button">
                      
-                            <a href="~/ShoppingCart">
-                                <i class="fa fa-shopping-cart"></i> Cart
-                            </a>
-                            <span id="cart-notification" class="notification-counter"></span>
-                        </li>
-
                         <!-- Unauthenticated -->
                         if (!Request.IsAuthenticated)
                         {

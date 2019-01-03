@@ -100,7 +100,7 @@
 [x] styled image index page and details
 [x] Made the products images attach to the same database as the rest of the images
 [x] styled the products image to look better
-
+[x] edit out price etc.
 ------------
 TO DO:
 ------------
@@ -109,7 +109,7 @@ TO DO:
 [ ] Add content
 [ ] Forget Password stuff
 [ ] Favicon
-[ ] edit out price etc.  
+  
 [ ] Applications page
 
 [ ] Research on size
@@ -120,9 +120,8 @@ TO DO:
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
 [ ] Create a cart button w/ functionality
 [ ] image Slider for home page?
-[ ] Paypal set up
-[ ] Credit Card setup
-[ ] create product categories
+
+
 [ ] Set up email information on interactive technologies
 [ ] Style Admin rollout for mobile
 [ ] create a "template" with interchangeable media parts

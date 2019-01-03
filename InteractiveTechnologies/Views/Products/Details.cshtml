@@ -15,7 +15,7 @@
     <div class="h1 col-md-8">@Html.DisplayFor(model => model.ProductName)</div>
 
 
-    <div class="h2 col-md-4"> $@String.Format("{0:F}", Model.Price)</div>
+    @*<div class="h2 col-md-4"> $@String.Format("{0:F}", Model.Price)</div>*@
     <div class="col-md-offset-8">
         @Html.DisplayNameFor(model => model.ProductDescription)
         <p class="h3">@Model.ProductDescription</p>
@@ -39,10 +39,10 @@
 
     </div>
     <br />
-    <div class="col-md-offset-8">
+    @*<div class="col-md-offset-8">
    @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID}, new { @class = "AddtoCart" })
         <br />
-        </div>
+        </div>*@
 </div>
 
 
