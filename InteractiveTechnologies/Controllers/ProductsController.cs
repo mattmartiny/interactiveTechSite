@@ -75,7 +75,7 @@ namespace InteractiveTechnologies.Controllers
 
                     if (goodExts.Contains(ext.ToLower()))
                     {
-                        ProductImage.SaveAs(Server.MapPath("~/Content/Images/Products/" + imageName));
+                        ProductImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images" + imageName));
 
                     }
                     else
@@ -135,7 +135,7 @@ namespace InteractiveTechnologies.Controllers
 
                         if (goodExts.Contains(ext.ToLower()))
                         {
-                            ProductImage.SaveAs(Server.MapPath("~/Content/Images/Products/" + imageName));
+                            ProductImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images" + imageName));
 
                             product.ProductImage = imageName;
                         }

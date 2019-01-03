@@ -514,8 +514,6 @@
     <Content Include="Content\Images\building.jpg" />
     <Content Include="Content\Images\DB_Images\noimage.png" />
     <Content Include="Content\Images\iti_logo.jpg" />
-    <Content Include="Content\Images\Products\noimage.png" />
-    <Content Include="Content\Images\Products\_15_32in_fiberoptictree_outofpck.jpg" />
     <Content Include="Content\Scripts\Cart.js" />
     <Content Include="Content\Scripts\AUTHORS.txt" />
     <Content Include="Content\Scripts\external\jquery\jquery.js" />

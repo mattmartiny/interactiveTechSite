@@ -43,6 +43,12 @@
             @Html.DisplayFor(model => model.ImageSrc)
         </dd>
 
+        <dt>
+            Image
+        </dt>
+        <dd>
+            <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.ImageSrc)" />
+        </dd>
     </dl>
 </div>
 <p>
