@@ -331,3 +331,16 @@ display:contents;
     width: 250px;
     object-fit: none;
 }
+.applicationImgContain{
+    width:400px;
+    float:left;
+   margin-right:15px;
+
+}
+.applicationRow {
+    width: 90%;
+    margin: 0 auto;
+}
+.appImgCombine{
+    margin:-2px;
+}

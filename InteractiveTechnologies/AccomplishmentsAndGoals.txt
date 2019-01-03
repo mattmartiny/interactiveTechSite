@@ -99,16 +99,27 @@
 [x] Added image index to admin bar
 [x] styled image index page and details
 [x] Made the products images attach to the same database as the rest of the images
-[x] styled the products images a bit 
+[x] styled the products image to look better
+
 ------------
 TO DO:
 ------------
-
+[ ] change requirements on form
+[ ] when confirmed send an email
+[ ] Add content
 [ ] Forget Password stuff
+[ ] Favicon
+[ ] edit out price etc.  
+[ ] Applications page
+
+[ ] Research on size
+[ ] Cut unneeded files
+[ ] Deploy
+
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
 [ ] Create a cart button w/ functionality
-[ ] Slider for home page?
+[ ] image Slider for home page?
 [ ] Paypal set up
 [ ] Credit Card setup
 [ ] create product categories
@@ -121,3 +132,4 @@ TO DO:
 [ ] Style Mobile
 
 
+production@ideasthatfloat.com

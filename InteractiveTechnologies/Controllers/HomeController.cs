@@ -68,13 +68,13 @@ namespace InteractiveTechnologies.Controllers
             }
             return View();
         }
-
+       
           
 
-        [Authorize]
-        public ActionResult MembersOnly()
-        {                       
-            ViewBag.Message = "Members Only Page";
+     
+        public ActionResult Applications()
+        {
+          
 
             return View();
         }

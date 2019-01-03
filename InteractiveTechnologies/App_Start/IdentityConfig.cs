@@ -91,10 +91,10 @@ namespace InteractiveTechnologies.Models
         public async Task SendAsync(IdentityMessage message)
         {
 
-            MailMessage msg = new MailMessage("confirmation@ideasthatfloat.com", "mattmartiny@yahoo.com");
+            MailMessage msg = new MailMessage("confirmation@ideasthatfloat.com", "interactivetech.mail@gmail.com");
 
           //  MailMessage email = new MailMessage(new MailAddress("noreply@ideasthatfloat.com")
-                new MailAddress(message.Destination = "mattmartiny@yahoo.com");
+                new MailAddress(message.Destination = "interactivetech.mail@gmail.com");
             
 
             msg.Subject = message.Subject;

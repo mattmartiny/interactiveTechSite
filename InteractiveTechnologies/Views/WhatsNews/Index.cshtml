@@ -61,19 +61,25 @@
                             </div>
                         }
 
+                        <div style="height:55px; float:left; width:100%;">
+                            @if (item.BodyText.Count() > 100)
+                            {
+                                <p>@item.BodyText.Substring(0, 100) @Html.ActionLink("... Read More", "Details", new { id = item.ID })</p>
+                            }
+                            else
+                            {
+                                <p>@item.BodyText</p>
 
-                        <p>@Html.DisplayFor(modelItem => item.BodyText)</p>
+                            }
+                            </div>
 
 
+                        <br/>
 
+                        <p>@Html.ActionLink("Details", "Details", new { id = item.ID })</p>
 
-
-
-
-                        @Html.ActionLink("Details", "Details", new { id = item.ID })
-
+                        </div>
                     </div>
-                </div>
             }
         }
 
@@ -117,7 +123,7 @@
 
 
 
-                    <div style="height:55px; float:left; width:90%;">
+                    <div style="height:55px; float:left; width:100%;">
                         @if (item.BodyText.Count() > 100)
                         {
                             <p>@item.BodyText.Substring(0, 100) @Html.ActionLink("... Read More", "Details", new { id = item.ID })</p>
@@ -153,7 +159,7 @@ new { page }))
 
     else
     {
-        <p><a href="/Account/Register">Register</a> to see the cool things Interactive Technologies has been working on!</p>
+        <p><a href="/Account/Register">Register</a> or <a href="/Account/Login">Login</a> to see the cool things Interactive Technologies has been working on!</p>
 
 
     }
