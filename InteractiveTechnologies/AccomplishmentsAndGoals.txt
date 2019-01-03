@@ -93,12 +93,17 @@
 [x] Added a "Read More" link (any page w/ body text over 100 characters) and styled the look of the index page
 [x] cropped image for the index page
 [x] edited details page
+
+
+[x] Pagination for items on What's new
+
 ------------
 TO DO:
 ------------
+
+[ ] Forget Password stuff
 [ ] make sure members images look good on mobile, regardless of the size of the image
 [ ] Make Members image pretty, maybe have a fancy overlay that says click here?
-[ ] Make Roles Layout
 [ ] Create a cart button w/ functionality
 [ ] Slider for home page?
 [ ] Paypal set up
@@ -110,7 +115,6 @@ TO DO:
 [ ] Better way to send Email to user confirming that they have been verified
 [ ] Create Simple update images
 [ ] Get content
-[ ] Build a 'media' database
 [ ] Style Mobile
-[ ] Forget Password stuff
+
 

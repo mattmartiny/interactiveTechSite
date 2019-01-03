@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InteractiveTechnologies.Models;
+using X.PagedList;
 
 namespace InteractiveTechnologies.Controllers
 {     public class WhatsNewsController : Controller
@@ -16,17 +17,100 @@ namespace InteractiveTechnologies.Controllers
 
 
         // GET: WhatsNews
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+           
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in db.WhatsNews
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.HeaderText.Contains(searchString)
+                                       || s.BodyText.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                    default:  // Date ascending 
+                    students = students.OrderBy(s => s.Date);
+                    break;
+            }
+
+
+
+       
+            int pageNumber = (page ?? 1);
+
+
+
+
             var whatsNews = db.WhatsNews.Include(w => w.Image);
-            return View(whatsNews.ToList());
+            return View(whatsNews.OrderBy(i => i.Date).ToPagedList(page ?? 1, 4));
+
+
+
+
         }
 
 
-        public ActionResult IndexList()
+        public ActionResult IndexList(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in db.WhatsNews
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.HeaderText.Contains(searchString)
+                                       || s.BodyText.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.HeaderText);
+                    break;
+                case "name":
+                    students = students.OrderBy(s => s.HeaderText);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.Date);
+                    break;
+                default:  // Date ascending 
+                    students = students.OrderBy(s => s.Date);
+                    break;
+            }
+
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
+
+
+
             var whatsNews = db.WhatsNews.Include(w => w.Image);
-            return View(whatsNews.ToList());
+            return View(whatsNews.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: WhatsNews/Details/5
