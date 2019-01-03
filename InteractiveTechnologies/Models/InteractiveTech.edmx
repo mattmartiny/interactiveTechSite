@@ -182,7 +182,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ProductName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ProductDescription" Type="nvarchar(max)" />
           <Property Name="Price" Type="decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProductImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageID" Type="int" Nullable="false" />
           <Property Name="DisplayProduct" Type="bit" Nullable="false" />
           <Property Name="ProductOrder" Type="int" Nullable="false" />
         </EntityType>
@@ -372,6 +372,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Products_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WhatsNew_Images">
           <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
           <End Role="WhatsNew" Type="Self.WhatsNew" Multiplicity="*" />
@@ -491,6 +503,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           </AssociationSet>
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
             <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Images" Association="Self.FK_Products_Images">
+            <End Role="Images" EntitySet="Images" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_WhatsNew_Images" Association="Self.FK_WhatsNew_Images">
@@ -672,6 +688,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
             <End Role="Image" EntitySet="Images" />
             <End Role="MembersPage" EntitySet="MembersPages" />
           </AssociationSet>
+          <AssociationSet Name="FK_Products_Images" Association="InteractiveTechModel.FK_Products_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_WhatsNew_Images" Association="InteractiveTechModel.FK_WhatsNew_Images">
             <End Role="Image" EntitySet="Images" />
             <End Role="WhatsNew" EntitySet="WhatsNews" />
@@ -834,6 +854,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ImageAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ImageSrc" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MembersPages" Relationship="InteractiveTechModel.FK_MembersPage_Images" FromRole="Image" ToRole="MembersPage" />
+          <NavigationProperty Name="Products" Relationship="InteractiveTechModel.FK_Products_Images" FromRole="Image" ToRole="Product" />
           <NavigationProperty Name="WhatsNews" Relationship="InteractiveTechModel.FK_WhatsNew_Images" FromRole="Image" ToRole="WhatsNew" />
         </EntityType>
         <EntityType Name="MembersPage">
@@ -913,11 +934,12 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageID" Type="Int32" Nullable="false" />
           <Property Name="DisplayProduct" Type="Boolean" Nullable="false" />
           <Property Name="ProductOrder" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Carts" Relationship="InteractiveTechModel.FK_CartItems_Products" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Category" Relationship="InteractiveTechModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Image" Relationship="InteractiveTechModel.FK_Products_Images" FromRole="Product" ToRole="Image" />
           <NavigationProperty Name="OrderDetails" Relationship="InteractiveTechModel.FK_OrderDetail_Products" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="ProductCategories" Relationship="InteractiveTechModel.FK_ProductCategories_Products" FromRole="Product" ToRole="ProductCategory" />
         </EntityType>
@@ -1052,6 +1074,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
               <PropertyRef Name="ImageID" />
             </Principal>
             <Dependent Role="MembersPage">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Images">
+          <End Type="InteractiveTechModel.Image" Role="Image" Multiplicity="1" />
+          <End Type="InteractiveTechModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Product">
               <PropertyRef Name="ImageID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1299,7 +1333,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="ProductOrder" ColumnName="ProductOrder" />
                 <ScalarProperty Name="DisplayProduct" ColumnName="DisplayProduct" />
-                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />

@@ -18,9 +18,10 @@ namespace InteractiveTechnologies.Models//.Metadata
         public string ProductDescription { get; set; }
         [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
-        [Display(Name = "Product Image")]
-        public string ProductImage { get; set; }
+        public int ImageID { get; set; }
+        [Display(Name = "Display Product?")]
         public bool DisplayProduct { get; set; }
+        [Display(Name = "Product Order")]
         public int ProductOrder { get; set; }
 
     }

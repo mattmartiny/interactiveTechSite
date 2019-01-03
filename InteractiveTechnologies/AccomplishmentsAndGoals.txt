@@ -96,6 +96,8 @@
 
 
 [x] Pagination for items on What's new
+[x] Added image index to admin bar
+[x] styled image index page and details
 
 ------------
 TO DO:

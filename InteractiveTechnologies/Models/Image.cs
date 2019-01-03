@@ -18,6 +18,7 @@ namespace InteractiveTechnologies.Models
         public Image()
         {
             this.MembersPages = new HashSet<MembersPage>();
+            this.Products = new HashSet<Product>();
             this.WhatsNews = new HashSet<WhatsNew>();
         }
     
@@ -29,6 +30,8 @@ namespace InteractiveTechnologies.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MembersPage> MembersPages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WhatsNew> WhatsNews { get; set; }
     }

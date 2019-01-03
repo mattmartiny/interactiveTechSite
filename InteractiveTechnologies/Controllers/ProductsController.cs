@@ -44,6 +44,7 @@ namespace InteractiveTechnologies.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             return View();
         }
@@ -54,7 +55,7 @@ namespace InteractiveTechnologies.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ProductImage,DisplayProduct,ProductOrder")] Product product, HttpPostedFileBase ProductImage)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder")] Product product)
         {
             
 
@@ -62,36 +63,14 @@ namespace InteractiveTechnologies.Controllers
             if (ModelState.IsValid)
             {
 
-                string imageName = "noimage.png";
+             
 
-                if (ProductImage != null)
-                {
-
-                    imageName = ProductImage.FileName;
-
-                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
-
-                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
-
-                    if (goodExts.Contains(ext.ToLower()))
-                    {
-                        ProductImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images" + imageName));
-
-                    }
-                    else
-                    {
-
-                        imageName = "noimage.png";
-                    }
-                    product.ProductImage = imageName;
-                }
-
-
+               
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
@@ -108,6 +87,7 @@ namespace InteractiveTechnologies.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
@@ -117,35 +97,21 @@ namespace InteractiveTechnologies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ProductImage,DisplayProduct,ProductOrder")] Product product, HttpPostedFileBase ProductImage)
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder")] Product product)
         {
             if (ModelState.IsValid)
             {
 
 
 
-                    if (ProductImage != null)
-                    {
-
-                        string imageName = ProductImage.FileName;
-
-                        string ext = imageName.Substring(imageName.LastIndexOf('.'));
-
-                        string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
-
-                        if (goodExts.Contains(ext.ToLower()))
-                        {
-                            ProductImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images" + imageName));
-
-                            product.ProductImage = imageName;
-                        }
-                    }
+                   
 
           
                         db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
