@@ -3,11 +3,42 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-
-
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8" style="padding:0;">
+
+        <div class="slider-bg">
+            <ul class="rslides">
+                <li>
+                    <img src="~/Content/Images/SiteImages/marine.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/spa.jpg" class="slider-img" />
+                </li>
+                <li>
+
+                    <img src="~/Content/Images/SiteImages/spa.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/trucking.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/racing.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/medical.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/special_vehicles.jpg" class="slider-img" />
+                </li>
+                <li>
+                    <img src="~/Content/Images/SiteImages/agriculture.jpg" class="slider-img" />
+                </li>
+            </ul>
+        </div>
+
+
+
+
         <p class="h2">Welcome to Interactive Technologies</p>
         <p class="body-text">
             Interactive Technologies, Inc. is the industry leader in the development of wireless "RF" marine and recreational control systems. Many of our systems are currently installed by America's leading boat and yacht builders, spa manufactures as well as RV and trucking manufacturers. As a result, our products have been put through rigorous testing programs to ensure their performance, durability and reliability in harsh real world environments.
@@ -21,6 +52,9 @@
     <div class="col-md-3">
         <p class="h3">Latest Updates</p>
         <hr />
-      @Html.Partial("~/Views/News/_NewsPartial.cshtml", Model)
+        @Html.Partial("~/Views/News/_NewsPartial.cshtml", Model)
     </div>
+
 </div>
+
+  

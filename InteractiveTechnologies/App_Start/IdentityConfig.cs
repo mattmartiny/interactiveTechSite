@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Net.Mail;
 using System.Net;
+using InteractiveTechnologies.Models;
 
 namespace InteractiveTechnologies.Models
 {
@@ -91,35 +92,34 @@ namespace InteractiveTechnologies.Models
         public async Task SendAsync(IdentityMessage message)
         {
 
-            MailMessage msg = new MailMessage("confirmation@ideasthatfloat.com", "interactivetech.mail@gmail.com");
+            MailMessage msg = new MailMessage(new MailAddress("confirmation@ideasthatfloat.com", "(Do Not Reply)"),  
+                new MailAddress(message.Destination));
 
           //  MailMessage email = new MailMessage(new MailAddress("noreply@ideasthatfloat.com")
-                new MailAddress(message.Destination = "interactivetech.mail@gmail.com");
+
             
 
             msg.Subject = message.Subject;
             msg.Body = message.Body;
             msg.Priority = MailPriority.Normal;
             msg.IsBodyHtml = true;
-    
-            SmtpClient client = new SmtpClient("mail.mattmartiny.com");
-            client.Credentials = new NetworkCredential("no-reply@mattmartiny.com", "10316CodySt.");
 
-
-
-           
-
-            using (client)
+            using (var mailClient = new InteractiveTechnologies.Models.GmailEmailService())
             {
                 //In order to use the original from email address, uncomment this line:
-              
+                //email.From = new MailAddress(mailClient.UserName, "(do not reply)");
 
-                await client.SendMailAsync(msg);
+                await mailClient.SendMailAsync(msg);
             }
 
+
         }
+
     }
 
+
+
+    
     public class SmsService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)

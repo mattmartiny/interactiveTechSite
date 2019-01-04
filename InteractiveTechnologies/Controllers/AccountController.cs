@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+using System;
 
 namespace InteractiveTechnologies.Controllers
 {
@@ -191,13 +194,30 @@ namespace InteractiveTechnologies.Controllers
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+
+        public async Task<ActionResult> ConfirmEmail(string userId, string code, string email)
         {
-            if (userId == null || code == null)
+            if (userId == null || code == null|| email == null)
             {
                 return View("Error");
             }
 
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.Credentials = new NetworkCredential("interactivetech.mail@gmail.com", "P@ssw0rd19");
+            client.Port = 587;
+            client.EnableSsl = true;
+
+            MailMessage message = new MailMessage();
+
+            message.From = new MailAddress("confirmation@ideasthatfloat.com", "confirmation@ideasthatfloat.com");
+            message.To.Add(new MailAddress(email));
+            message.IsBodyHtml = true;
+            message.Subject = "You have been confirmed";
+
+            message.Body = $"You have been confirmed as a user for Interactive Technologies.  Please login with {email} and your password.";
+
+
+            client.Send(message);
 
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
@@ -211,15 +231,48 @@ namespace InteractiveTechnologies.Controllers
             // Send an email with this link:
 
 
-            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+                       string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+                       var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code, email = model.Email}, protocol: Request.Url.Scheme);
 
-            await UserManager.SendEmailAsync(userID, subject, $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}<br />Reason For Contact: {model.ReasonForContact}");
+            string body = $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}<br />Reason For Contact: {model.ReasonForContact}";
 
 
 
-            return callbackUrl;
+
+
+
+            IdentityMessage msg = new IdentityMessage();
+            MailMessage email = new MailMessage("accountverification@ideasthatfloat.com", "interactivetech.mail@gmail.com", $"Account Verification for {model.Email}", body);
+            email.IsBodyHtml = true;
+            email.Priority = MailPriority.Normal;
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.Credentials = new NetworkCredential("interactivetech.mail@gmail.com", "P@ssw0rd19");
+            client.Port = 587;
+            client.EnableSsl = true;
+
+            try
+                {
+
+                    client.Send(email);
+
+                }
+                catch (Exception ex)
+                {
+                    //for testing purposes should not be included in production
+                    ViewBag.ExceptionMessage = ex.InnerException;
+
+                    //Error message 
+                    ViewBag.ErrorMessage = "Unable to send email.  Please try again";
+                    return callbackUrl;
+                }
+             
+           return callbackUrl;
         }
+
+    
+
+
 
         //
         // GET: /Account/ForgotPassword

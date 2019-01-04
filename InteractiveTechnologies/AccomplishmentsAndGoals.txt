@@ -101,6 +101,12 @@
 [x] Made the products images attach to the same database as the rest of the images
 [x] styled the products image to look better
 [x] edit out price etc.
+
+[x] Added Applications page
+[x] Added image slider to the home page
+[x] Added Application-sub pages AND content
+
+
 ------------
 TO DO:
 ------------
@@ -110,25 +116,26 @@ TO DO:
 [ ] Forget Password stuff
 [ ] Favicon
   
-[ ] Applications page
+
 
 [ ] Research on size
 [ ] Cut unneeded files
 [ ] Deploy
 
-[ ] make sure members images look good on mobile, regardless of the size of the image
-[ ] Make Members image pretty, maybe have a fancy overlay that says click here?
-[ ] Create a cart button w/ functionality
+
+
+
+
+
+
 [ ] image Slider for home page?
 
 
 [ ] Set up email information on interactive technologies
 [ ] Style Admin rollout for mobile
 [ ] create a "template" with interchangeable media parts
-[ ] Better way to send Email to user confirming that they have been verified
-[ ] Create Simple update images
-[ ] Get content
-[ ] Style Mobile
+
+
 
 
 production@ideasthatfloat.com

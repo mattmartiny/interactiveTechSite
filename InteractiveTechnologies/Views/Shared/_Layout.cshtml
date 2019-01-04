@@ -28,7 +28,7 @@
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {
                         @Html.AntiForgeryToken()
-                     
+
                         <!-- Unauthenticated -->
                         if (!Request.IsAuthenticated)
                         {
@@ -62,32 +62,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    </div>
-
                 </div>
 
-
-
-
-
-                <div class=" navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Applications", "Applications", "Home")</li>
-                        <li>@Html.ActionLink("Products", "Index", "Products")</li>
-                        <li>@Html.ActionLink("What's New", "Index", "WhatsNews")</li>
-
-                       
-                        @if (Request.IsAuthenticated)
-                        {
-                            Html.RenderAction("GetMenuForUser", "Navigation");
-                        }
-
-                    </ul>
-                </div>
             </div>
+
+
+
+
+
+            <div class=" navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Applications", "Applications", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                    <li>@Html.ActionLink("What's New", "Index", "WhatsNews")</li>
+
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        Html.RenderAction("GetMenuForUser", "Navigation");
+                    }
+
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -99,21 +99,23 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    @*<script src="~/Scripts/responsiveslides.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Content/Scripts/responsiveslides.js"></script>
 
-        <script type="text/javascript">
-            $(function () {
-                $(".rslides").responsiveSlides({
-                    auto: true,
-                    timeout: 3000,
-                    speed: 500,
-                    pause: true,
-                    maxwidth: "600",
-                });
-
+    <script type="text/javascript">
+        $(function () {
+            $(".rslides").responsiveSlides({
+                auto: true,
+                timeout: 3000,
+                speed: 500,
+                pause: false,
+                maxwidth: "800",
             });
-        </script>*@
+
+        });
+    </script>
     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
     {
         <div id="adminLink" onclick="openNav()" class="button">
@@ -123,21 +125,21 @@
         </div>
 
     }
-        <div id="adminSideNav" class="sideNav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-            {
+    <div id="adminSideNav" class="sideNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
 
-                @Html.ActionLink("Roles", "Index", "RolesAdmin")
-                @Html.ActionLink("Users", "Index", "UsersAdmin")
-                @Html.ActionLink("Images", "Index", "Images")
-                @Html.ActionLink("Products", "Index", "Products")
-                @Html.ActionLink("Categories", "Index", "Categories")
-                @Html.ActionLink("Member Pages", "Index", "MembersPages")
-                @Html.ActionLink("What's New", "IndexList", "WhatsNews")
-            }
+            @Html.ActionLink("Roles", "Index", "RolesAdmin")
+            @Html.ActionLink("Users", "Index", "UsersAdmin")
+            @Html.ActionLink("Images", "Index", "Images")
+            @Html.ActionLink("Products", "Index", "Products")
+            @Html.ActionLink("Categories", "Index", "Categories")
+            @Html.ActionLink("Member Pages", "Index", "MembersPages")
+            @Html.ActionLink("What's New", "IndexList", "WhatsNews")
+        }
 
-        </div>
+    </div>
 
 
     <script type="text/javascript">
@@ -162,11 +164,9 @@
                 "order": [[2, "desc"]]
             });
         });
-        </script>
+    </script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 

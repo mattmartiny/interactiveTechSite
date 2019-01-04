@@ -516,7 +516,9 @@
     <Content Include="Content\Images\DB_Images\noimage.png" />
     <Content Include="Content\Images\iti_logo.jpg" />
     <Content Include="Content\Images\SiteImages\ag1.jpg" />
+    <Content Include="Content\Images\SiteImages\ag2.jpg" />
     <Content Include="Content\Images\SiteImages\ag3.jpg" />
+    <Content Include="Content\Images\SiteImages\ag4.jpg" />
     <Content Include="Content\Images\SiteImages\agg.jpg" />
     <Content Include="Content\Images\SiteImages\agriculture.jpg" />
     <Content Include="Content\Images\SiteImages\boat.jpg" />
@@ -549,13 +551,17 @@
     <Content Include="Content\Images\SiteImages\spa3.jpg" />
     <Content Include="Content\Images\SiteImages\spa4.jpg" />
     <Content Include="Content\Images\SiteImages\special.jpg" />
+    <Content Include="Content\Images\SiteImages\special_vehicles.jpg" />
     <Content Include="Content\Images\SiteImages\sweep1.jpg" />
     <Content Include="Content\Images\SiteImages\sweep2.jpg" />
     <Content Include="Content\Images\SiteImages\sweep3.jpg" />
     <Content Include="Content\Images\SiteImages\sweep4.jpg" />
     <Content Include="Content\Images\SiteImages\truck.jpg" />
     <Content Include="Content\Images\SiteImages\truck1.jpg" />
+    <Content Include="Content\Images\SiteImages\truck2.jpg" />
     <Content Include="Content\Images\SiteImages\truck3.jpg" />
+    <Content Include="Content\Images\SiteImages\truck4.jpg" />
+    <Content Include="Content\Images\SiteImages\trucking.jpg" />
     <Content Include="Content\Scripts\AUTHORS.txt" />
     <Content Include="Content\Scripts\external\jquery\jquery.js" />
     <Content Include="Content\Scripts\imagelightbox.js" />
@@ -569,6 +575,8 @@
     <Content Include="Content\Scripts\jquery.magnific-popup.js" />
     <Content Include="Content\Scripts\jquery.magnific-popup.min.js" />
     <Content Include="Content\Scripts\LICENSE.txt" />
+    <Content Include="Content\Scripts\responsiveslides.js" />
+    <Content Include="Content\Scripts\responsiveslides.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
