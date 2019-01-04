@@ -107,6 +107,10 @@
 [x] Added Application-sub pages AND content
 [x] Added funtionality that, upon confirmation an email is sent to the user
 [x] Changed requirements on the Registration form
+[x] Updated the "forgot Password" Page and had it send an email.
+[x] Research completed on the size of my application.
+			--- as long as there is server space, the only thing that matters is the size of the page the end user has to download.
+				ALSO, some examples are showing that even some of peoples SMALLER web applications are 230MB+
 
 ------------
 TO DO:
