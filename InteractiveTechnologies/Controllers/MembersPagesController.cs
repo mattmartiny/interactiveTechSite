@@ -67,16 +67,11 @@ namespace InteractiveTechnologies.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText, ImageSrc")] MembersPage membersPage)
+        public ActionResult Create([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText,ImageSrc")] MembersPage membersPage)
         {
             if (ModelState.IsValid)
             {
-
-           
                 membersPage.DateCreated = DateTime.Now;
-
-             
-          
 
                 db.MembersPages.Add(membersPage);
                 db.SaveChanges();
@@ -110,38 +105,18 @@ namespace InteractiveTechnologies.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText")] MembersPage membersPage, Image image)
+        public ActionResult Edit([Bind(Include = "PageID,RoleId,DateCreated,PageTitle,DisplayDate,ImageID,BodyText")] MembersPage membersPage)
         {
             if (ModelState.IsValid)
             {
-                                                          
-                membersPage.ImageID = image.ImageID;
+
+
                 membersPage.DateCreated = DateTime.Now;
 
-
-
-                if (membersPage.ImageID == null)
-                {
-                    var _mem = new MembersPage()
-                    {
-                        AspNetRole = membersPage.AspNetRole,
-                        BodyText = membersPage.BodyText,
-                        RoleId = membersPage.RoleId,
-                        ImageID = image.ImageID,
-                        PageTitle = membersPage.PageTitle,
-                        DisplayDate = membersPage.DisplayDate                                               
-                    };
-
-                    db.Entry(_mem).State = EntityState.Modified;
-                }
-                else
-                {
-                    db.Entry(membersPage).State = EntityState.Modified;
-                }
-                db.SaveChanges();
+                   db.Entry(membersPage).State = EntityState.Modified;
+                  db.SaveChanges();
                 return RedirectToAction("Index");
             }
          

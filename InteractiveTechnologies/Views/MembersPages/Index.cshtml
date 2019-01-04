@@ -80,7 +80,8 @@
                 <td>
 
                     @Html.ActionLink("User View", "Details", new { id = item.PageID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PageID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PageID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PageID })
                 </td>
             </tr>
         }

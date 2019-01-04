@@ -102,6 +102,7 @@
 [x] styled the products image to look better
 [x] edit out price etc.
 
+
 [x] Added Applications page
 [x] Added image slider to the home page
 [x] Added Application-sub pages AND content
@@ -112,35 +113,17 @@
 			--- as long as there is server space, the only thing that matters is the size of the page the end user has to download.
 				ALSO, some examples are showing that even some of peoples SMALLER web applications are 230MB+
 
+[x] Tested on multiple browsers
+[x] Favicon
+
+
 ------------
 TO DO:
 ------------
 
-
-
-[ ] Forget Password stuff
-[ ] Favicon
- 
-
-
-[ ] Research on size
-[ ] Cut unneeded files
+[ ] Set up email information on interactive technologies
+[ ] Get updated content
 [ ] Deploy
 
 
 
-
-
-
-
-[ ] image Slider for home page?
-
-
-[ ] Set up email information on interactive technologies
-[ ] Style Admin rollout for mobile
-[ ] create a "template" with interchangeable media parts
-
-
-
-
-production@ideasthatfloat.com

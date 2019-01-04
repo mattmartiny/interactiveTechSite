@@ -4,7 +4,6 @@
 
     InteractiveTechEntities db = new InteractiveTechEntities();
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -12,6 +11,7 @@
 @using (Html.BeginForm("Edit", "MembersPages", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PageID)
 
     <div class="form-horizontal">
         <h4>MembersPage</h4>
@@ -53,23 +53,14 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ImageID, "Image", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @Html.DropDownList("ImageID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ImageID, "", new { @class = "text-danger" })
             </div>
 
-            <button id="btnCreate" value="Create"
-                    style="width:100px;height:35px" class="col-md-push-2">
-                New Image
-            </button>
 
         </div>
 
-        @{
-            var imageSrc = from i in db.Images
-                           select i.ImageSrc;
-
-        }
 
 
 
@@ -87,7 +78,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
