@@ -234,7 +234,7 @@ namespace InteractiveTechnologies.Controllers
                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code, email = model.Email}, protocol: Request.Url.Scheme);
 
-            string body = $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: <a href=\"mailto:{model.Email}&subject=Account Confirmed&body={model.Email}, your account has been verified by ideasthatfloat.com.\">{model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}<br />Reason For Contact: {model.ReasonForContact}";
+            string body = $"Please confirm the account of {model.Email} by <a href=\"{callbackUrl}\">clicking here</a><br /><br />INFORMATION<br /><br />Email: {model.Email}</a><br />Name: {model.FirstName}  {model.LastName} <br />Company: {model.Company} <br />Location: {model.City},  {model.State}<br />Phone Number: {model.PhoneNumber}<br />Reason For Contact: {model.ReasonForContact}";
 
 
 

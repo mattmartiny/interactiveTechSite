@@ -105,17 +105,18 @@
 [x] Added Applications page
 [x] Added image slider to the home page
 [x] Added Application-sub pages AND content
-
+[x] Added funtionality that, upon confirmation an email is sent to the user
+[x] Changed requirements on the Registration form
 
 ------------
 TO DO:
 ------------
-[ ] change requirements on form
-[ ] when confirmed send an email
-[ ] Add content
+
+
+
 [ ] Forget Password stuff
 [ ] Favicon
-  
+ 
 
 
 [ ] Research on size
