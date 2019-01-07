@@ -7,8 +7,8 @@
       <Diagram DiagramId="f4462cb877f44877ab01e69e216d95ef" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="InteractiveTechModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="InteractiveTechModel.AspNetRole" Width="1.5" PointX="3.75" PointY="4.125" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserClaim" Width="1.5" PointX="6" PointY="16.75" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserLogin" Width="1.5" PointX="6" PointY="25.5" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserClaim" Width="1.5" PointX="6" PointY="25.25" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserLogin" Width="1.5" PointX="6" PointY="16.75" />
         <EntityTypeShape EntityType="InteractiveTechModel.AspNetUser" Width="1.5" PointX="3.75" PointY="19.375" />
         <EntityTypeShape EntityType="InteractiveTechModel.Cart" Width="1.5" PointX="5.25" PointY="13.75" />
         <EntityTypeShape EntityType="InteractiveTechModel.Category" Width="1.5" PointX="0.75" PointY="5.125" />
@@ -18,9 +18,9 @@
         <EntityTypeShape EntityType="InteractiveTechModel.OrderDetail" Width="1.5" PointX="8.25" PointY="7.75" />
         <EntityTypeShape EntityType="InteractiveTechModel.Order" Width="1.5" PointX="6" PointY="19.875" />
         <EntityTypeShape EntityType="InteractiveTechModel.ProductCategory" Width="1.5" PointX="8.25" PointY="5" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Product" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="InteractiveTechModel.Product" Width="1.5" PointX="3" PointY="7.125" />
         <EntityTypeShape EntityType="InteractiveTechModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InteractiveTechModel.WhatsNew" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="InteractiveTechModel.WhatsNew" Width="1.5" PointX="3" PointY="15.625" />
         <EntityTypeShape EntityType="InteractiveTechModel.C_MigrationHistory" Width="1.5" PointX="6.75" PointY="0.75" />
         <AssociationConnector Association="InteractiveTechModel.FK_MembersPage_AspNetRoles" />
         <AssociationConnector Association="InteractiveTechModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />

@@ -112,7 +112,6 @@
 [x] Research completed on the size of my application.
 			--- as long as there is server space, the only thing that matters is the size of the page the end user has to download.
 				ALSO, some examples are showing that even some of peoples SMALLER web applications are 230MB+
-
 [x] Tested on multiple browsers
 [x] Favicon
 
@@ -121,6 +120,10 @@
 TO DO:
 ------------
 
+[ ] Add a download section for members to download specs from products. 
+
+
+[ ] Perfect
 [ ] Set up email information on interactive technologies
 [ ] Get updated content
 [ ] Deploy

@@ -30,6 +30,7 @@ namespace InteractiveTechnologies.Models
         public int ImageID { get; set; }
         public bool DisplayProduct { get; set; }
         public int ProductOrder { get; set; }
+        public string Download { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }

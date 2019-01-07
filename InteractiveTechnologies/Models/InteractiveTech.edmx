@@ -185,6 +185,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ImageID" Type="int" Nullable="false" />
           <Property Name="DisplayProduct" Type="bit" Nullable="false" />
           <Property Name="ProductOrder" Type="int" Nullable="false" />
+          <Property Name="Download" Type="nvarchar" MaxLength="75" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -937,6 +938,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ImageID" Type="Int32" Nullable="false" />
           <Property Name="DisplayProduct" Type="Boolean" Nullable="false" />
           <Property Name="ProductOrder" Type="Int32" Nullable="false" />
+          <Property Name="Download" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Carts" Relationship="InteractiveTechModel.FK_CartItems_Products" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Category" Relationship="InteractiveTechModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Image" Relationship="InteractiveTechModel.FK_Products_Images" FromRole="Product" ToRole="Image" />
@@ -1331,6 +1333,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="InteractiveTechModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Download" ColumnName="Download" />
                 <ScalarProperty Name="ProductOrder" ColumnName="ProductOrder" />
                 <ScalarProperty Name="DisplayProduct" ColumnName="DisplayProduct" />
                 <ScalarProperty Name="ImageID" ColumnName="ImageID" />

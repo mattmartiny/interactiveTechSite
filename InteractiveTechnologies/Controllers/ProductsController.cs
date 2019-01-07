@@ -54,17 +54,38 @@ namespace InteractiveTechnologies.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
         {
             
 
 
             if (ModelState.IsValid)
             {
+                
+                if (Download != null)
+                {
 
-             
+                    string filename = Download.FileName;
 
-               
+                    string ext = filename.Substring(filename.LastIndexOf('.'));
+
+                    string[] goodExts = { ".pdf", ".zip"};
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                      Download.SaveAs(Server.MapPath("~/Content/Downloads" + filename));
+
+                    }
+
+                    else
+                    {
+                        filename = null;
+                    }
+                    product.Download = filename;
+                }
+
+
+
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,17 +117,40 @@ namespace InteractiveTechnologies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
         {
             if (ModelState.IsValid)
             {
 
+                
+
+                if (Download != null)
+                {
+
+                  string filename = Download.FileName ;
+
+                    string ext = filename.Substring(filename.LastIndexOf('.'));
+
+                    string[] goodExts = { ".pdf", ".zip" };
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        Download.SaveAs(Server.MapPath("~/Content/Downloads" + filename));
+
+                    }
+
+                    else
+                    {
+
+                        filename = null;
+                    }
+                 product.Download = filename;
+                }
 
 
-                   
 
-          
-                        db.Entry(product).State = EntityState.Modified;
+
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
