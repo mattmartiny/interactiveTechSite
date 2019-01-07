@@ -103,6 +103,8 @@
 [x] edit out price etc.
 
 
+
+
 [x] Added Applications page
 [x] Added image slider to the home page
 [x] Added Application-sub pages AND content
@@ -123,14 +125,21 @@
 ------------
 TO DO:
 ------------
+
+[ ] Remove toll free number and edit support page to say contact our technical support team. 
 [ ] Ask about a captcha or something to stop bots from sending random stuff over the contact form. 
-
-
-
+[ ] implement Googles invisible reCaptcha 
+[ ] Engineering@ideasthatfloat.com or sales
+[ ] Editable Services page
+    -- https://developers.google.com/recaptcha/docs/invisible
+[ ] Change order to match original site
+[ ] Check index page (spa and patio is there twice)
+[ ] Fix home page refresh
 [ ] Perfect
 [ ] Set up email information on interactive technologies
 [ ] Get updated content
 [ ] Deploy
+[ ] Remove subject line from contact page
 
 
 
