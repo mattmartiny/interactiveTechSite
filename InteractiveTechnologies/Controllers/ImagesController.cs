@@ -94,7 +94,7 @@ namespace InteractiveTechnologies.Controllers
                 return RedirectToAction("Create", "MembersPages");
             }
 
-            return View(image);
+            return RedirectToAction("Create", "MembersPages");
         }
 
         public ActionResult Create2()
@@ -140,11 +140,62 @@ namespace InteractiveTechnologies.Controllers
                 return RedirectToAction("Create", "WhatsNews");
             }
 
-            return View(image);
+            return RedirectToAction("Create", "WhatsNews");
         }
 
 
+        // GET: Images/Create
+        public ActionResult Create1()
+        {
+            return View();
+        }
 
+        // POST: Images/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create1([Bind(Include = "ImageID,ImageName,Description,ImageAlt,ImageSrc")] Image image, HttpPostedFileBase PImage)
+        {
+            if (ModelState.IsValid)
+            {
+
+                string imageName = "noimage.png";
+
+                if (PImage != null)
+                {
+
+                    imageName = PImage.FileName;
+
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+
+                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        PImage.SaveAs(Server.MapPath("~/Content/Images/DB_Images/" + imageName));
+
+                    }
+
+                    else
+                    {
+
+                        imageName = "noimage.png";
+                    }
+                    image.ImageSrc = imageName;
+                }
+
+                db.Images.Add(image);
+                db.SaveChanges();
+
+
+                return View();
+            }
+
+            return View();
+        }
 
 
 

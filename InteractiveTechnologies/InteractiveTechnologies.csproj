@@ -413,6 +413,7 @@
     <Compile Include="Models\Metadata\MembersPageMetadata.cs" />
     <Compile Include="Models\Metadata\NewsMetadata.cs" />
     <Compile Include="Models\Metadata\ProductMetadata.cs" />
+    <Compile Include="Models\Metadata\WhatsNewMetadata.cs" />
     <Compile Include="Models\News.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -697,6 +698,7 @@
     <Content Include="Views\Applications\medinfo.cshtml" />
     <Content Include="Views\Applications\sweepinfo.cshtml" />
     <Content Include="Views\Applications\agginfo.cshtml" />
+    <Content Include="Views\Images\Create1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

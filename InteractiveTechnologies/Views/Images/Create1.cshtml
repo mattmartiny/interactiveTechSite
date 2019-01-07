@@ -1,21 +1,21 @@
 ﻿@model InteractiveTechnologies.Models.Image
 
 @{
-
-    Layout = null;
+    ViewBag.Title = "Create1";
 }
 
+<h2>Create1</h2>
 
-@using (Html.BeginForm("Create2", "Images", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Image</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group ">
-            @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2 partial-text" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ImageName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 partial-text" })
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageAlt, htmlAttributes: new { @class = "control-label col-md-2 partial-text" })
+            @Html.LabelFor(model => model.ImageAlt, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ImageAlt, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImageAlt, "", new { @class = "text-danger" })
@@ -39,14 +39,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageSrc, htmlAttributes: new { @class = "control-label col-md-2 partial-text" })
+            @Html.LabelFor(model => model.ImageSrc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="PImage" />
+                @Html.EditorFor(model => model.ImageSrc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ImageSrc, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -56,4 +54,6 @@
     </div>
 }
 
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

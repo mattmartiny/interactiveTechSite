@@ -5,7 +5,7 @@
 @{
   InteractiveTechEntities db = new InteractiveTechEntities();
     var order = from n in db.News
-                orderby n.ArticleOrder
+                orderby n.ArticleDate 
                 select n;
 
     var ArticleToDisplay = order.First();

@@ -11,48 +11,54 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleHeaderText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleText)
-        </th>
-        <th>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleHeaderText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleText)
+            </th>
+            @*<th>
             @Html.DisplayNameFor(model => model.ArticleOrder)
-        </th>
-        <th></th>
-    </tr>
+        </th>*@
+            <th></th>
+        </tr>
+    </thead>
+   
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleHeaderText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisplayDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleOrder)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArticleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ArticleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArticleID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleHeaderText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleText)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ArticleOrder)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ArticleID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ArticleID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ArticleID })
+            </td>
+        </tr>
+            </tbody>
+    }
 
 </table>

@@ -116,11 +116,15 @@
 [x] Favicon
 
 
+[x] Add a download section for members to download specs from products. 
+[x] Allow Admins to upload .zip and .pdfs for members to download
+[x] Create Documentation on how to use the site as an admin
+
 ------------
 TO DO:
 ------------
+[ ] Ask about a captcha or something to stop bots from sending random stuff over the contact form. 
 
-[ ] Add a download section for members to download specs from products. 
 
 
 [ ] Perfect
