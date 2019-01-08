@@ -429,3 +429,19 @@ height:auto;
     margin:0 auto;
     height:75px;
 }
+.foot {
+    height:3em;
+    padding:1.25% 2%;
+    color: #FFF;
+    width: 100%;
+    border-radius:5.6px;
+    
+    background-image: linear-gradient( #38373C,#18181A);
+    border-bottom: 1.25px solid #BBCECC;
+    border-top: 1.25px solid #808080;
+    box-shadow: 2.25px 8px 7px #808080;
+}
+.foot a{
+    color:#FFF;
+
+}

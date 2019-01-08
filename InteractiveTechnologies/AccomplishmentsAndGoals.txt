@@ -129,17 +129,45 @@
 [x] Fixed the slideshow issue where it initially shows all slides
 [x] Slide Show is now editable
 [x] Metadata for Slideshow
-[x] Edited applications pages to be mobile functional and have text instead of images
+[x] Edited all applications pages to be mobile functional and have text instead of images
+[x] Continued Documentation for site
+
+
+
 ------------
 TO DO:
 ------------
 
 
-[ ] Editable Services page
-[ ] Documentation for site
 
-[ ] Seperate the Products by Category
-		-- I have to get some Categories and products before I could do that
+
+
+
+Wednesday: 
+	Add products and category content
+	Make the Products page seperate for each Category
+	Add an editable services page
+	continue documentation
+	Change the email information on the page to make sure that emails are sending etc.
+	Double check to make sure everything is up to snuff
+	Make Product image a link to Details of product
+	Extra images in products
+	Add a footer to the bottom of the site to match the original site 
+
+
+Thursday:
+	Get Login information so I can start uploading
+	Deploy database, connection string, etc.
+	Test to make sure everything is running smoothly
+
+
+
+
+
+
+
+
+
 
 
 [ ] Perfect
@@ -148,5 +176,5 @@ TO DO:
 [ ] Deploy
 
 
-[ ] Engineering@ideasthatfloat.com or sales
+[ ] sales@ideasthatfloat.com
 
