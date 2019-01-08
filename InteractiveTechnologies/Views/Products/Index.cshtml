@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<InteractiveTechnologies.Models.Product>
-
+@using InteractiveTechnologies.Models
 @{
+
+    InteractiveTechEntities db = new InteractiveTechEntities();
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
@@ -11,6 +14,7 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 }
+
 
 
 <div class="Row">

@@ -112,8 +112,8 @@
 [x] Changed requirements on the Registration form
 [x] Updated the "forgot Password" Page and had it send an email.
 [x] Research completed on the size of my application.
-			--- as long as there is server space, the only thing that matters is the size of the page the end user has to download.
-				ALSO, some examples are showing that even some of peoples SMALLER web applications are 230MB+
+		--- as long as there is server space, the only thing that matters is the size of the page the end user has to download.
+			ALSO, some examples are showing that even some of peoples SMALLER web applications are 230MB+
 [x] Tested on multiple browsers
 [x] Favicon
 
@@ -128,22 +128,25 @@
 [x] Remove one of the spa slides that is there twice
 [x] Fixed the slideshow issue where it initially shows all slides
 [x] Slide Show is now editable
+[x] Metadata for Slideshow
+
 ------------
 TO DO:
 ------------
-[ ] Engineering@ideasthatfloat.com or sales
-[ ] Editable Services page
-[ ] Seperate the Products by Category
 
-[ ] Check index page (spa and patio is there twice)
-[ ] Fix home page refresh
+
+[ ] Editable Services page
+[ ] Documentation for site
+
+[ ] Seperate the Products by Category
+		-- I have to get some Categories and products before I could do that
 
 
 [ ] Perfect
 [ ] Set up email information on interactive technologies
 [ ] Get updated content
 [ ] Deploy
-[ ] Remove subject line from contact page
 
 
+[ ] Engineering@ideasthatfloat.com or sales
 

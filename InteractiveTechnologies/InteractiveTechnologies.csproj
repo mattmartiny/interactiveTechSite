@@ -421,6 +421,7 @@
     <Compile Include="Models\Metadata\MembersPageMetadata.cs" />
     <Compile Include="Models\Metadata\NewsMetadata.cs" />
     <Compile Include="Models\Metadata\ProductMetadata.cs" />
+    <Compile Include="Models\Metadata\SlideshowMetadata.cs" />
     <Compile Include="Models\Metadata\WhatsNewMetadata.cs" />
     <Compile Include="Models\News.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
