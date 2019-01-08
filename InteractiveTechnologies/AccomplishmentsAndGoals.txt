@@ -122,19 +122,23 @@
 [x] Allow Admins to upload .zip and .pdfs for members to download
 [x] Create Documentation on how to use the site as an admin
 
+[x] fixed Contact page; removed certain text and the subject line
+[x] Changed destination of the contact email form
+[x] Change order to match original site
+[x] Remove one of the spa slides that is there twice
+[x] Fixed the slideshow issue where it initially shows all slides
+[x] Slide Show is now editable
 ------------
 TO DO:
 ------------
-
-[ ] Remove toll free number and edit support page to say contact our technical support team. 
-[ ] Ask about a captcha or something to stop bots from sending random stuff over the contact form. 
-[ ] implement Googles invisible reCaptcha 
 [ ] Engineering@ideasthatfloat.com or sales
 [ ] Editable Services page
-    -- https://developers.google.com/recaptcha/docs/invisible
-[ ] Change order to match original site
+[ ] Seperate the Products by Category
+
 [ ] Check index page (spa and patio is there twice)
 [ ] Fix home page refresh
+
+
 [ ] Perfect
 [ ] Set up email information on interactive technologies
 [ ] Get updated content

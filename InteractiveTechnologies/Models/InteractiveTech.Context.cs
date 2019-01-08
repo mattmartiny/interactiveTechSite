@@ -41,6 +41,7 @@ namespace InteractiveTechnologies.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Slideshow> Slideshows { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<WhatsNew> WhatsNews { get; set; }
         public virtual DbSet<C_MigrationHistory> C_MigrationHistory { get; set; }

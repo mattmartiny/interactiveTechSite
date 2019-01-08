@@ -6,6 +6,8 @@ using System.Net.Mail;
 using System.Web.Mvc;
 using InteractiveTechnologies.Models;
 using System.Net;
+using Mvc.Honeypot;
+using InteractiveTechnologies.HTMLHelpers;
 
 namespace InteractiveTechnologies.Controllers
 {
@@ -23,24 +25,26 @@ namespace InteractiveTechnologies.Controllers
             return View();
         }
 
+        //[SpamProtection()]
+        //[AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Contact(ContactViewModel contact)
         {
             // Create the body of the email
-            string body = $"Name: {contact.Name} <br/>Email: {contact.Email}<br/>Subject: {contact.Subject}<br/>Message: {contact.Message}";
+            string body = $"Name: {contact.Name} <br/>Email: {contact.Email}<br/>Message: {contact.Message}";
 
 
             //Create and configure the MailMessage object
             //Must add using system.Net.Mail
-            MailMessage msg = new MailMessage("no-reply@mattmartiny.com", "mattmartiny@yahoo.com", contact.Subject + " - " + DateTime.Now, body);
+            MailMessage msg = new MailMessage("no-reply@ideasthatfloat.com", "interactivetech.mail@gmail.com", " - " + DateTime.Now, body);
             //Additional properties for Mail MEssage objects
             msg.IsBodyHtml = true;
             msg.Priority = MailPriority.Normal;
 
 
             //Create and configure the smtpClient object
-            SmtpClient client = new SmtpClient("mail.mattmartiny.com");
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
             client.Credentials =
-                new NetworkCredential("no-reply@mattmartiny.com", "10316CodySt.");
+                new NetworkCredential("interactivetech.mail@gmail.com", "P@ssw0rd19");
             //Attempt to send the email
 
             if (ModelState.IsValid)

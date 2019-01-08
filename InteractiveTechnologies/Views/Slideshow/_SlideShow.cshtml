@@ -1,0 +1,32 @@
+﻿@model IEnumerable<InteractiveTechnologies.Models.Slideshow>
+@using InteractiveTechnologies.Models
+
+@{
+    InteractiveTechEntities db = new InteractiveTechEntities();
+
+
+    var order = from x in db.Slideshows
+                orderby x.SlideOrder
+                select x;
+
+}
+<div class="slider-bg">
+    <ul class="rslides">
+        @foreach (var item in order)
+        {
+          
+                if (item.SlideLink != null)
+                {
+
+                    <li><a href="@Url.Content(item.SlideLink)"><img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" class="slider-img" /></a></li>
+                }
+                else
+                {
+                    <li><img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" class="slider-img" /></li>
+
+                }
+        
+            
+        }
+    </ul>
+</div>

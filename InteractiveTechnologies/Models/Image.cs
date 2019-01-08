@@ -19,6 +19,7 @@ namespace InteractiveTechnologies.Models
         {
             this.MembersPages = new HashSet<MembersPage>();
             this.Products = new HashSet<Product>();
+            this.Slideshows = new HashSet<Slideshow>();
             this.WhatsNews = new HashSet<WhatsNew>();
         }
     
@@ -32,6 +33,8 @@ namespace InteractiveTechnologies.Models
         public virtual ICollection<MembersPage> MembersPages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Slideshow> Slideshows { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WhatsNew> WhatsNews { get; set; }
     }
