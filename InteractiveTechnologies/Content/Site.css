@@ -400,3 +400,32 @@ display:contents;
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
 }
+.Application{
+    width:100%;
+    height:auto;
+}
+.AppText {
+    background-color: #E7E8EA;
+    margin:19.5px 0 0;
+    float:left;
+    padding: 2.5% 3.5% 2%;
+height:auto;
+}
+
+.AppPic{
+     float:left;
+    margin:0;
+    padding:0 !important;
+     height:auto;
+}
+@media only screen and (max-width: 768px){
+
+    .AppPic{
+        width:100%;
+    }
+
+}
+.appLogo{
+    margin:0 auto;
+    height:75px;
+}

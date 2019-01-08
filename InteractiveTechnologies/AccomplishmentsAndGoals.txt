@@ -129,7 +129,7 @@
 [x] Fixed the slideshow issue where it initially shows all slides
 [x] Slide Show is now editable
 [x] Metadata for Slideshow
-
+[x] Edited applications pages to be mobile functional and have text instead of images
 ------------
 TO DO:
 ------------
