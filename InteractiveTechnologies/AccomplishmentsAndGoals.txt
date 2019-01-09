@@ -132,8 +132,11 @@
 [x] Edited all applications pages to be mobile functional and have text instead of images
 [x] Continued Documentation for site
 
-
-
+[x]Added a footer to the bottom of the site to match the original site 
+[x] Added extra image feature to products
+[x] Removed Price
+[x] Seperated the products by category on the products page
+[x] Make Product image in index a link to Details of product
 ------------
 TO DO:
 ------------
@@ -144,15 +147,14 @@ TO DO:
 
 
 Wednesday: 
-	Add products and category content
-	Make the Products page seperate for each Category
-	Add an editable services page
+
 	continue documentation
 	Change the email information on the page to make sure that emails are sending etc.
 	Double check to make sure everything is up to snuff
-	Make Product image a link to Details of product
-	Extra images in products
-	Add a footer to the bottom of the site to match the original site 
+	
+	
+	Add an editable services page
+
 
 
 Thursday:

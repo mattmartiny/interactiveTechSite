@@ -1,35 +1,54 @@
 ﻿@model InteractiveTechnologies.Models.Product
-
+@using InteractiveTechnologies.Models
+@using InteractiveTechnologies.HTMLHelpers
 @{
+
+    InteractiveTechEntities db = new InteractiveTechEntities();
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var img2src = (from x in db.Products
+                   from y in db.Images
+                   where x.Image2ID == y.ImageID
+                   select y.ImageSrc).SingleOrDefault();
+
+    var img3src = (from x in db.Products
+                   from y in db.Images
+                   where x.Image3ID == y.ImageID
+                   select y.ImageSrc).SingleOrDefault();
+
 }
 
 
-<div>
+<div class="row">
     @Model.ProductName Details
     <hr />
 
 
     <div class="row">
         <div class="h1 col-md-8">@Html.DisplayFor(model => model.ProductName)</div>
+        <div class="col-md-6">
+            <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)"
+                 alt="@Model.ProductName" style="margin:0 auto; max-width:100%;" />
+        </div>
 
 
-        @*<div class="h2 col-md-4"> $@String.Format("{0:F}", Model.Price)</div>*@
-        <div class="col-md-3">
+
+
+        <div class="col-md-4">
+            <p class="h3">Product Description</p>
             <p>
-                @Html.DisplayNameFor(model => model.ProductDescription)
+                @Html.DisplayFormattedData(Model.ProductDescription)
             </p>
-            <p class="h3">@Model.ProductDescription</p>
             @if (Request.IsAuthenticated)
             {
 
                 if (Model.Download != null)
                 {
-                <p>    
-               <a href="@Url.Content("~/Content/Downloads" + Model.Download)" download>
-                        Download Information
-                    </a>
+                    <p>
+                        <a href="@Url.Content("~/Content/Downloads" + Model.Download)" download>
+                            Download Information
+                        </a>
                     </p>
                 }
                 else
@@ -44,24 +63,50 @@
 
             }
         </div>
+
     </div>
-<div class="row">
-
-<div class="col-md-12">
-    <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)"
-         alt="@Model.ProductName" style="margin:0 auto; max-width:100%;" />
-</div>
-    <div class="col-md-8"></div>
-<div class="col-md-4">
-    <p>@Html.DisplayNameFor(model => model.Category.CategoryName):</p>
+    </div>
 
 
 
-    <p class="h3">@Model.Category.CategoryName</p>
+    <div class="row">
+        <div class="col-md-6">
+            @if (Model.Image2ID != null)
+            {
 
-</div>
-</div>
 
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + img2src)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + img2src)" alt="@Model.ProductName" class="productThumb" />
+                </a>
+
+            }
+            else
+            {<p>&nbsp;</p>}
+            @if (Model.Image3ID != null)
+            {
+
+
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + img3src)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + img3src)" alt="@Model.ProductName" class="productThumb" />
+                </a>
+
+            }
+            else
+            {<p>&nbsp;</p>}
+
+
+        </div>
+
+
+
+
+
+        <div class="col-md-4" style="padding-top:2em;">
+            <p>@Html.DisplayNameFor(model => model.Category.CategoryName):</p>
+            <p style="font-size:125%;">@Model.Category.CategoryName</p>
+
+        </div>
+    </div>
 
 
 
@@ -72,7 +117,7 @@
     @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID}, new { @class = "AddtoCart" })
          <br />
          </div>*@
-</div>
+
 
 
 
@@ -83,3 +128,53 @@
     }
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Content/Scripts/jquery.magnific-popup.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.image-popup-vertical-fit').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            mainClass: 'mfp-img-mobile',
+            image: {
+                verticalFit: true
+            }
+
+        });
+
+        $('.image-popup-fit-width').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            image: {
+                verticalFit: false
+            }
+        });
+
+        $('.image-popup-no-margins').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+            image: {
+                verticalFit: true
+            },
+            zoom: {
+                enabled: true,
+                duration: 300 // don't foget to change the duration also in CSS
+            }
+        });
+
+    });
+</script>
+
+
+
+

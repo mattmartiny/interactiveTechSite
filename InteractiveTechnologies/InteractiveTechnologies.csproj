@@ -346,7 +346,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -355,7 +354,6 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\SlideshowController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\WhatsNewsController.cs" />
@@ -378,9 +376,6 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserMap.cs" />
-    <Compile Include="Models\Cart.cs">
-      <DependentUpon>InteractiveTech.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -426,19 +421,12 @@
     <Compile Include="Models\News.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>InteractiveTech.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>InteractiveTech.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductCategory.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Slideshow.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
@@ -479,8 +467,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
-    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccomplishmentsAndGoals.txt" />
@@ -686,7 +672,6 @@
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\_NewsPartial.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Guest\GuestCheckout.cshtml" />
     <Content Include="Views\Account\GuestCheckout.cshtml" />
     <Content Include="Views\Guest\Pay.cshtml" />
@@ -727,10 +712,12 @@
     <Content Include="Views\Slideshow\Index.cshtml" />
     <Content Include="Views\Slideshow\_SlideShow.cshtml" />
     <Content Include="Views\Images\Create3.cshtml" />
+    <Content Include="Views\Images\Create4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Downloads\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Views\PasswordEncrypt\" />
   </ItemGroup>
   <ItemGroup>

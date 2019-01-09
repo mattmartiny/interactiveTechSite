@@ -54,7 +54,7 @@ namespace InteractiveTechnologies.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,ImageID,Image2ID,Image3ID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
         {
             
 
@@ -91,6 +91,8 @@ namespace InteractiveTechnologies.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
+            ViewBag.Image2ID = new SelectList(db.Images, "Image2ID", "ImageName", product.Image2ID);
+            ViewBag.Image3ID = new SelectList(db.Images, "Image3ID", "ImageName", product.Image3ID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
@@ -117,7 +119,7 @@ namespace InteractiveTechnologies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,Price,ImageID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductDescription,ImageID,Image2ID,Image3ID,DisplayProduct,ProductOrder,Download")] Product product, HttpPostedFileBase Download)
         {
             if (ModelState.IsValid)
             {
@@ -147,14 +149,16 @@ namespace InteractiveTechnologies.Controllers
                  product.Download = filename;
                 }
 
-
-
+                product.Image2ID = ViewBag.Image2ID;
+                product.Image3ID = ViewBag.Image3ID;
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
+            ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image2ID);
+            ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image3ID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }

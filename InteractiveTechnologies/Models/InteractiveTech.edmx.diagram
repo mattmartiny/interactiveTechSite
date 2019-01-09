@@ -5,37 +5,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f4462cb877f44877ab01e69e216d95ef" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="InteractiveTechModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="2" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.875" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserClaim" Width="1.5" PointX="6" PointY="6.25" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserLogin" Width="1.5" PointX="6" PointY="15" />
-        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUser" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Cart" Width="1.5" PointX="8.25" PointY="16.5" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Category" Width="1.5" PointX="3.75" PointY="6.875" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Image" Width="1.5" PointX="0.75" PointY="10.375" />
-        <EntityTypeShape EntityType="InteractiveTechModel.MembersPage" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="InteractiveTechModel.News" Width="1.5" PointX="8.75" PointY="2" />
-        <EntityTypeShape EntityType="InteractiveTechModel.OrderDetail" Width="1.5" PointX="8.25" PointY="7.625" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Order" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="InteractiveTechModel.ProductCategory" Width="1.5" PointX="8.25" PointY="10.75" />
-        <EntityTypeShape EntityType="InteractiveTechModel.Product" Width="1.5" PointX="6" PointY="10" />
+        <EntityTypeShape EntityType="InteractiveTechModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetRole" Width="1.5" PointX="3.75" PointY="3.375" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="1.125" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.AspNetUser" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.Category" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="InteractiveTechModel.Image" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.MembersPage" Width="1.5" PointX="6" PointY="7" />
+        <EntityTypeShape EntityType="InteractiveTechModel.News" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.ProductCategory" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="InteractiveTechModel.Product" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="InteractiveTechModel.Slideshow" Width="1.5" PointX="3" PointY="17" />
-        <EntityTypeShape EntityType="InteractiveTechModel.sysdiagram" Width="1.5" PointX="10.75" PointY="2" />
-        <EntityTypeShape EntityType="InteractiveTechModel.WhatsNew" Width="1.5" PointX="3" PointY="20" />
-        <EntityTypeShape EntityType="InteractiveTechModel.C_MigrationHistory" Width="1.5" PointX="8.75" PointY="5" />
+        <EntityTypeShape EntityType="InteractiveTechModel.sysdiagram" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.WhatsNew" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="InteractiveTechModel.C_MigrationHistory" Width="1.5" PointX="2.75" PointY="0.75" />
         <AssociationConnector Association="InteractiveTechModel.FK_MembersPage_AspNetRoles" />
         <AssociationConnector Association="InteractiveTechModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="InteractiveTechModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="InteractiveTechModel.FK_Order_AspNetUsers" />
-        <AssociationConnector Association="InteractiveTechModel.FK_CartItems_Products" />
         <AssociationConnector Association="InteractiveTechModel.FK_ProductCategories_Category" />
         <AssociationConnector Association="InteractiveTechModel.FK_Products_Category" />
         <AssociationConnector Association="InteractiveTechModel.FK_MembersPage_Images" />
         <AssociationConnector Association="InteractiveTechModel.FK_Products_Images" />
+        <AssociationConnector Association="InteractiveTechModel.FK_Products_Images1" />
+        <AssociationConnector Association="InteractiveTechModel.FK_Products_Images2" />
         <AssociationConnector Association="InteractiveTechModel.FK_Slideshow_Images" />
         <AssociationConnector Association="InteractiveTechModel.FK_WhatsNew_Images" />
-        <AssociationConnector Association="InteractiveTechModel.FK_OrderDetail_Order" />
-        <AssociationConnector Association="InteractiveTechModel.FK_OrderDetail_Products" />
         <AssociationConnector Association="InteractiveTechModel.FK_ProductCategories_Products" />
         <AssociationConnector Association="InteractiveTechModel.AspNetUserRoles" />
       </Diagram>

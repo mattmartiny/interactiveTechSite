@@ -5,64 +5,91 @@
     InteractiveTechEntities db = new InteractiveTechEntities();
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //get category id
+
+    var cat = from x in db.Categories
+              select x;
+    //all categories
+
+    var prod = from x in db.Products
+               from y in cat
+               where x.CategoryID == y.CategoryID
+               select x;
+    //products in which 
+
+
+
+
+
+
+    //each product in a category, but don't know what category is 
+    //Select ONLY products in each category and display them
 
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
+        
+
         @Html.ActionLink("Create New", "Create")
     </p>
 }
 
 
 
-<div class="Row col-md-12">
-    @foreach (var item in Model)
-    {
-        if (item.DisplayProduct == true)
+    <div class="Row col-md-12">
+        @foreach (var x in cat)
         {
-            <div class="col-sm-4">
-                <div class="product-item">
-                    <div class="product-img-contain"> <img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.ProductName" class="thumbnail product-img" /></div>
-                    <h3 class="h3 title"> <a href="~/Products/Details/@item.ProductID">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-                    @*<h3 class="h3">  @Html.DisplayFor(modelItem => item.Price) </h3>*@
+            <p class="h2">@x.CategoryName</p>
+             <div class="col-md-12">
+    @foreach (var item in x.Products)
+    { 
+    if(item.DisplayProduct == true || User.IsInRole("Admin"))
+    {
+        <div class="col-sm-4">
+            <div class="product-item">
+                <div class="product-img-contain"> <a href="~/Products/Details/@item.ProductID"><img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.ProductName" class="thumbnail product-img" /></a></div>
+                <h3 class="h3 title"> <a href="~/Products/Details/@item.ProductID">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
+                @*<h3 class="h3">  @Html.DisplayFor(modelItem => item.Price) </h3>*@
 
 
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <p>
-                            Category Name:
-                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                        </p>
-                        <p>
-                            Display Product?:
-                            @Html.DisplayFor(modelItem => item.DisplayProduct)
-                        </p>
-                        <p>
-                            Product Order:
-                            @Html.DisplayFor(modelItem => item.ProductOrder)
-                        </p>
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <p>
+                        Category Name:
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </p>
+                    <p>
+                        Display Product?:
+                        @Html.DisplayFor(modelItem => item.DisplayProduct)
+                    </p>
+                    <p>
+                        Product Order:
+                        @Html.DisplayFor(modelItem => item.ProductOrder)
+                    </p>
 
 
 
 
 
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) @:|
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
-                    }
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) @:|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                }
 
-                 @*Html.ActionLink("Details", "Details", new { id = item.ProductID }*@
+                @*Html.ActionLink("Details", "Details", new { id = item.ProductID }*@
 
-
-
-                </div>
+                
             </div>
-        }
+        </div>
+
+    }
 
 
 
 
     }
 </div>
+        }
+    </div>
