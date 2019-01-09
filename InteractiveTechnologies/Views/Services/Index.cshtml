@@ -1,0 +1,38 @@
+﻿@model IEnumerable<InteractiveTechnologies.Models.Service>
+
+        @*@Html.ActionLink("Create New", "Create")*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pdf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image.ImageName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pdf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image.ImageName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ServicePageID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ServicePageID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ServicePageID })
+            </td>
+        </tr>
+    }
+    
+    </table>

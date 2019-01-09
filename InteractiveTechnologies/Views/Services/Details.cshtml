@@ -1,0 +1,123 @@
+﻿@model InteractiveTechnologies.Models.Service
+@using InteractiveTechnologies.HTMLHelpers
+
+<div>
+    <h2 class="h2">Services</h2>
+    <hr />
+
+
+
+
+
+
+    <div class="col-md-12">
+        @if (Model.Image.ImageName != "[No Image]")
+        {
+            <div style="width:100%;">
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)" alt="@Model.Image.ImageAlt" style="display:block; margin:0 auto;" />
+                </a>
+            </div>
+        }
+        else
+        {
+            <p>&nbsp;</p>
+        }
+    </div>
+
+    <p class="row col-md-12" style="padding-bottom:15px;">
+        @Html.DisplayFormattedData(Model.BodyText)
+     </p>
+
+    @if (Model.Pdf != null)
+    {
+        <a class="image-popup-no-margins-iframe" href="~/Content/PDFs/@Model.Pdf">Click here to view PDF</a>
+    }
+    else
+    { <p>&nbsp;</p>}
+
+</div>
+
+
+
+
+
+
+
+
+    <p style="padding:8px;">
+
+
+
+
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ServicePageID })
+        }
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </p>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="~/Content/Scripts/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/jquery.magnific-popup.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.image-popup-vertical-fit').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                mainClass: 'mfp-img-mobile',
+                image: {
+                    verticalFit: true
+                }
+
+            });
+
+            $('.image-popup-fit-width').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                image: {
+                    verticalFit: false
+                }
+            });
+
+            $('.image-popup-no-margins-iframe').magnificPopup({
+                type: 'iframe',
+                closeOnContentClick: true,
+                closeBtnInside: false,
+                fixedContentPos: true,
+                mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                image: {
+                    verticalFit: true
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300 // don't foget to change the duration also in CSS
+                }
+            });
+
+            $('.image-popup-no-margins').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                closeBtnInside: false,
+                fixedContentPos: true,
+                mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                image: {
+                    verticalFit: true
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300 // don't foget to change the duration also in CSS
+                }
+            });
+
+
+        });
+    </script>
+
+
+
+

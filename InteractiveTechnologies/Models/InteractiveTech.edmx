@@ -149,6 +149,15 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <Property Name="ProductOrder" Type="int" Nullable="false" />
           <Property Name="Download" Type="nvarchar" MaxLength="75" />
         </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServicePageID" />
+          </Key>
+          <Property Name="ServicePageID" Type="int" Nullable="false" />
+          <Property Name="Pdf" Type="nvarchar" MaxLength="75" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="BodyText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Slideshow">
           <Key>
             <PropertyRef Name="SlideID" />
@@ -333,6 +342,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Services_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Slideshow_Images">
           <End Role="Images" Type="Self.Images" Multiplicity="1" />
           <End Role="Slideshow" Type="Self.Slideshow" Multiplicity="*" />
@@ -401,6 +422,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductCategories" EntityType="Self.ProductCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slideshow" EntityType="Self.Slideshow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WhatsNew" EntityType="Self.WhatsNew" Schema="dbo" store:Type="Tables" />
@@ -459,6 +481,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <AssociationSet Name="FK_Products_Images2" Association="Self.FK_Products_Images2">
             <End Role="Images" EntitySet="Images" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_Images" Association="Self.FK_Services_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Services" EntitySet="Services" />
           </AssociationSet>
           <AssociationSet Name="FK_Slideshow_Images" Association="Self.FK_Slideshow_Images">
             <End Role="Images" EntitySet="Images" />
@@ -605,6 +631,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <EntitySet Name="News" EntityType="InteractiveTechModel.News" />
           <EntitySet Name="ProductCategories" EntityType="InteractiveTechModel.ProductCategory" />
           <EntitySet Name="Products" EntityType="InteractiveTechModel.Product" />
+          <EntitySet Name="Services" EntityType="InteractiveTechModel.Service" />
           <EntitySet Name="Slideshows" EntityType="InteractiveTechModel.Slideshow" />
           <EntitySet Name="sysdiagrams" EntityType="InteractiveTechModel.sysdiagram" />
           <EntitySet Name="WhatsNews" EntityType="InteractiveTechModel.WhatsNew" />
@@ -644,6 +671,10 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <AssociationSet Name="FK_Products_Images2" Association="InteractiveTechModel.FK_Products_Images2">
             <End Role="Image" EntitySet="Images" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_Images" Association="InteractiveTechModel.FK_Services_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Service" EntitySet="Services" />
           </AssociationSet>
           <AssociationSet Name="FK_Slideshow_Images" Association="InteractiveTechModel.FK_Slideshow_Images">
             <End Role="Image" EntitySet="Images" />
@@ -794,6 +825,7 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <NavigationProperty Name="Products" Relationship="InteractiveTechModel.FK_Products_Images" FromRole="Image" ToRole="Product" />
           <NavigationProperty Name="Products1" Relationship="InteractiveTechModel.FK_Products_Images1" FromRole="Image" ToRole="Product" />
           <NavigationProperty Name="Products2" Relationship="InteractiveTechModel.FK_Products_Images2" FromRole="Image" ToRole="Product" />
+          <NavigationProperty Name="Services" Relationship="InteractiveTechModel.FK_Services_Images" FromRole="Image" ToRole="Service" />
           <NavigationProperty Name="Slideshows" Relationship="InteractiveTechModel.FK_Slideshow_Images" FromRole="Image" ToRole="Slideshow" />
           <NavigationProperty Name="WhatsNews" Relationship="InteractiveTechModel.FK_WhatsNew_Images" FromRole="Image" ToRole="WhatsNew" />
         </EntityType>
@@ -851,6 +883,16 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
           <NavigationProperty Name="Image1" Relationship="InteractiveTechModel.FK_Products_Images1" FromRole="Product" ToRole="Image" />
           <NavigationProperty Name="Image2" Relationship="InteractiveTechModel.FK_Products_Images2" FromRole="Product" ToRole="Image" />
           <NavigationProperty Name="ProductCategories" Relationship="InteractiveTechModel.FK_ProductCategories_Products" FromRole="Product" ToRole="ProductCategory" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServicePageID" />
+          </Key>
+          <Property Name="ServicePageID" Type="Int32" Nullable="false" />
+          <Property Name="Pdf" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="BodyText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Image" Relationship="InteractiveTechModel.FK_Services_Images" FromRole="Service" ToRole="Image" />
         </EntityType>
         <EntityType Name="Slideshow">
           <Key>
@@ -1007,6 +1049,18 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="Image3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_Images">
+          <End Type="InteractiveTechModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="InteractiveTechModel.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ImageID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1207,6 +1261,16 @@ warning 6002: The table/view 'InteractiveTech.dbo._MigrationHistory' does not ha
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="InteractiveTechModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Pdf" ColumnName="Pdf" />
+                <ScalarProperty Name="ServicePageID" ColumnName="ServicePageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

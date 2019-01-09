@@ -133,10 +133,11 @@
 [x] Continued Documentation for site
 
 [x]Added a footer to the bottom of the site to match the original site 
-[x] Added extra image feature to products
 [x] Removed Price
 [x] Seperated the products by category on the products page
 [x] Make Product image in index a link to Details of product
+[x] Added the products on the current site
+
 ------------
 TO DO:
 ------------
@@ -147,8 +148,9 @@ TO DO:
 
 
 Wednesday: 
-
-	continue documentation
+	
+	
+	
 	Change the email information on the page to make sure that emails are sending etc.
 	Double check to make sure everything is up to snuff
 	

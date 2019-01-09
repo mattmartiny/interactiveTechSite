@@ -35,7 +35,7 @@ namespace InteractiveTechnologies.Controllers
 
             //Create and configure the MailMessage object
             //Must add using system.Net.Mail
-            MailMessage msg = new MailMessage("no-reply@ideasthatfloat.com", "interactivetech.mail@gmail.com", " - " + DateTime.Now, body);
+            MailMessage msg = new MailMessage("no-reply@ideasthatfloat.com", "sales@ideasthatfloat.com", "New Contact Form Submission" + DateTime.Now, body);
             //Additional properties for Mail MEssage objects
             msg.IsBodyHtml = true;
             msg.Priority = MailPriority.Normal;

@@ -354,6 +354,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SlideshowController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\WhatsNewsController.cs" />
@@ -425,6 +426,9 @@
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductCategory.cs">
+      <DependentUpon>InteractiveTech.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service.cs">
       <DependentUpon>InteractiveTech.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Slideshow.cs">
@@ -713,10 +717,16 @@
     <Content Include="Views\Slideshow\_SlideShow.cshtml" />
     <Content Include="Views\Images\Create3.cshtml" />
     <Content Include="Views\Images\Create4.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Downloads\" />
+    <Folder Include="Content\PDFs\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\PasswordEncrypt\" />
   </ItemGroup>

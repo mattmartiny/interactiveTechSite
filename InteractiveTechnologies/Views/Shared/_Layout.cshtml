@@ -78,7 +78,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("What's New", "Index", "WhatsNews")</li>
-                   
+                    <li>@Html.ActionLink("Services", "Details/1", "Services")</li>
 
 
                     @if (Request.IsAuthenticated)
@@ -138,6 +138,7 @@
                 @Html.ActionLink("Categories", "Index", "Categories")
                 @Html.ActionLink("Member Pages", "Index", "MembersPages")
                 @Html.ActionLink("What's New", "IndexList", "WhatsNews")
+                @Html.ActionLink("Services", "Edit", "Services")
                 @Html.ActionLink("Slideshow", "Index", "Slideshow")
             }
 
