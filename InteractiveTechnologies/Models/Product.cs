@@ -27,14 +27,17 @@ namespace InteractiveTechnologies.Models
         public int ImageID { get; set; }
         public Nullable<int> Image2ID { get; set; }
         public Nullable<int> Image3ID { get; set; }
+        public Nullable<int> Image4ID { get; set; }
         public bool DisplayProduct { get; set; }
         public int ProductOrder { get; set; }
         public string Download { get; set; }
+        public string Specs { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Image Image { get; set; }
         public virtual Image Image1 { get; set; }
         public virtual Image Image2 { get; set; }
+        public virtual Image Image3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCategory> ProductCategories { get; set; }
     }

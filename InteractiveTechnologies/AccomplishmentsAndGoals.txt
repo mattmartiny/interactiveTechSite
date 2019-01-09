@@ -151,7 +151,7 @@ TO DO:
 
 
 
-Wednesday: 
+	make images larger and at the bottom of the page, switch text and image 
 	Technical specifications
 		
 

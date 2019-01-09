@@ -20,6 +20,35 @@
 
     <div class="row">
         <div class="h1 col-md-8">@Html.DisplayFor(model => model.ProductName)</div>
+
+        <div class="col-md-4">
+            <p class="h3">Product Description</p>
+            <p>
+                @Html.DisplayFormattedData(Model.ProductDescription)
+            </p>
+            @if (Request.IsAuthenticated)
+            {
+
+                if (Model.Download != null)
+                {
+                    <p>
+                        <a href="@Url.Content("~/Content/Downloads" + Model.Download)" download>
+                            Download Information
+                        </a>
+                    </p>
+                }
+                else
+                {
+                    <p>&nbsp;</p>
+                }
+
+            }
+            else
+            {
+                <p>&nbsp;</p>
+
+            }
+        </div>
         <div class="col-md-6">
             <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)"
                  alt="@Model.ProductName" style="margin:0 auto; max-width:100%;" />
@@ -84,6 +113,19 @@
                 </a>
 
             }
+
+            else
+            {<p>&nbsp;</p>}
+            @if (Model.Image4ID != null)
+            {
+
+
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image3.ImageSrc)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image3.ImageSrc)" alt="@Model.ProductName" class="productThumb" />
+                </a>
+
+            }
+
             else
             {<p>&nbsp;</p>}
 
