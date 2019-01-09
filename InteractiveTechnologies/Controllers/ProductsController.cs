@@ -44,6 +44,8 @@ namespace InteractiveTechnologies.Controllers
         public ActionResult Create()
         {
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName");
+            ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName");
+            ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             return View();
         }
@@ -91,8 +93,8 @@ namespace InteractiveTechnologies.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
-            ViewBag.Image2ID = new SelectList(db.Images, "Image2ID", "ImageName", product.Image2ID);
-            ViewBag.Image3ID = new SelectList(db.Images, "Image3ID", "ImageName", product.Image3ID);
+            ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image2ID);
+            ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image3ID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
@@ -109,7 +111,9 @@ namespace InteractiveTechnologies.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName");
+            ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
+            ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image2ID);
+            ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image3ID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
@@ -149,9 +153,7 @@ namespace InteractiveTechnologies.Controllers
                  product.Download = filename;
                 }
 
-                product.Image2ID = ViewBag.Image2ID;
-                product.Image3ID = ViewBag.Image3ID;
-
+          
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

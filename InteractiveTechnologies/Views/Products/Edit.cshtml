@@ -57,22 +57,22 @@
                 </div>
             </div>
 
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Image2ID, "Image2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image2ID, "Image 2", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("ImageID", ViewBag.Image2ID as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Image2ID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Image2ID, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Image3ID, "Image3", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Image3ID, "Image 3", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("ImageID", ViewBag.Image3ID as IEnumerable< SelectListItem >, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Image3ID", null, htmlAttributes: new { @class = "form-control" })
                    
                     @Html.ValidationMessageFor(model => model.Image3ID, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.DisplayProduct, htmlAttributes: new { @class = "control-label col-md-2" })

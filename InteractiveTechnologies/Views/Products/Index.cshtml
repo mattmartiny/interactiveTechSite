@@ -49,7 +49,7 @@
     {
         <div class="col-sm-4">
             <div class="product-item">
-                <div class="product-img-contain"> <a href="~/Products/Details/@item.ProductID"><img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.ProductName" class="thumbnail product-img" /></a></div>
+                <div class="product-img-contain"> <a href="~/Products/Details/@item.ProductID"><img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.ProductName" class="product-img" /></a></div>
                 <h3 class="h3 title"> <a href="~/Products/Details/@item.ProductID">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
                 @*<h3 class="h3">  @Html.DisplayFor(modelItem => item.Price) </h3>*@
 

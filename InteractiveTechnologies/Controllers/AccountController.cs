@@ -242,7 +242,7 @@ namespace InteractiveTechnologies.Controllers
 
 
             IdentityMessage msg = new IdentityMessage();
-            MailMessage email = new MailMessage("accountverification@ideasthatfloat.com", "interactivetech.mail@gmail.com", $"Account Verification for {model.Email}", body);
+            MailMessage email = new MailMessage("accountverification@ideasthatfloat.com", "sales@ideasthatfloat.com", $"Account Verification for {model.Email}", body);
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
 

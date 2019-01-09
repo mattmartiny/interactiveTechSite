@@ -137,7 +137,11 @@
 [x] Seperated the products by category on the products page
 [x] Make Product image in index a link to Details of product
 [x] Added the products on the current site
-
+[x] Added an editable Services page
+[x] Change the email information to "sales@ideasthatfloat.com".
+[x] Remove Borders
+[x] Services allow a link to contact page
+[x] Product Display now has option for up to 3 images
 ------------
 TO DO:
 ------------
@@ -148,14 +152,8 @@ TO DO:
 
 
 Wednesday: 
-	
-	
-	
-	Change the email information on the page to make sure that emails are sending etc.
-	Double check to make sure everything is up to snuff
-	
-	
-	Add an editable services page
+	Technical specifications
+		
 
 
 
@@ -174,11 +172,7 @@ Thursday:
 
 
 
-[ ] Perfect
-[ ] Set up email information on interactive technologies
-[ ] Get updated content
-[ ] Deploy
 
 
-[ ] sales@ideasthatfloat.com
+[ ] 
 

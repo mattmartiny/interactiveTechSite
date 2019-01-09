@@ -7,15 +7,8 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var img2src = (from x in db.Products
-                   from y in db.Images
-                   where x.Image2ID == y.ImageID
-                   select y.ImageSrc).SingleOrDefault();
 
-    var img3src = (from x in db.Products
-                   from y in db.Images
-                   where x.Image3ID == y.ImageID
-                   select y.ImageSrc).SingleOrDefault();
+
 
 }
 
@@ -75,8 +68,8 @@
             {
 
 
-                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + img2src)">
-                    <img src="@Url.Content("~/Content/Images/DB_Images/" + img2src)" alt="@Model.ProductName" class="productThumb" />
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image1.ImageSrc)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image1.ImageSrc)" alt="@Model.ProductName" class="productThumb" />
                 </a>
 
             }
@@ -86,8 +79,8 @@
             {
 
 
-                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + img3src)">
-                    <img src="@Url.Content("~/Content/Images/DB_Images/" + img3src)" alt="@Model.ProductName" class="productThumb" />
+                <a class="image-popup-no-margins" href="@Url.Content("~/Content/Images/DB_Images/" + Model.Image2.ImageSrc)">
+                    <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image2.ImageSrc)" alt="@Model.ProductName" class="productThumb" />
                 </a>
 
             }

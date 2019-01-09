@@ -53,7 +53,7 @@ table {
 
 body {
     
-    background-color: #FCFEFF;
+    background-color: #FFF;
     overflow:scroll;
 }
 
@@ -221,11 +221,11 @@ textarea.form-control{
     padding: .25em 5% 3em 5%;
     text-align: center;
     margin: 1em 0;
-    border: 2px solid black;
+
 }
 
 .product-img-contain {
-    height: 20em;
+
     margin: 1em 0;
     float: left;
 }
