@@ -52,23 +52,29 @@ namespace InteractiveTechnologies.Controllers
 
             if (ModelState.IsValid)
             {
+                if (contact.Subject == null)
+                {
+                    try
+                    {
 
-                try
+                        client.Send(msg);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //for testing purposes should not be included in production
+                        //ViewBag.ExceptionMessage = ex.InnerException;
+
+                        //Error message 
+                        ViewBag.ErrorMessage = "Unable to send email.  Please try again";
+                        return View();
+                    }
+                }
+                else
                 {
 
-                    client.Send(msg);
-
-                }
-                catch (Exception ex)
-                {
-                    //for testing purposes should not be included in production
-                    //ViewBag.ExceptionMessage = ex.InnerException;
-
-                    //Error message 
-                    ViewBag.ErrorMessage = "Unable to send email.  Please try again";
-                    return View();
-                }
-
+                    return View("ContactConfirmation", contact);
+                }//HoneyPot
                 //if message was sent, send user to ContactConfirmation View and display info from the message
 
                 return View("ContactConfirmation", contact);

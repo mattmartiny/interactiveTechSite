@@ -18,7 +18,7 @@ namespace InteractiveTechnologies.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "**Message is Required")]
         public string Message { get; set; }
-
+        public string Subject { get; set; }
        
 
 

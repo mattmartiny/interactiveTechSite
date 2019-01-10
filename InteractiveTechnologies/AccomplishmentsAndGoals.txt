@@ -132,7 +132,7 @@
 [x] Edited all applications pages to be mobile functional and have text instead of images
 [x] Continued Documentation for site
 
-[x]Added a footer to the bottom of the site to match the original site 
+[x] Added a footer to the bottom of the site to match the original site 
 [x] Removed Price
 [x] Seperated the products by category on the products page
 [x] Make Product image in index a link to Details of product
@@ -148,16 +148,13 @@
 [x] Styled products page and added logic
 [x] Added technical specs content
 [x] Went through views and made sure all views were layout views
-
+[x] Added anti-spam method for contact form
 ------------
 TO DO:
 ------------
 
-		
-
-
-
 Thursday:
+	Insert secondary images 
 	Get Login information so I can start uploading
 	Deploy database, connection string, etc.
 	Test to make sure everything is running smoothly
@@ -174,5 +171,5 @@ Thursday:
 
 
 
-[ ] 
+
 
