@@ -46,6 +46,7 @@ namespace InteractiveTechnologies.Controllers
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName");
+            ViewBag.Image4ID = new SelectList(db.Images, "ImageID", "ImageName");
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             return View();
         }
@@ -112,6 +113,7 @@ namespace InteractiveTechnologies.Controllers
             {
                 return HttpNotFound();
             }
+          
             ViewBag.ImageID = new SelectList(db.Images, "ImageID", "ImageName", product.ImageID);
             ViewBag.Image2ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image2ID);
             ViewBag.Image3ID = new SelectList(db.Images, "ImageID", "ImageName", product.Image3ID);

@@ -142,17 +142,17 @@
 [x] Remove Borders
 [x] Services allow a link to contact page
 [x] Product Display now has option for up to 3 images
+
+
+[x] Added Technical Specifications Partial View to Products Page
+[x] Styled products page and added logic
+[x] Added technical specs content
+[x] Went through views and made sure all views were layout views
+
 ------------
 TO DO:
 ------------
 
-
-
-
-
-
-	make images larger and at the bottom of the page, switch text and image 
-	Technical specifications
 		
 
 

@@ -303,7 +303,7 @@ display:contents;
 
 }
 .productThumb {
-    max-height: 100px;
+    max-height: 250px;
     width: auto;
     object-fit: cover;
 }
@@ -449,4 +449,12 @@ height:auto;
 .foot a{
     color:#FFF;
 
+}
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
 }

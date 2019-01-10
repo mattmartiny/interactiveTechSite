@@ -25,8 +25,7 @@ namespace InteractiveTechnologies.Controllers
             return View();
         }
 
-        //[SpamProtection()]
-        //[AcceptVerbs(HttpVerbs.Post)]
+      
         public ActionResult Contact(ContactViewModel contact)
         {
             // Create the body of the email
@@ -42,7 +41,11 @@ namespace InteractiveTechnologies.Controllers
 
 
             //Create and configure the smtpClient object
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            SmtpClient client = new SmtpClient();
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
             client.Credentials =
                 new NetworkCredential("interactivetech.mail@gmail.com", "P@ssw0rd19");
             //Attempt to send the email

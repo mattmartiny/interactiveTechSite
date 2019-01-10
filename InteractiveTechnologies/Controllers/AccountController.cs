@@ -246,7 +246,10 @@ namespace InteractiveTechnologies.Controllers
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            SmtpClient client = new SmtpClient();
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
             client.Credentials = new NetworkCredential("interactivetech.mail@gmail.com", "P@ssw0rd19");
             client.Port = 587;
             client.EnableSsl = true;
