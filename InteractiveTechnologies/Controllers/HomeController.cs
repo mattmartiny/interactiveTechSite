@@ -6,7 +6,7 @@ using System.Net.Mail;
 using System.Web.Mvc;
 using InteractiveTechnologies.Models;
 using System.Net;
-using Mvc.Honeypot;
+
 using InteractiveTechnologies.HTMLHelpers;
 
 namespace InteractiveTechnologies.Controllers

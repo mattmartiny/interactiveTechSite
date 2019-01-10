@@ -60,10 +60,53 @@
     </div>
 
 
+    <div class="col-md-8"></div>
+
+    <div class="col-md-4" style="padding-top:2em;">
+        <p>@Html.DisplayNameFor(model => model.Category.CategoryName):</p>
+        <p style="font-size:125%;">@Model.Category.CategoryName</p>
+
+    </div>
+</div>
 
 
-    <div class="row">
-        <div class="col-md-12">
+@if (Model.Specs != null)
+{
+    <div class="col-md-12" style=" text-align:center;">
+        <a href="#test-popup" class="open-popup-link" style="color:#D75C23;">Technical Specs</a>
+    </div>
+
+    <div id="test-popup" class="white-popup mfp-hide">
+        <h3 class="h3">Technical Specifications</h3>
+        @Html.DisplayFormattedData(Model.Specs)
+    </div>
+}
+else
+{
+    <p>&nbsp;</p>
+}
+
+<br />
+@*<div class="col-md-offset-8">
+    @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID}, new { @class = "AddtoCart" })
+         <br />
+         </div>*@
+
+
+
+
+<p class="col-md-12" style="padding:.5em 0; margin:.75em;">
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) @:|
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<div class="row">
+    <div class="col-md-12 secondary-images">
+        <div class="col-md-4" style="padding:1%;">
             @if (Model.Image2ID != null)
             {
                 if (Model.Image1.ImageName != "[No Image]")
@@ -76,7 +119,9 @@
             }
             else
             {<p>&nbsp;</p>}
+        </div>
 
+        <div class="col-md-4" style="padding:1% 0;">
             @if (Model.Image3ID != null)
             {
                 if (Model.Image2.ImageName != "[No Image]")
@@ -90,7 +135,9 @@
 
             else
             {<p>&nbsp;</p>}
+        </div>
 
+        <div class="col-md-4" style="padding:1%;">
             @if (Model.Image4ID != null)
             {
                 if (Model.Image3.ImageName != "[No Image]")
@@ -104,54 +151,12 @@
 
             else
             {<p>&nbsp;</p>}
-
-
         </div>
 
-
-
-        <div class="col-md-8"></div>
-
-        <div class="col-md-4" style="padding-top:2em;">
-            <p>@Html.DisplayNameFor(model => model.Category.CategoryName):</p>
-            <p style="font-size:125%;">@Model.Category.CategoryName</p>
-
-        </div>
+    </div>
     </div>
 
 
-    @if (Model.Specs != null)
-    {
-        <div class="col-md-12" style=" text-align:center;">
-            <a href="#test-popup" class="open-popup-link" style="color:#D75C23;">Technical Specs</a>
-        </div>
-
-        <div id="test-popup" class="white-popup mfp-hide">
-            <h3 class="h3">Technical Specifications</h3>
-            @Html.DisplayFormattedData(Model.Specs)
-        </div>
-    }
-    else
-    {
-        <p>&nbsp;</p>
-    }
-
-    <br />
-    @*<div class="col-md-offset-8">
-        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID}, new { @class = "AddtoCart" })
-             <br />
-             </div>*@
-
-
-
-
-    <p class="col-md-12" style="padding:.5em 0; margin:.75em;">
-        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) @:|
-        }
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

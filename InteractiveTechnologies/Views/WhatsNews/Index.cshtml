@@ -12,29 +12,87 @@
 
 
 
-    @if (Request.IsAuthenticated)
-    {
-       
-<div class="row">
-    <h2 class="h2">What's New</h2>
-    @if (User.IsInRole("Admin"))
-    {
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-    }
+@if (Request.IsAuthenticated)
+{
 
-
-
-    @if (isAdmin != true)
-    {
-        foreach (var item in Model)
+    <div class="row">
+        <h2 class="h2">What's New</h2>
+        @if (User.IsInRole("Admin"))
         {
-            if (item.Display == true)
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        }
+
+
+
+        @if (isAdmin != true)
+        {
+            foreach (var item in Model)
+            {
+                if (item.Display == true)
+                {
+                    <div class="col-sm-6">
+                        <div class="product-item">
+                            <h3 class="h3">@Html.DisplayFor(modelItem => item.HeaderText)</h3>
+
+                            @if (item.DisplayDate == true)
+                            {
+
+                                @item.Date.ToShortDateString();
+                            }
+                            else
+                            { <p>&nbsp; <br /></p>}
+
+
+
+                            @if (item.Image.ImageSrc != null)
+                            {
+                                <div class="col-md-12" style="margin:0 auto;">
+                                    <img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.Image.ImageAlt" class="ObjectFit" style="border:1px solid #F0f0f0; border-radius:5.5px;" />
+                                </div>
+                            }
+
+                            else
+                            {
+                                <div class="col-md-12" style="margin:0 auto;">
+                                    <img src="~/Content/Images/DB_Images/noimage.png" style="border:1px solid #F0f0f0; border-radius:5.5px; object-fit:scale-down; height:250px;" />
+                                </div>
+                            }
+
+                            <div style="height:55px; float:left; width:100%;">
+                                @if (item.BodyText.Count() > 100)
+                                {
+                                    <p>@item.BodyText.Substring(0, 100) @Html.ActionLink("... Read More", "Details", new { id = item.ID })</p>
+                                }
+                                else
+                                {
+                                    <p>@item.BodyText</p>
+
+                                }
+                            </div>
+
+
+                            <br />
+
+                            <p>@Html.ActionLink("Details", "Details", new { id = item.ID })</p>
+
+                        </div>
+                    </div>
+                }
+            }
+
+        }
+
+
+
+        else if (isAdmin == true)
+        {
+            foreach (var item in Model)
             {
                 <div class="col-sm-6">
                     <div class="product-item">
-                        <h3 class="h3">@Html.DisplayFor(modelItem => item.HeaderText)</h3>
+                        <h3 class="h3 title"><a href="~/WhatsNews/Details/@item.ID">@Html.DisplayFor(modelItem => item.HeaderText)</a></h3>
 
                         @if (item.DisplayDate == true)
                         {
@@ -43,6 +101,8 @@
                         }
                         else
                         { <p>&nbsp; <br /></p>}
+
+
 
 
 
@@ -60,6 +120,8 @@
                             </div>
                         }
 
+
+
                         <div style="height:55px; float:left; width:100%;">
                             @if (item.BodyText.Count() > 100)
                             {
@@ -70,96 +132,35 @@
                                 <p>@item.BodyText</p>
 
                             }
-                            </div>
-
-
-                        <br/>
-
-                        <p>@Html.ActionLink("Details", "Details", new { id = item.ID })</p>
-
                         </div>
+                        <hr />
+                        <p>Display?: @Html.DisplayFor(modelItem => item.Display) </p>
+                        <p>Display Date?: @Html.DisplayFor(modelItem => item.DisplayDate)</p>
+
+
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                     </div>
+                </div>
             }
         }
+    </div>
+    <div>
+        <p>Page</p> @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
 
-    }
-
-
-
-    else if (isAdmin == true)
-    {
-        foreach (var item in Model)
-        {
-            <div class="col-sm-6">
-                <div class="product-item">
-                    <h3 class="h3 title"><a href="~/WhatsNews/Details/@item.ID">@Html.DisplayFor(modelItem => item.HeaderText)</a></h3>
-
-                    @if (item.DisplayDate == true)
-                    {
-
-                        @item.Date.ToShortDateString();
-                    }
-                    else
-                    { <p>&nbsp; <br /></p>}
-
-
-
-
-
-                    @if (item.Image.ImageSrc != null)
-                    {
-                        <div class="col-md-12" style="margin:0 auto;">
-                            <img src="@Url.Content("~/Content/Images/DB_Images/" + item.Image.ImageSrc)" alt="@item.Image.ImageAlt" class="ObjectFit" style="border:1px solid #F0f0f0; border-radius:5.5px;" />
-                        </div>
-                    }
-
-                    else
-                    {
-                        <div class="col-md-12" style="margin:0 auto;">
-                            <img src="~/Content/Images/DB_Images/noimage.png" style="border:1px solid #F0f0f0; border-radius:5.5px; object-fit:scale-down; height:250px;" />
-                        </div>
-                    }
-
-
-
-                    <div style="height:55px; float:left; width:100%;">
-                        @if (item.BodyText.Count() > 100)
-                        {
-                            <p>@item.BodyText.Substring(0, 100) @Html.ActionLink("... Read More", "Details", new { id = item.ID })</p>
-                        }
-                        else
-                        {
-                            <p>@item.BodyText</p>
-
-                        }
-                    </div>
-                    <hr />
-                    <p>Display?: @Html.DisplayFor(modelItem => item.Display) </p>
-                    <p>Display Date?: @Html.DisplayFor(modelItem => item.DisplayDate)</p>
-
-
-
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </div>
-            </div>
-        }
-    }
-</div>
-        <div>
-            <p>Page</p> @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        </div>
-
-        @Html.PagedListPager(Model, page => Url.Action("Index",
+    @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page }))
 
-    }
+}
 
-    else
-    {
-        <p><a href="/Account/Register">Register</a> or <a href="/Account/Login">Login</a> to see the cool things Interactive Technologies has been working on!</p>
+else
+{
+    <p><a href="/Account/Register">Register</a> or <a href="/Account/Login">Login</a> to see the cool things Interactive Technologies has been working on!</p>
 
 
-    }
+}
 
+<br /> <br /> 

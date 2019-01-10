@@ -1,9 +1,9 @@
 ﻿@model InteractiveTechnologies.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage your account";
+    ViewBag.Title = "Manage";
 }
+<h2 class="h2">@ViewBag.Title.</h2>
 
-<h2>@ViewBag.Title.</h2>
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
     <div class="col-md-8">
@@ -11,7 +11,7 @@
             @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword") 
                 : Html.ActionLink("Pick a password", "SetPassword"))
         </p>
-        <p>
+        @*<p>
             Phone Number: @(Model.PhoneNumber ?? "None") [
             @if (Model.PhoneNumber != null)
             {
@@ -24,12 +24,12 @@
                 @Html.ActionLink("Add", "AddPhoneNumber")
             }
             ]
-        </p>
-        <p>
+        </p>*@
+        @*<p>
             External Logins: @Model.Logins.Count
             @Html.ActionLink("[Manage]", "ManageLogins")
-        </p>
-        @if (Model.TwoFactor)
+        </p>*@
+        @*@if (Model.TwoFactor)
         {
             using (Html.BeginForm("DisableTFA", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
             {
@@ -72,6 +72,8 @@
                     <input type="submit" value="Remember Browser" class="btn btn-default"/>
                 </p>
             }
-        }
+        }*@
     </div>
 </div>
+<br />
+<br />
