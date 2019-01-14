@@ -25,7 +25,7 @@
         <div class="col-md-4">
             <p class="h3">Product Description</p>
             <p>
-                @Html.DisplayFormattedData(Model.ProductDescription)
+                @Html.Raw(Model.ProductDescription)
             </p>
             @if (Request.IsAuthenticated)
             {
@@ -72,14 +72,12 @@
 
 @if (Model.Specs != null)
 {
-    <div class="col-md-12" style=" text-align:center;">
-        <a href="#test-popup" class="open-popup-link" style="color:#D75C23;">Technical Specs</a>
-    </div>
+ 
 
-    <div id="test-popup" class="white-popup mfp-hide">
-        <h3 class="h3">Technical Specifications</h3>
-        @Html.DisplayFormattedData(Model.Specs)
-    </div>
+
+<p class="width:100%;color:#D75C23;">
+    @Html.ActionLink("Technical Specs", "TechSpecs", new { id = Model.ProductID }, new {@style ="text-align:center; color:#D75C23;" })
+</p>
 }
 else
 {

@@ -91,7 +91,7 @@ namespace InteractiveTechnologies.Controllers
             {
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(news);
         }

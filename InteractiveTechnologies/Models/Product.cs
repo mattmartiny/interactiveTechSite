@@ -11,7 +11,8 @@ namespace InteractiveTechnologies.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,6 +32,7 @@ namespace InteractiveTechnologies.Models
         public bool DisplayProduct { get; set; }
         public int ProductOrder { get; set; }
         public string Download { get; set; }
+        [AllowHtml]
         public string Specs { get; set; }
     
         public virtual Category Category { get; set; }

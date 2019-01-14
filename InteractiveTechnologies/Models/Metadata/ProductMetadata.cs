@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InteractiveTechnologies.Models//.Metadata
 {
@@ -16,6 +17,7 @@ namespace InteractiveTechnologies.Models//.Metadata
         [Display(Name = "Product Name")]
         public string ProductName { get; set; }
         [Display(Name = "Product Description")]
+        [AllowHtml]
         public string ProductDescription { get; set; }
   
         public int ImageID { get; set; }
@@ -23,6 +25,8 @@ namespace InteractiveTechnologies.Models//.Metadata
         public bool DisplayProduct { get; set; }
         [Display(Name = "Product Order")]
         public int ProductOrder { get; set; }
+        [AllowHtml]
+        public string Specs { get; set; }
 
     }
     [MetadataType(typeof(ProductMetadata))]

@@ -12,18 +12,14 @@ namespace InteractiveTechnologies.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MembersPage
+    public partial class Cart
     {
-        public int PageID { get; set; }
-        public string RoleId { get; set; }
+        public int ItemID { get; set; }
+        public string CartID { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
         public System.DateTime DateCreated { get; set; }
-        public string PageTitle { get; set; }
-        public bool DisplayDate { get; set; }
-        public Nullable<int> ImageID { get; set; }
-
-        public string BodyText { get; set; }
     
-        public virtual AspNetRole AspNetRole { get; set; }
-        public virtual Image Image { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

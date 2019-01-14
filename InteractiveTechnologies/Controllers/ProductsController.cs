@@ -39,6 +39,28 @@ namespace InteractiveTechnologies.Controllers
             }
             return View(product);
         }
+
+
+
+
+        // GET: Products/Details/5
+        public ActionResult TechSpecs(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+
+
+
         [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()

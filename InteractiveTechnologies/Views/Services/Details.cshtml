@@ -26,7 +26,7 @@
     </div>
 
     <p class="row col-md-12" style="padding-bottom:15px;">
-        @Html.DisplayFormattedData(Model.BodyText)
+        @Html.Raw(Model.BodyText)
     </p>
 
     @if (Model.Pdf != null)

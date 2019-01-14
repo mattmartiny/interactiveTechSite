@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InteractiveTechnologies.Models//.Metadata
 {
@@ -17,6 +18,7 @@ namespace InteractiveTechnologies.Models//.Metadata
         public bool DisplayDate { get; set; }
         [Display(Name = "Article Text")]
         [DataType(DataType.MultilineText)]
+        [AllowHtml]
         public string ArticleText { get; set; }
         [Display(Name = "Order")]
         public int ArticleOrder { get; set; }

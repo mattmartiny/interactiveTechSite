@@ -1,0 +1,25 @@
+﻿@model InteractiveTechnologies.Models.Product
+@using InteractiveTechnologies.HTMLHelpers
+@{
+    ViewBag.Title = "TechSpecs";
+}
+<div class="row">
+    <h2 class="h2">Technical Specifications</h2>
+
+    <h3 class="h3">@Model.ProductName</h3>
+
+    <div class="col-md-6">
+        @Html.Raw(Model.Specs)
+    <p style="margin:8% 0 3%;">
+            @Html.ActionLink("Back To Item", "Details", new { id = Model.ProductID })
+            <br />
+        </p>
+    </div>
+    <div class="col-md-6">
+        <img src="@Url.Content("~/Content/Images/DB_Images/" + Model.Image.ImageSrc)"
+             alt="@Model.ProductName" style="margin:0 auto; max-width:100%;" />
+
+        <br />
+    </div>
+   
+</div>

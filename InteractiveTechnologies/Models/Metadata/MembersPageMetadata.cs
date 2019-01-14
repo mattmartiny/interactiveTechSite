@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InteractiveTechnologies.Models//.Metadata
 {
@@ -20,7 +21,8 @@ namespace InteractiveTechnologies.Models//.Metadata
         public bool DisplayDate { get; set; }
         [Display(Name = "Image ID")]
         public Nullable<int> ImageID { get; set; }
-        [Display(Name = "Body Text")]      
+        [Display(Name = "Body Text")]
+        [AllowHtml]
         public string BodyText { get; set; }
 
         public virtual AspNetRole AspNetRole { get; set; }

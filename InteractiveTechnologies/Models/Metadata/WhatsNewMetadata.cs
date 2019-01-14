@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InteractiveTechnologies.Models//.Metadata
 {
@@ -18,6 +19,7 @@ namespace InteractiveTechnologies.Models//.Metadata
         [Display(Name = "Image")]
         public Nullable<int> ImageID { get; set; }
         [Display(Name = "Body Text")]
+        [AllowHtml]
         public string BodyText { get; set; }
         [Display(Name = "Display?")]
         public bool Display { get; set; }
